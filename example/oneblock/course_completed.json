@@ -1,0 +1,39 @@
+{
+    "@context":[
+        "https://www.w3.org/2018/credentials/v1",
+        "https://w3id.org/security/suites/ed25519-2020/v1"
+    ],
+    "id":"0x853ceb5cd7612edfd3ba82880493f5afeb7d1250c79c51568386150b8e4663b7",
+    "type":[
+        "VerifiableCredential"
+    ],
+    "credentialSubject":{
+        "id":"did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+        "description":"Congratulations on completing the entire course jointly created by OneBlock+ and Parity:《Introduction to Substrate Blockchain Development Course》, Phase 12. We hope you will keep your enthusiasm and keep exploring in the future path.",
+        "type":"Substrate Blockchain Development Course Completion",
+        "assertions":[
+            {
+                "src":"$course_completed",
+                "op":"==",
+                "dst":"true"
+            }
+        ],
+        "values":[
+            true
+        ],
+        "endpoint":"http://localhost:9933"
+    },
+    "issuer":{
+        "id":"did:litentry:substrate:0x28d3b174041231100f3bea49444fb44b5ee500a463b2d26ff7e6dc5d98f15135",
+        "name":"Litentry TEE Worker",
+        "mrenclave":"8vDeR3cuDsgHnq3fXo8HppfmqXdCkcJe2wN9t1hytPm5"
+    },
+    "issuanceDate":"2023-09-14T08:57:44.345468738+00:00",
+    "proof":{
+        "created":"2023-09-14T08:57:44.345938344+00:00",
+        "type":"Ed25519Signature2020",
+        "proofPurpose":"assertionMethod",
+        "proofValue":"8f1181b19260ad803b4d107ba5fe62840062f3464f3a212c0fd74a00387eb24170324fad229c48f6a8b023bef652aa07f178c36b409bb50c169935389e40f401",
+        "verificationMethod":"28d3b174041231100f3bea49444fb44b5ee500a463b2d26ff7e6dc5d98f15135"
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "@context":[
+        "https://www.w3.org/2018/credentials/v1",
+        "https://w3id.org/security/suites/ed25519-2020/v1"
+    ],
+    "id":"0x3345a013b3025a4082025459a468d85c22c4664b2186fca6b901efba94f07065",
+    "type":[
+        "VerifiableCredential"
+    ],
+    "credentialSubject":{
+        "id":"did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+        "description":"You are a trader or liquidity provider of Uniswap V2 or V3. \n\tUniswap V2 Factory Contract: 0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f. \n\tUniswap V3 Factory Contract: 0x1f98431c8ad98523631ae4a59f267346ea31f984.",
+        "type":"Uniswap V2/V3 User",
+        "assertions":[
+            {
+                "and":[
+                    {
+                        "src":"$is_uniswap_v2_user",
+                        "op":"==",
+                        "dst":"true"
+                    },
+                    {
+                        "src":"$is_uniswap_v3_user",
+                        "op":"==",
+                        "dst":"true"
+                    }
+                ]
+            }
+        ],
+        "values":[
+            true
+        ],
+        "endpoint":"http://localhost:9933"
+    },
+    "issuer":{
+        "id":"did:litentry:substrate:0x9282e646c6d22c4bfeb0762518e60a83d6a5bd34699d288a82ca5f44fc42c2e3",
+        "name":"Litentry TEE Worker",
+        "mrenclave":"BaSJUyn61a2BUWu6Fd4VqzjUZ4b5rQWUMew1nR536uZ2"
+    },
+    "issuanceDate":"2023-08-10T12:30:35.538750458+00:00",
+    "proof":{
+        "created":"2023-08-10T12:30:35.542729427+00:00",
+        "type":"Ed25519Signature2020",
+        "proofPurpose":"assertionMethod",
+        "proofValue":"53c114212b174e75df2c44807537b2c0c9af058667f0949b6fe39f3e8ba20497b245434a9b37cfe8335cd45bbc88ee6e1b6ec725202afd2da4b7deb9cded1704",
+        "verificationMethod":"9282e646c6d22c4bfeb0762518e60a83d6a5bd34699d288a82ca5f44fc42c2e3"
+    }
+}
