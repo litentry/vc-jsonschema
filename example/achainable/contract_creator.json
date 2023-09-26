@@ -1,0 +1,43 @@
+{
+    "@context":[
+        "https://www.w3.org/2018/credentials/v1",
+        "https://w3id.org/security/suites/ed25519-2020/v1"
+    ],
+    "id":"0xf3938b76831094b01a57968fcbc4a678ddb8131e4d17736675e638621aee26df",
+    "type":[
+        "VerifiableCredential"
+    ],
+    "credentialSubject":{
+        "id":"d43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+        "description":"Contract Creator",
+        "type":"You are a deployer of a smart contract on these networks: Ethereum",
+        "assertions":[
+            {
+                "and":[
+                    {
+                        "src":"$is_contract_creator",
+                        "op":"==",
+                        "dst":"true"
+                    }
+                ]
+            }
+        ],
+        "values":[
+            true
+        ],
+        "endpoint":"http://localhost:9933"
+    },
+    "issuer":{
+        "id":"3730028d06f5cad69891d61a198a7b4495ff5fbaf6203df6b12fbf37e5336952",
+        "name":"Litentry TEE Worker",
+        "mrenclave":"GfMyFWNrjf5AzSZhivryouT8SyyJ1mUfkJujjirtQuvE"
+    },
+    "issuanceDate":"2023-08-05T11:17:54.635798068+00:00",
+    "proof":{
+        "created":"2023-08-05T11:17:54.636440684+00:00",
+        "type":"Ed25519Signature2020",
+        "proofPurpose":"assertionMethod",
+        "proofValue":"9c763812bddb91129b4be8270f218b5e5fd2885697d5b6710493929746c9ed91b7dc329030c72599b84f2bab6ad410e53744023bf5f248ef08c7f2779fbece0c",
+        "verificationMethod":"3730028d06f5cad69891d61a198a7b4495ff5fbaf6203df6b12fbf37e5336952"
+    }
+}
