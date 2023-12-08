@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@litentry/schemas": ["packages/schemas/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
