@@ -1,0 +1,118 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.1.3",
+  "deps": {
+    "nx": "17.1.3"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": "LICENSE",
+        "hash": "15553496959705771468"
+      },
+      {
+        "file": "LICENSE copy",
+        "hash": "15553496959705771468"
+      },
+      {
+        "file": "README.md",
+        "hash": "5547330512725866373"
+      },
+      {
+        "file": "example/a1/a1.json",
+        "hash": "5612045342754143743"
+      },
+      {
+        "file": "example/a10/a10.json",
+        "hash": "4060055321639525498"
+      },
+      {
+        "file": "example/a11/a11.json",
+        "hash": "2162958018156395581"
+      },
+      {
+        "file": "example/a2/a2.json",
+        "hash": "4678758890677170682"
+      },
+      {
+        "file": "example/a20/a20.json",
+        "hash": "10051220933509801479"
+      },
+      {
+        "file": "example/a3/a3.json",
+        "hash": "16716419677497019281"
+      },
+      {
+        "file": "example/a4/a4.json",
+        "hash": "14627373991658363666"
+      },
+      {
+        "file": "example/a6/a6.json",
+        "hash": "13039898790980361831"
+      },
+      {
+        "file": "example/a7/a7.json",
+        "hash": "15923473930185643791"
+      },
+      {
+        "file": "example/a8/a8.json",
+        "hash": "117280693077884011"
+      },
+      {
+        "file": "example/achainable/class_of_year.json",
+        "hash": "6033770613629634498"
+      },
+      {
+        "file": "example/achainable/contract_creator.json",
+        "hash": "2291701936117182064"
+      },
+      {
+        "file": "example/achainable/dot_holder.json",
+        "hash": "9066211327574123820"
+      },
+      {
+        "file": "example/achainable/eth_holder.json",
+        "hash": "11455587765335533827"
+      },
+      {
+        "file": "example/achainable/lit_holder.json",
+        "hash": "18218111424966441934"
+      },
+      {
+        "file": "example/achainable/uniswap_v2_v3_user.json",
+        "hash": "14098526015064823381"
+      },
+      {
+        "file": "example/oneblock/course_completed.json",
+        "hash": "17516926795443325530"
+      },
+      {
+        "file": "example/oneblock/course_participated.json",
+        "hash": "7222731592752414002"
+      },
+      {
+        "file": "example/oneblock/outstanding_student.json",
+        "hash": "2372982662856221254"
+      },
+      {
+        "file": "nx.json",
+        "hash": "1933931062316644608"
+      },
+      {
+        "file": "package.json",
+        "hash": "272173898477131341"
+      },
+      {
+        "file": "packages/schema/a1/delete-me",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "15068071380531678201"
+      }
+    ]
+  }
+}
