@@ -24,7 +24,7 @@ const arrayOfClaims: JSONSchema7 = {
   items: claim,
 };
 
-export const base: JSONSchema7 = {
+export const schema: JSONSchema7 = {
   // draft-07 has the best support in ajv
   $schema: 'http://json-schema.org/draft-07/schema#',
   $id: resolveGitHubPath('0 base/1-0-0.json'),
@@ -112,9 +112,9 @@ export const base: JSONSchema7 = {
         },
         values: {
           type: 'array',
+          minItems: 1,
           items: {
             type: 'boolean',
-            minItems: 1,
           },
         },
         endpoint: {
