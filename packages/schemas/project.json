@@ -39,6 +39,13 @@
         "jestConfig": "packages/schemas/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "generate": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "packages/schemas/generate.config.ts",
+        "passWithNoTests": true
+      }
     }
   },
   "tags": []
