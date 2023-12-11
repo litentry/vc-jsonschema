@@ -2,36 +2,74 @@ import type { JSONSchema7 } from 'json-schema';
 
 import { resolveGitHubPath } from '../helpers';
 
-const claim: JSONSchema7 = {
+export const claim = (claim: {
+  src: string;
+  op: string;
+  dst: string;
+}): JSONSchema7 => ({
   type: 'object',
   required: ['src', 'op', 'dst'],
   properties: {
     src: {
       type: 'string',
+      enum: [claim.src],
     },
     op: {
       type: 'string',
+      enum: [claim.op],
     },
     dst: {
       type: 'string',
+      enum: [claim.dst],
     },
   },
-};
+});
 
-const arrayOfClaims: JSONSchema7 = {
-  type: 'array',
-  minItems: 1,
-  items: claim,
-};
+export const credentialSubjectWithAssertions = (
+  assertionItems: JSONSchema7
+): JSONSchema7 => ({
+  title: 'Litentry Verifiable Credential Subject',
+  type: 'object',
+  required: ['id', 'type', 'values', 'endpoint', 'assertions'],
+  properties: {
+    id: {
+      type: 'string',
+    },
+    type: {
+      type: 'string',
+    },
+    description: {
+      type: 'string',
+    },
+    values: {
+      type: 'array',
+      minItems: 1,
+      items: {
+        type: 'boolean',
+      },
+    },
+    endpoint: {
+      type: 'string',
+      format: 'uri',
+    },
+    assertions: {
+      type: 'array',
+      minItems: 1,
+      items: assertionItems,
+    },
+  },
+});
 
-export const schema: JSONSchema7 = {
+export const base: JSONSchema7 = {
   // draft-07 has the best support in ajv
   $schema: 'http://json-schema.org/draft-07/schema#',
-  $id: resolveGitHubPath('0 base/1-0-0.json'),
-  type: 'object',
+  $id: resolveGitHubPath('0-base/1-0-0.json'),
+
   title: 'Base Verifiable Credential',
   description:
     'A generic Verifiable Credential schema for the Litentry Protocol.',
+
+  type: 'object',
   required: [
     '@context',
     'issuer',
@@ -67,7 +105,8 @@ export const schema: JSONSchema7 = {
       },
     },
     issuanceDate: {
-      type: 'integer',
+      type: 'string',
+      format: 'date-time',
     },
     proof: {
       type: 'object',
@@ -79,9 +118,9 @@ export const schema: JSONSchema7 = {
         'verificationMethod',
       ],
       properties: {
-        // before: createdTimestamp
         created: {
-          type: 'integer',
+          type: 'string',
+          format: 'date-time',
         },
         type: {
           type: 'string',
@@ -97,54 +136,11 @@ export const schema: JSONSchema7 = {
         },
       },
     },
-    credentialSubject: {
+    // We leave it as `any` for the base credential, as we don't have a good way to
+    // validate the assertion schema. Specific assertion schemas should be validated
+    // in their own schema.
+    credentialSubject: credentialSubjectWithAssertions({
       type: 'object',
-      required: ['id', 'type', 'values', 'endpoint', 'assertions'],
-      properties: {
-        id: {
-          type: 'string',
-        },
-        type: {
-          type: 'string',
-        },
-        description: {
-          type: 'string',
-        },
-        values: {
-          type: 'array',
-          minItems: 1,
-          items: {
-            type: 'boolean',
-          },
-        },
-        endpoint: {
-          type: 'string',
-          format: 'uri',
-        },
-        assertions: {
-          type: 'array',
-          minItems: 1,
-          items: {
-            type: 'object',
-            anyOf: [
-              {
-                type: 'object',
-                required: ['and'],
-                properties: {
-                  and: arrayOfClaims,
-                },
-              },
-              {
-                type: 'object',
-                required: ['or'],
-                properties: {
-                  or: arrayOfClaims,
-                },
-              },
-            ],
-          },
-        },
-      },
-    },
+    }),
   },
 };
