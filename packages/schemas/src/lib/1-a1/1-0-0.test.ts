@@ -1,8 +1,7 @@
 import * as fs from 'fs';
-import { globSync as glob } from 'fast-glob';
 
 import { ajv } from '../ajv';
-import { a1 as schema } from './1-0-0';
+import { schema } from './1-0-0';
 
 describe('0-a1/1-0-0', () => {
   it('should work', () => {
