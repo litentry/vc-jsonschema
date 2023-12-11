@@ -1,8 +1,8 @@
-import * as fs from 'fs';
+import { readFileSync } from 'fs';
 import { globSync as glob } from 'fast-glob';
 
 import { ajv } from '../ajv';
-import { base as schema } from './1-0-0';
+import { schema } from './1-0-0';
 
 describe('0-base/1-0-0', () => {
   // all .json files on `examples` folder should be valid
@@ -15,7 +15,7 @@ describe('0-base/1-0-0', () => {
 
     for (let i = 0; i < jsonFiles.length; i++) {
       const file = jsonFiles[i];
-      const json = JSON.parse(fs.readFileSync(file, 'utf8'));
+      const json = JSON.parse(readFileSync(file, 'utf8'));
       const valid = validate(json);
 
       if (!valid) {

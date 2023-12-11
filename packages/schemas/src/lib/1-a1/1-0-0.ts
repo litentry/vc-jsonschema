@@ -1,9 +1,13 @@
 import { JSONSchema7 } from 'json-schema';
 
 import { resolveGitHubPath } from '../helpers';
-import { base, credentialSubjectWithAssertions, claim } from '../0-base/1-0-0';
+import {
+  schema as base,
+  credentialSubjectWithAssertions,
+  claim,
+} from '../0-base/1-0-0';
 
-export const a1: JSONSchema7 = {
+export const schema: JSONSchema7 = {
   ...base,
 
   $id: resolveGitHubPath('1-a1/1-0-0.json'),
