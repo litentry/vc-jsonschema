@@ -1,7 +1,10 @@
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 
-const ajv = new Ajv();
+// See options https://ajv.js.org/options.html
+const ajv = new Ajv({
+  strictTuples: true,
+});
 
 addFormats(ajv, {
   mode: 'fast',
