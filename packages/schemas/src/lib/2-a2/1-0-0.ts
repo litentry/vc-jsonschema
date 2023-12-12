@@ -4,7 +4,7 @@ import { resolveGitHubPath } from '../helpers';
 import {
   schema as base,
   credentialSubjectWithAssertions,
-  claim,
+  clause,
 } from '../0-base/1-0-0';
 
 export const schema: JSONSchema7 = {
@@ -28,17 +28,17 @@ export const schema: JSONSchema7 = {
           minItems: 3,
           maxItems: 3,
           items: [
-            claim({
+            clause({
               src: '$verified_discord_account',
               op: '>',
               dst: '0',
             }),
-            claim({
+            clause({
               src: '$has_joined',
               op: '==',
               dst: 'true',
             }),
-            claim({
+            clause({
               src: '$discord_guild_id',
               op: '==',
               dst: 'abc',

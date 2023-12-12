@@ -4,7 +4,7 @@ import { resolveGitHubPath } from '../helpers';
 import {
   schema as base,
   credentialSubjectWithAssertions,
-  claim,
+  clause,
 } from '../0-base/1-0-0';
 
 export const schema: JSONSchema7 = {
@@ -28,12 +28,12 @@ export const schema: JSONSchema7 = {
           minItems: 2,
           maxItems: 2,
           items: [
-            claim({
+            clause({
               src: '$has_web2_account',
               op: '==',
               dst: 'true',
             }),
-            claim({
+            clause({
               src: '$has_web3_account',
               op: '==',
               dst: 'true',

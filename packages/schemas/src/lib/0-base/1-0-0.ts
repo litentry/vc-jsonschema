@@ -2,7 +2,7 @@ import type { JSONSchema7 } from 'json-schema';
 
 import { resolveGitHubPath } from '../helpers';
 
-export const claim = (claim: {
+export const clause = (args: {
   src: string;
   op: string;
   dst: string;
@@ -12,15 +12,15 @@ export const claim = (claim: {
   properties: {
     src: {
       type: 'string',
-      enum: [claim.src],
+      enum: [args.src],
     },
     op: {
       type: 'string',
-      enum: [claim.op],
+      enum: [args.op],
     },
     dst: {
       type: 'string',
-      enum: [claim.dst],
+      enum: [args.dst],
     },
   },
 });
