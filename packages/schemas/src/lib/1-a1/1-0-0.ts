@@ -10,7 +10,7 @@ import {
 export const schema: JSONSchema7 = {
   ...base,
 
-  $id: resolveGitHubPath('1-a1/1-0-0.json'),
+  $id: resolveGitHubPath('a1/1-0-0.json'),
 
   title: 'Basic Identity Verification',
   description:

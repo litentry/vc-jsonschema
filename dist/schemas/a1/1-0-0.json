@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/1-a1/1-0-0.json",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/a1/1-0-0.json",
   "title": "Basic Identity Verification",
   "description": "You've identified at least one account/address in both Web2 and Web3.",
   "type": "object",
