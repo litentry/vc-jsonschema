@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/0-base/1-0-0.json",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/base/1-0-0.json",
   "title": "Base Verifiable Credential",
   "description": "A generic Verifiable Credential schema for the Litentry Protocol.",
   "type": "object",
