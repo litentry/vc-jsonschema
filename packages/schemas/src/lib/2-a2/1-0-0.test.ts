@@ -8,7 +8,7 @@ describe('2-a2/1-0-0', () => {
     const validate = ajv.compile(schema);
     expect(validate.errors).toBeNull();
 
-    const json = JSON.parse(fs.readFileSync('examples/a1/a1.json', 'utf8'));
+    const json = JSON.parse(fs.readFileSync('examples/a2/a2.json', 'utf8'));
     const valid = validate(json);
 
     if (!valid) console.log(validate.errors);
