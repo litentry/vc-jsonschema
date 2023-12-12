@@ -1,11 +1,8 @@
 import { JSONSchema7 } from 'json-schema';
 
+import { schema as base } from '../0-base/1-0-0';
 import { resolveGitHubPath } from '../helpers';
-import {
-  schema as base,
-  credentialSubjectWithAssertions,
-  clause,
-} from '../0-base/1-0-0';
+import { credentialSubject, assertion } from '../schema-helpers';
 
 export const schema: JSONSchema7 = {
   ...base,
@@ -19,43 +16,36 @@ export const schema: JSONSchema7 = {
   properties: {
     ...base.properties,
 
-    credentialSubject: credentialSubjectWithAssertions({
-      type: 'object',
-      required: ['and'],
-      properties: {
-        and: {
-          type: 'array',
-          minItems: 5,
-          maxItems: 5,
-          items: [
-            clause({
-              src: '$has_role',
-              op: '==',
-              dst: 'true',
-            }),
-            clause({
-              src: '$has_commented',
-              op: '==',
-              dst: 'true',
-            }),
-            clause({
-              src: '$discord_guild_id',
-              op: '==',
-              dst: '10',
-            }),
-            clause({
-              src: '$discord_channel_id',
-              op: '==',
-              dst: '10',
-            }),
-            clause({
-              src: '$discord_role_id',
-              op: '==',
-              dst: '10',
-            }),
-          ],
-        },
-      },
+    credentialSubject: credentialSubject({
+      assertions: assertion.and({
+        items: [
+          assertion.clause({
+            src: '$has_role',
+            op: '==',
+            dst: 'true',
+          }),
+          assertion.clause({
+            src: '$has_commented',
+            op: '==',
+            dst: 'true',
+          }),
+          assertion.clause({
+            src: '$discord_guild_id',
+            op: '==',
+            dst: '10',
+          }),
+          assertion.clause({
+            src: '$discord_channel_id',
+            op: '==',
+            dst: '10',
+          }),
+          assertion.clause({
+            src: '$discord_role_id',
+            op: '==',
+            dst: '10',
+          }),
+        ],
+      }),
     }),
   },
 };

@@ -1,64 +1,7 @@
 import type { JSONSchema7 } from 'json-schema';
 
 import { resolveGitHubPath } from '../helpers';
-
-export const clause = (args: {
-  src: string;
-  op: string;
-  dst: string;
-}): JSONSchema7 => ({
-  type: 'object',
-  required: ['src', 'op', 'dst'],
-  properties: {
-    src: {
-      type: 'string',
-      enum: [args.src],
-    },
-    op: {
-      type: 'string',
-      enum: [args.op],
-    },
-    dst: {
-      type: 'string',
-      enum: [args.dst],
-    },
-  },
-});
-
-export const credentialSubjectWithAssertions = (
-  assertionItems: JSONSchema7
-): JSONSchema7 => ({
-  title: 'Litentry Verifiable Credential Subject',
-  type: 'object',
-  required: ['id', 'type', 'values', 'endpoint', 'assertions'],
-  properties: {
-    id: {
-      type: 'string',
-    },
-    type: {
-      type: 'string',
-    },
-    description: {
-      type: 'string',
-    },
-    values: {
-      type: 'array',
-      minItems: 1,
-      items: {
-        type: 'boolean',
-      },
-    },
-    endpoint: {
-      type: 'string',
-      format: 'uri',
-    },
-    assertions: {
-      type: 'array',
-      minItems: 1,
-      items: assertionItems,
-    },
-  },
-});
+import { credentialSubject } from '../schema-helpers';
 
 export const schema: JSONSchema7 = {
   // draft-07 has the best support in ajv
@@ -139,8 +82,10 @@ export const schema: JSONSchema7 = {
     // We leave it as `any` for the base credential, as we don't have a good way to
     // validate the assertion schema. Specific assertion schemas should be validated
     // in their own schema.
-    credentialSubject: credentialSubjectWithAssertions({
-      type: 'object',
+    credentialSubject: credentialSubject({
+      assertions: {
+        type: 'object',
+      },
     }),
   },
 };
