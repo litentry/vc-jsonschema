@@ -20,7 +20,6 @@ export const schema: JSONSchema7 = {
     ...base.properties,
 
     credentialSubject: credentialSubjectWithAssertions({
-      title: 'Litentry Discord Member',
       type: 'object',
       required: ['and'],
       properties: {
