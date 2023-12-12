@@ -7,7 +7,7 @@ import { credentialSubject, assertion } from '../schema-helpers';
 export const schema: JSONSchema7 = {
   ...base,
 
-  $id: resolveGitHubPath('a3/1-0-0.json'),
+  $id: resolveGitHubPath('3-active-discord-id-hubber/1-0-0.json'),
 
   title: 'Active Discord ID-Hubber',
   description:

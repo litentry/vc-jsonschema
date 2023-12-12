@@ -7,11 +7,10 @@ import { credentialSubject, assertion } from '../schema-helpers';
 export const schema: JSONSchema7 = {
   ...base,
 
-  $id: resolveGitHubPath('a2/1-0-0.json'),
+  $id: resolveGitHubPath('6-twitter-follower-amount/1-0-0.json'),
 
-  title: 'Litentry Discord Member',
-  description:
-    'The user is a member of Litentry Discord. Server link: https://discord.gg/phBSa3eMX9. Guild ID: 807161594245152800.',
+  title: 'Twitter Follower Amount',
+  description: "The range of the user's Twitter follower count",
 
   properties: {
     ...base.properties,
@@ -20,19 +19,14 @@ export const schema: JSONSchema7 = {
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: '$verified_discord_account',
+            src: '$total_followers',
             op: '>',
             dst: '0',
           }),
           assertion.clause({
-            src: '$has_joined',
-            op: '==',
-            dst: 'true',
-          }),
-          assertion.clause({
-            src: '$discord_guild_id',
-            op: '==',
-            dst: 'abc',
+            src: '$total_followers',
+            op: '<=',
+            dst: '1',
           }),
         ],
       }),

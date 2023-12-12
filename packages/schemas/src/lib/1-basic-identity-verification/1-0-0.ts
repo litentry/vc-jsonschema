@@ -7,7 +7,7 @@ import { credentialSubject, assertion } from '../schema-helpers';
 export const schema: JSONSchema7 = {
   ...base,
 
-  $id: resolveGitHubPath('a1/1-0-0.json'),
+  $id: resolveGitHubPath('1-basic-identity-verification/1-0-0.json'),
 
   title: 'Basic Identity Verification',
   description:
