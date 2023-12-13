@@ -53,11 +53,42 @@ export const or = (args: { items: JSONSchema7[] }): JSONSchema7 => ({
  * }
  * ```
  *
+ * `undefined` values will omit strict value checking
+ * @example
+ * ```ts
+ * clause({
+ *  src: '$date',
+ *  op: '==',
+ *  dst: undefined,
+ * })
+ * ```
+ *
+ * will output:
+ *
+ * ```json
+ * {
+ *   "type": "object",
+ *   "required": [ "src", "op" ],
+ *   "properties": {
+ *     "src": {
+ *       "type": "string",
+ *       "enum": [ "$date" ]
+ *     },
+ *     "op": {
+ *       "type": "string",
+ *       "enum": [ "==" ]
+ *     }
+ *     "dst": {
+ *       "type": "string",
+ *     }
+ *   }
+ * }
+ * ```
  */
 export const clause = (args: {
   src: string;
   op: string;
-  dst: string;
+  dst: string | undefined;
 }): JSONSchema7 => ({
   type: 'object',
   required: ['src', 'op', 'dst'],
@@ -72,7 +103,7 @@ export const clause = (args: {
     },
     dst: {
       type: 'string',
-      enum: [args.dst],
+      enum: args.dst ? [args.dst] : undefined,
     },
   },
 });
