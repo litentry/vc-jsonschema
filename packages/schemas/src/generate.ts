@@ -15,11 +15,9 @@ it.each(schemaFiles)('should generate schema for %s', async (file) => {
   // e.g.: 1-0-0.ts
   const fileName = pathAsChunks.slice(-1)[0];
   // e.g.: 0-base
-  const folderNameWithId = pathAsChunks.slice(0, -1).slice(-1)[0];
-  // e.g.: base
-  const folderName = folderNameWithId.split('-')[1];
+  const folderName = pathAsChunks.slice(0, -1).slice(-1)[0];
 
-  const { schema } = await import(`./lib/${folderNameWithId}/${fileName}`);
+  const { schema } = await import(`./lib/${folderName}/${fileName}`);
 
   expect(schema.$id).toBeDefined();
   expect(schema.$schema).toBeDefined();
@@ -29,12 +27,14 @@ it.each(schemaFiles)('should generate schema for %s', async (file) => {
 
   const jsonSchema = JSON.stringify(validate.schema, null, 2);
 
+  // e.g packages/schemas/dist/schemas/0-base
   const outputPath = `${OUTPUT_FOLDER}/${folderName}`;
 
   if (!fs.existsSync(outputPath)) {
     fs.mkdirSync(outputPath, { recursive: true });
   }
 
+  // e.g packages/schemas/dist/schemas/0-base/1-0-0.json
   fs.writeFileSync(
     path.join(outputPath, `${fileName.replace('.ts', '.json')}`),
     jsonSchema,
