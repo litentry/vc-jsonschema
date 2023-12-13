@@ -7,7 +7,7 @@ import { credentialSubject, assertion } from '../schema-helpers';
 export const schema: JSONSchema7 = {
   ...base,
 
-  $id: resolveGitHubPath('8-evm-substrate-transaction-account/1-0-0.json'),
+  $id: resolveGitHubPath('7-evm-substrate-transaction-account/1-0-0.json'),
 
   title: 'EVM/Substrate Transaction Count',
   description:
