@@ -1,0 +1,234 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/7-evm-substrate-transaction-account/1-0-0.json",
+  "title": "EVM/Substrate Transaction Count",
+  "description": "Gets the range of number of transactions a user has made for a specific token on all supported networks (invalid transactions are also counted)",
+  "type": "object",
+  "required": [
+    "@context",
+    "issuer",
+    "issuanceDate",
+    "credentialSubject",
+    "proof"
+  ],
+  "properties": {
+    "@context": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issuer": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "mrenclave"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "mrenclave": {
+          "type": "string"
+        }
+      }
+    },
+    "issuanceDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "proof": {
+      "type": "object",
+      "required": [
+        "created",
+        "type",
+        "proofPurpose",
+        "proofValue",
+        "verificationMethod"
+      ],
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "type": {
+          "type": "string"
+        },
+        "proofPurpose": {
+          "type": "string"
+        },
+        "proofValue": {
+          "type": "string"
+        },
+        "verificationMethod": {
+          "type": "string"
+        }
+      }
+    },
+    "credentialSubject": {
+      "title": "Litentry Verifiable Credential Subject",
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "values",
+        "endpoint",
+        "assertions"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "endpoint": {
+          "type": "string",
+          "format": "uri"
+        },
+        "assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "and"
+            ],
+            "properties": {
+              "and": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "items": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$total_txs"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          ">="
+                        ]
+                      },
+                      "dst": {
+                        "type": "string",
+                        "enum": [
+                          "20"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$total_txs"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "<"
+                        ]
+                      },
+                      "dst": {
+                        "type": "string",
+                        "enum": [
+                          "50"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "or"
+                    ],
+                    "properties": {
+                      "or": {
+                        "type": "array",
+                        "minItems": 1,
+                        "maxItems": 1,
+                        "items": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "src",
+                              "op",
+                              "dst"
+                            ],
+                            "properties": {
+                              "src": {
+                                "type": "string",
+                                "enum": [
+                                  "$network"
+                                ]
+                              },
+                              "op": {
+                                "type": "string",
+                                "enum": [
+                                  "=="
+                                ]
+                              },
+                              "dst": {
+                                "type": "string",
+                                "enum": [
+                                  "Polkadot"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
