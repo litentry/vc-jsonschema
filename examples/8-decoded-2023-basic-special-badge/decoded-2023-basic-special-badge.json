@@ -1,0 +1,29 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "credentialSubject": {
+    "assertions": [{ "dst": "true", "op": "==", "src": "$has_claimed_badge" }],
+    "description": "The user has a Polkadot Decoded 2023 Litentry Booth Special Badge",
+    "endpoint": "http://localhost:9933",
+    "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+    "type": "Decoded 2023 Basic Special Badge",
+    "values": [true]
+  },
+  "id": "0x76854729d66aa80d28e03cbfdd67c7f8e5241317b9125cceed06dac1a34257c8",
+  "issuanceDate": "2023-12-13T22:07:12.166777437+00:00",
+  "issuer": {
+    "id": "did:litentry:substrate:0x437fa10f97d0cf4c9563321009f042d03599f8f06e39e9fa0867457d8ec2e10c",
+    "mrenclave": "7abeD7UnAo9TMe6Rz7tva5B1ZVEbZbCEuQ4bnBr32QH",
+    "name": "Litentry TEE Worker"
+  },
+  "proof": {
+    "created": "2023-12-13T22:07:12.167472105+00:00",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "6a4d75e699a940a0786dfbf49d598f8938988507a2e00158e0919668a8738eabdb3102035f44d621a007b6fd6d9dc4a66ad1c6d47155c0d70638977152492702",
+    "type": "Ed25519Signature2020",
+    "verificationMethod": "0x437fa10f97d0cf4c9563321009f042d03599f8f06e39e9fa0867457d8ec2e10c"
+  },
+  "type": ["VerifiableCredential"]
+}
