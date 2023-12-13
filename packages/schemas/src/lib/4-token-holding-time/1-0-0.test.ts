@@ -3,7 +3,11 @@ import * as fs from 'fs';
 import { ajv } from '../ajv';
 import { schema } from './1-0-0';
 
-const tokenHoldingTimeExamples = ['examples/a4/a4.json', 'examples/a7/a7.json'];
+const tokenHoldingTimeExamples = [
+  'examples/a4/a4.json',
+  'examples/a7/a7.json',
+  'examples/a10/a10.json',
+];
 
 describe('4-token-holding-time/1-0-0', () => {
   it.each(tokenHoldingTimeExamples)('should work for %s', (example) => {
