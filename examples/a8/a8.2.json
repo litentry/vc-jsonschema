@@ -1,0 +1,42 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0x6d576c95cef6442d030ce578c601c67c15d3d2887ee9ccb147e109db80a586d4",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0x8eaf04151687736326c9fea17e25fc5287613693c912909cb226aa4794f26a48",
+    "description": "Gets the range of number of transactions a user has made for a specific token on all supported networks (invalid transactions are also counted)",
+    "type": "EVM/Substrate Transaction Count",
+    "assertions": [
+      {
+        "and": [
+          { "src": "$total_txs", "op": ">=", "dst": "0" },
+          { "src": "$total_txs", "op": "<", "dst": "1" },
+          {
+            "or": [
+              { "src": "$network", "op": "==", "dst": "Litentry" },
+              { "src": "$network", "op": "==", "dst": "Litmus" }
+            ]
+          }
+        ]
+      }
+    ],
+    "values": [false],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xf9a07bf94ba238abc2eec2d83e21e3800a7f58e4490a23be583e41f6d200f47f",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "7abeD7UnAo9TMe6Rz7tva5B1ZVEbZbCEuQ4bnBr32QH"
+  },
+  "issuanceDate": "2023-12-14T18:35:12.128795174+00:00",
+  "proof": {
+    "created": "2023-12-14T18:35:12.129307699+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "794b3f5d248c6109aa5aa43b4b294a6d892db5fa54f674362ee2fd17e1f2c5da3a650d358711ed6224de2babcf0ce83db1945d5bb34ac9a4e611271d23682609",
+    "verificationMethod": "0xf9a07bf94ba238abc2eec2d83e21e3800a7f58e4490a23be583e41f6d200f47f"
+  }
+}

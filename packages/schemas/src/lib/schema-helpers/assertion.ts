@@ -29,15 +29,19 @@ export const and = (args: { items: JSONSchema7[] }): JSONSchema7 => ({
  * }
  * ```
  */
-export const or = (args: { items: JSONSchema7[] }): JSONSchema7 => ({
+export const or = (args: {
+  items: JSONSchema7 | JSONSchema7[];
+}): JSONSchema7 => ({
   type: 'object',
   required: ['or'],
   properties: {
     or: {
       type: 'array',
-      minItems: args.items.length,
-      maxItems: args.items.length,
       items: args.items,
+      // strict tuple
+      ...(Array.isArray(args.items)
+        ? { minItems: args.items.length, maxItems: args.items.length }
+        : {}),
     },
   },
 });
