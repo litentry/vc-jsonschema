@@ -7,7 +7,7 @@ import { credentialSubject, assertion } from '../schema-helpers';
 export const schema: JSONSchema7 = {
   ...base,
 
-  $id: resolveGitHubPath('7-evm-substrate-transaction-account/1-0-0.json'),
+  $id: resolveGitHubPath('7-evm-substrate-transaction-count/1-0-0.json'),
 
   title: 'EVM/Substrate Transaction Count',
   description:
@@ -17,26 +17,26 @@ export const schema: JSONSchema7 = {
     ...base.properties,
 
     credentialSubject: credentialSubject({
+      title:
+        'Credential Subject of A8 assertion/ EVM/Substrate Transaction Count',
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: '$total_txs',
-            op: '>=',
-            dst: '20',
+            src: ['$total_txs'],
+            op: ['>='],
+            dst: undefined, // value is set by the issuer
           }),
           assertion.clause({
-            src: '$total_txs',
-            op: '<',
-            dst: '50',
+            src: ['$total_txs'],
+            op: ['<'],
+            dst: undefined, // value is set by the issuer
           }),
           assertion.or({
-            items: [
-              assertion.clause({
-                src: '$network',
-                op: '==',
-                dst: 'Polkadot',
-              }),
-            ],
+            items: assertion.clause({
+              src: ['$network'],
+              op: ['=='],
+              dst: undefined, // value is set by the issuer
+            }),
           }),
         ],
       }),

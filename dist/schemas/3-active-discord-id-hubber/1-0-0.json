@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Litentry Verifiable Credential Subject",
+      "title": "Credential Subject of A3 assertion/ Active Discord ID-Hubber",
       "type": "object",
       "required": [
         "id",

@@ -7,28 +7,24 @@ import { credentialSubject, assertion } from '../schema-helpers';
 export const schema: JSONSchema7 = {
   ...base,
 
-  $id: resolveGitHubPath('1-basic-identity-verification/1-0-0.json'),
+  $id: resolveGitHubPath('10-account-class-of-year/1-0-0.json'),
 
-  title: 'Basic Identity Verification',
+  title: 'Account Class Of Year',
   description:
-    "You've identified at least one account/address in both Web2 and Web3.",
+    'The class of year that the user account was created on a particular network (must have on-chain records)',
 
   properties: {
     ...base.properties,
 
     credentialSubject: credentialSubject({
-      title: 'Credential Subject of A1 assertion/ Basic Identity Verification',
+      title:
+        'Credential Subject of Achainable assertion/ Account Class Of Year',
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: ['$has_web2_account'],
+            src: ['$account_created_year'],
             op: ['=='],
-            dst: ['true'],
-          }),
-          assertion.clause({
-            src: ['$has_web3_account'],
-            op: ['=='],
-            dst: ['true'],
+            dst: undefined, // value is set by the issuer
           }),
         ],
       }),

@@ -16,17 +16,18 @@ export const schema: JSONSchema7 = {
     ...base.properties,
 
     credentialSubject: credentialSubject({
+      title: 'Credential Subject of A6 assertion/ Twitter Follower Amount',
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: '$total_followers',
-            op: '>',
-            dst: '0',
+            src: ['$total_followers'],
+            op: ['>'],
+            dst: ['0'],
           }),
           assertion.clause({
-            src: '$total_followers',
-            op: '<=',
-            dst: '1',
+            src: ['$total_followers'],
+            op: ['<='],
+            dst: ['1'],
           }),
         ],
       }),

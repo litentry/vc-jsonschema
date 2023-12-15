@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/2-litentry-discord-member/1-0-0.json",
-  "title": "Litentry Discord Member",
-  "description": "The user is a member of Litentry Discord. Server link: https://discord.gg/phBSa3eMX9. Guild ID: 807161594245152800.",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/18-bnb-3d-4d-club-domain-holding-amount/1-0-0.json",
+  "title": "BNB 3D/4D club domain holding amount.",
+  "description": "The amount of .BNB 999/10k club domains you are holding",
   "type": "object",
   "required": [
     "@context",
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of A2 assertion/ Litentry Discord Member",
+      "title": "Credential Subject of BnbDigitDomainClub/ BNB 3D/4D club domain holding amount.",
       "type": "object",
       "required": [
         "id",
@@ -121,8 +121,8 @@
             "properties": {
               "and": {
                 "type": "array",
-                "minItems": 3,
-                "maxItems": 3,
+                "minItems": 2,
+                "maxItems": 2,
                 "items": [
                   {
                     "type": "object",
@@ -135,20 +135,18 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$verified_discord_account"
+                          "$999_club_member",
+                          "$10k_club_member"
                         ]
                       },
                       "op": {
                         "type": "string",
                         "enum": [
-                          ">"
+                          ">="
                         ]
                       },
                       "dst": {
-                        "type": "string",
-                        "enum": [
-                          "0"
-                        ]
+                        "type": "string"
                       }
                     }
                   },
@@ -163,48 +161,18 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$has_joined"
+                          "$999_club_member",
+                          "$10k_club_member"
                         ]
                       },
                       "op": {
                         "type": "string",
                         "enum": [
-                          "=="
+                          "<"
                         ]
                       },
                       "dst": {
-                        "type": "string",
-                        "enum": [
-                          "true"
-                        ]
-                      }
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "required": [
-                      "src",
-                      "op",
-                      "dst"
-                    ],
-                    "properties": {
-                      "src": {
-                        "type": "string",
-                        "enum": [
-                          "$discord_guild_id"
-                        ]
-                      },
-                      "op": {
-                        "type": "string",
-                        "enum": [
-                          "=="
-                        ]
-                      },
-                      "dst": {
-                        "type": "string",
-                        "enum": [
-                          "abc"
-                        ]
+                        "type": "string"
                       }
                     }
                   }

@@ -17,32 +17,33 @@ export const schema: JSONSchema7 = {
     ...base.properties,
 
     credentialSubject: credentialSubject({
+      title: 'Credential Subject of A3 assertion/ Active Discord ID-Hubber',
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: '$has_role',
-            op: '==',
-            dst: 'true',
+            src: ['$has_role'],
+            op: ['=='],
+            dst: ['true'],
           }),
           assertion.clause({
-            src: '$has_commented',
-            op: '==',
-            dst: 'true',
+            src: ['$has_commented'],
+            op: ['=='],
+            dst: ['true'],
           }),
           assertion.clause({
-            src: '$discord_guild_id',
-            op: '==',
-            dst: '10',
+            src: ['$discord_guild_id'],
+            op: ['=='],
+            dst: ['10'],
           }),
           assertion.clause({
-            src: '$discord_channel_id',
-            op: '==',
-            dst: '10',
+            src: ['$discord_channel_id'],
+            op: ['=='],
+            dst: ['10'],
           }),
           assertion.clause({
-            src: '$discord_role_id',
-            op: '==',
-            dst: '10',
+            src: ['$discord_role_id'],
+            op: ['=='],
+            dst: ['10'],
           }),
         ],
       }),

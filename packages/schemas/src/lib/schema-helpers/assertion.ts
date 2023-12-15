@@ -29,15 +29,19 @@ export const and = (args: { items: JSONSchema7[] }): JSONSchema7 => ({
  * }
  * ```
  */
-export const or = (args: { items: JSONSchema7[] }): JSONSchema7 => ({
+export const or = (args: {
+  items: JSONSchema7 | JSONSchema7[];
+}): JSONSchema7 => ({
   type: 'object',
   required: ['or'],
   properties: {
     or: {
       type: 'array',
-      minItems: args.items.length,
-      maxItems: args.items.length,
       items: args.items,
+      // strict tuple
+      ...(Array.isArray(args.items)
+        ? { minItems: args.items.length, maxItems: args.items.length }
+        : {}),
     },
   },
 });
@@ -86,24 +90,27 @@ export const or = (args: { items: JSONSchema7[] }): JSONSchema7 => ({
  * ```
  */
 export const clause = (args: {
-  src: string;
-  op: string;
-  dst: string | undefined;
+  /* allowed values for `src` */
+  src: string[];
+  /* allowed values for `op` */
+  op: string[];
+  /* allowed values for `dst` */
+  dst: string[] | undefined;
 }): JSONSchema7 => ({
   type: 'object',
   required: ['src', 'op', 'dst'],
   properties: {
     src: {
       type: 'string',
-      enum: [args.src],
+      enum: args.src,
     },
     op: {
       type: 'string',
-      enum: [args.op],
+      enum: args.op,
     },
     dst: {
       type: 'string',
-      enum: args.dst ? [args.dst] : undefined,
+      enum: args.dst,
     },
   },
 });

@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/6-twitter-follower-amount/1-0-0.json",
-  "title": "Twitter Follower Amount",
-  "description": "The range of the user's Twitter follower count",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/14-oneblock-student-phase-12/1-0-0.json",
+  "title": "OneBlock+ Student Phase 12",
+  "description": "You participated/ completed/ were an \"outstanding student\" in the course co-created by OneBlock+ and Parity: \"Introduction to Substrate Blockchain Development, Phase 12\"",
   "type": "object",
   "required": [
     "@context",
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of A6 assertion/ Twitter Follower Amount",
+      "title": "Credential Subject of OneBlock+ Students Phase 12",
       "type": "object",
       "required": [
         "id",
@@ -116,70 +116,29 @@
           "items": {
             "type": "object",
             "required": [
-              "and"
+              "src",
+              "op",
+              "dst"
             ],
             "properties": {
-              "and": {
-                "type": "array",
-                "minItems": 2,
-                "maxItems": 2,
-                "items": [
-                  {
-                    "type": "object",
-                    "required": [
-                      "src",
-                      "op",
-                      "dst"
-                    ],
-                    "properties": {
-                      "src": {
-                        "type": "string",
-                        "enum": [
-                          "$total_followers"
-                        ]
-                      },
-                      "op": {
-                        "type": "string",
-                        "enum": [
-                          ">"
-                        ]
-                      },
-                      "dst": {
-                        "type": "string",
-                        "enum": [
-                          "0"
-                        ]
-                      }
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "required": [
-                      "src",
-                      "op",
-                      "dst"
-                    ],
-                    "properties": {
-                      "src": {
-                        "type": "string",
-                        "enum": [
-                          "$total_followers"
-                        ]
-                      },
-                      "op": {
-                        "type": "string",
-                        "enum": [
-                          "<="
-                        ]
-                      },
-                      "dst": {
-                        "type": "string",
-                        "enum": [
-                          "1"
-                        ]
-                      }
-                    }
-                  }
+              "src": {
+                "type": "string",
+                "enum": [
+                  "$course_participated",
+                  "$course_completed",
+                  "$outstanding_student"
+                ]
+              },
+              "op": {
+                "type": "string",
+                "enum": [
+                  "=="
+                ]
+              },
+              "dst": {
+                "type": "string",
+                "enum": [
+                  "true"
                 ]
               }
             }

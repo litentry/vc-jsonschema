@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Litentry Verifiable Credential Subject",
+      "title": "Credential Subject of A1 assertion/ Basic Identity Verification",
       "type": "object",
       "required": [
         "id",
