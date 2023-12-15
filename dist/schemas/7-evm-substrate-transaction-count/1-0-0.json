@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/2-litentry-discord-member/1-0-0.json",
-  "title": "Litentry Discord Member",
-  "description": "The user is a member of Litentry Discord. Server link: https://discord.gg/phBSa3eMX9. Guild ID: 807161594245152800.",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/7-evm-substrate-transaction-count/1-0-0.json",
+  "title": "EVM/Substrate Transaction Count",
+  "description": "Gets the range of number of transactions a user has made for a specific token on all supported networks (invalid transactions are also counted)",
   "type": "object",
   "required": [
     "@context",
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of A2 assertion/ Litentry Discord Member",
+      "title": "Credential Subject of A8 assertion/ EVM/Substrate Transaction Count",
       "type": "object",
       "required": [
         "id",
@@ -135,20 +135,17 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$verified_discord_account"
+                          "$total_txs"
                         ]
                       },
                       "op": {
                         "type": "string",
                         "enum": [
-                          ">"
+                          ">="
                         ]
                       },
                       "dst": {
-                        "type": "string",
-                        "enum": [
-                          "0"
-                        ]
+                        "type": "string"
                       }
                     }
                   },
@@ -163,48 +160,53 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$has_joined"
+                          "$total_txs"
                         ]
                       },
                       "op": {
                         "type": "string",
                         "enum": [
-                          "=="
+                          "<"
                         ]
                       },
                       "dst": {
-                        "type": "string",
-                        "enum": [
-                          "true"
-                        ]
+                        "type": "string"
                       }
                     }
                   },
                   {
                     "type": "object",
                     "required": [
-                      "src",
-                      "op",
-                      "dst"
+                      "or"
                     ],
                     "properties": {
-                      "src": {
-                        "type": "string",
-                        "enum": [
-                          "$discord_guild_id"
-                        ]
-                      },
-                      "op": {
-                        "type": "string",
-                        "enum": [
-                          "=="
-                        ]
-                      },
-                      "dst": {
-                        "type": "string",
-                        "enum": [
-                          "abc"
-                        ]
+                      "or": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "src",
+                            "op",
+                            "dst"
+                          ],
+                          "properties": {
+                            "src": {
+                              "type": "string",
+                              "enum": [
+                                "$network"
+                              ]
+                            },
+                            "op": {
+                              "type": "string",
+                              "enum": [
+                                "=="
+                              ]
+                            },
+                            "dst": {
+                              "type": "string"
+                            }
+                          }
+                        }
                       }
                     }
                   }

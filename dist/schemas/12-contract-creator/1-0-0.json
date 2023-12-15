@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/7-evm-substrate-transaction-account/1-0-0.json",
-  "title": "EVM/Substrate Transaction Count",
-  "description": "Gets the range of number of transactions a user has made for a specific token on all supported networks (invalid transactions are also counted)",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/12-contract-creator/1-0-0.json",
+  "title": "Contract Creator",
+  "description": "You are a deployer of a smart contract",
   "type": "object",
   "required": [
     "@context",
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Litentry Verifiable Credential Subject",
+      "title": "Credential Subject of Achainable assertion/ Contract Creator",
       "type": "object",
       "required": [
         "id",
@@ -121,8 +121,8 @@
             "properties": {
               "and": {
                 "type": "array",
-                "minItems": 3,
-                "maxItems": 3,
+                "minItems": 1,
+                "maxItems": 1,
                 "items": [
                   {
                     "type": "object",
@@ -135,90 +135,19 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$total_txs"
+                          "$is_contract_creator"
                         ]
                       },
                       "op": {
                         "type": "string",
                         "enum": [
-                          ">="
+                          "=="
                         ]
                       },
                       "dst": {
                         "type": "string",
                         "enum": [
-                          "20"
-                        ]
-                      }
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "required": [
-                      "src",
-                      "op",
-                      "dst"
-                    ],
-                    "properties": {
-                      "src": {
-                        "type": "string",
-                        "enum": [
-                          "$total_txs"
-                        ]
-                      },
-                      "op": {
-                        "type": "string",
-                        "enum": [
-                          "<"
-                        ]
-                      },
-                      "dst": {
-                        "type": "string",
-                        "enum": [
-                          "50"
-                        ]
-                      }
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "required": [
-                      "or"
-                    ],
-                    "properties": {
-                      "or": {
-                        "type": "array",
-                        "minItems": 1,
-                        "maxItems": 1,
-                        "items": [
-                          {
-                            "type": "object",
-                            "required": [
-                              "src",
-                              "op",
-                              "dst"
-                            ],
-                            "properties": {
-                              "src": {
-                                "type": "string",
-                                "enum": [
-                                  "$network"
-                                ]
-                              },
-                              "op": {
-                                "type": "string",
-                                "enum": [
-                                  "=="
-                                ]
-                              },
-                              "dst": {
-                                "type": "string",
-                                "enum": [
-                                  "Polkadot"
-                                ]
-                              }
-                            }
-                          }
+                          "true"
                         ]
                       }
                     }

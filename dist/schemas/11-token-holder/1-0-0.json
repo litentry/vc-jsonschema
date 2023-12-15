@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/2-litentry-discord-member/1-0-0.json",
-  "title": "Litentry Discord Member",
-  "description": "The user is a member of Litentry Discord. Server link: https://discord.gg/phBSa3eMX9. Guild ID: 807161594245152800.",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/11-token-holder/1-0-0.json",
+  "title": "Token Holder",
+  "description": "The number of a particular token you hold > 0",
   "type": "object",
   "required": [
     "@context",
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of A2 assertion/ Litentry Discord Member",
+      "title": "Credential Subject of Achainable assertion/ Token Holder",
       "type": "object",
       "required": [
         "id",
@@ -121,8 +121,8 @@
             "properties": {
               "and": {
                 "type": "array",
-                "minItems": 3,
-                "maxItems": 3,
+                "minItems": 1,
+                "maxItems": 1,
                 "items": [
                   {
                     "type": "object",
@@ -135,35 +135,9 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$verified_discord_account"
-                        ]
-                      },
-                      "op": {
-                        "type": "string",
-                        "enum": [
-                          ">"
-                        ]
-                      },
-                      "dst": {
-                        "type": "string",
-                        "enum": [
-                          "0"
-                        ]
-                      }
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "required": [
-                      "src",
-                      "op",
-                      "dst"
-                    ],
-                    "properties": {
-                      "src": {
-                        "type": "string",
-                        "enum": [
-                          "$has_joined"
+                          "$is_eth_holder",
+                          "$is_lit_holder",
+                          "$is_dot_holder"
                         ]
                       },
                       "op": {
@@ -176,34 +150,6 @@
                         "type": "string",
                         "enum": [
                           "true"
-                        ]
-                      }
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "required": [
-                      "src",
-                      "op",
-                      "dst"
-                    ],
-                    "properties": {
-                      "src": {
-                        "type": "string",
-                        "enum": [
-                          "$discord_guild_id"
-                        ]
-                      },
-                      "op": {
-                        "type": "string",
-                        "enum": [
-                          "=="
-                        ]
-                      },
-                      "dst": {
-                        "type": "string",
-                        "enum": [
-                          "abc"
                         ]
                       }
                     }
