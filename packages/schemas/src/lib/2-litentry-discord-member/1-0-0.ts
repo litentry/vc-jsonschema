@@ -17,6 +17,7 @@ export const schema: JSONSchema7 = {
     ...base.properties,
 
     credentialSubject: credentialSubject({
+      title: 'Credential Subject of A2 assertion/ Litentry Discord Member',
       assertions: assertion.and({
         items: [
           assertion.clause({

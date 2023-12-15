@@ -16,6 +16,7 @@ export const schema: JSONSchema7 = {
     ...base.properties,
 
     credentialSubject: credentialSubject({
+      title: 'Credential Subject of Achainable assertion/ Token Holding Time',
       assertions: assertion.and({
         items: [
           assertion.clause({
