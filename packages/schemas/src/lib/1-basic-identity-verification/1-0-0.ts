@@ -21,14 +21,14 @@ export const schema: JSONSchema7 = {
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: '$has_web2_account',
-            op: '==',
-            dst: 'true',
+            src: ['$has_web2_account'],
+            op: ['=='],
+            dst: ['true'],
           }),
           assertion.clause({
-            src: '$has_web3_account',
-            op: '==',
-            dst: 'true',
+            src: ['$has_web3_account'],
+            op: ['=='],
+            dst: ['true'],
           }),
         ],
       }),

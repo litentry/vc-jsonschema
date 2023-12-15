@@ -22,8 +22,8 @@ export const schema: JSONSchema7 = {
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: '$account_created_year',
-            op: '==',
+            src: ['$account_created_year'],
+            op: ['=='],
             dst: undefined, // value is set by the issuer
           }),
         ],

@@ -22,9 +22,9 @@ export const schema: JSONSchema7 = {
       title:
         'Credential Subject of A14 assertion/ Polkadot Governance Participation Proof',
       assertions: assertion.clause({
-        src: '$total_governance_action',
-        op: '>',
-        dst: '0',
+        src: ['$total_governance_action'],
+        op: ['>'],
+        dst: ['0'],
       }),
     }),
   },

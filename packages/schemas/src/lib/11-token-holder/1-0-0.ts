@@ -21,8 +21,8 @@ export const schema: JSONSchema7 = {
         items: [
           assertion.clause({
             src: ['$is_eth_holder', '$is_lit_holder', '$is_dot_holder'],
-            op: '==',
-            dst: 'true',
+            op: ['=='],
+            dst: ['true'],
           }),
         ],
       }),

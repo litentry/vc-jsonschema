@@ -20,9 +20,9 @@ export const schema: JSONSchema7 = {
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: '$is_contract_creator',
-            op: '==',
-            dst: 'true',
+            src: ['$is_contract_creator'],
+            op: ['=='],
+            dst: ['true'],
           }),
         ],
       }),

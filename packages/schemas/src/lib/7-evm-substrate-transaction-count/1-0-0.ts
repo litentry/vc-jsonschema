@@ -22,19 +22,19 @@ export const schema: JSONSchema7 = {
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: '$total_txs',
-            op: '>=',
+            src: ['$total_txs'],
+            op: ['>='],
             dst: undefined, // value is set by the issuer
           }),
           assertion.clause({
-            src: '$total_txs',
-            op: '<',
+            src: ['$total_txs'],
+            op: ['<'],
             dst: undefined, // value is set by the issuer
           }),
           assertion.or({
             items: assertion.clause({
-              src: '$network',
-              op: '==',
+              src: ['$network'],
+              op: ['=='],
               dst: undefined, // value is set by the issuer
             }),
           }),

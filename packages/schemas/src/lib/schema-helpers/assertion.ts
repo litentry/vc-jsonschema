@@ -90,24 +90,27 @@ export const or = (args: {
  * ```
  */
 export const clause = (args: {
-  src: string | string[];
-  op: string;
-  dst: string | undefined;
+  /* allowed values for `src` */
+  src: string[];
+  /* allowed values for `op` */
+  op: string[];
+  /* allowed values for `dst` */
+  dst: string[] | undefined;
 }): JSONSchema7 => ({
   type: 'object',
   required: ['src', 'op', 'dst'],
   properties: {
     src: {
       type: 'string',
-      enum: Array.isArray(args.src) ? args.src : [args.src],
+      enum: args.src,
     },
     op: {
       type: 'string',
-      enum: [args.op],
+      enum: args.op,
     },
     dst: {
       type: 'string',
-      enum: args.dst ? [args.dst] : undefined,
+      enum: args.dst,
     },
   },
 });

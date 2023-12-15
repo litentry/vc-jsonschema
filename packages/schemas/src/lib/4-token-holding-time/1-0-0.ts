@@ -22,19 +22,19 @@ export const schema: JSONSchema7 = {
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: '$minimum_amount',
-            op: '==',
-            dst: undefined, // values can vary
+            src: ['$minimum_amount'],
+            op: ['=='],
+            dst: undefined, // value is set by the issuer
           }),
           assertion.clause({
-            src: '$from_date',
-            op: '<',
-            dst: undefined, // values can vary
+            src: ['$from_date'],
+            op: ['<'],
+            dst: undefined, // value is set by the issuer
           }),
           assertion.clause({
-            src: '$to_date',
-            op: '>=',
-            dst: undefined, // values can vary
+            src: ['$to_date'],
+            op: ['>='],
+            dst: undefined, // value is set by the issuer
           }),
         ],
       }),

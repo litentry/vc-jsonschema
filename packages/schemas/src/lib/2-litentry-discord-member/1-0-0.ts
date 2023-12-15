@@ -21,19 +21,19 @@ export const schema: JSONSchema7 = {
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: '$verified_discord_account',
-            op: '>',
-            dst: '0',
+            src: ['$verified_discord_account'],
+            op: ['>'],
+            dst: ['0'],
           }),
           assertion.clause({
-            src: '$has_joined',
-            op: '==',
-            dst: 'true',
+            src: ['$has_joined'],
+            op: ['=='],
+            dst: ['true'],
           }),
           assertion.clause({
-            src: '$discord_guild_id',
-            op: '==',
-            dst: 'abc',
+            src: ['$discord_guild_id'],
+            op: ['=='],
+            dst: ['abc'],
           }),
         ],
       }),

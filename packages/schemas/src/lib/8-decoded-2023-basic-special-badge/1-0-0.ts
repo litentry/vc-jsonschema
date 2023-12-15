@@ -20,9 +20,9 @@ export const schema: JSONSchema7 = {
       title:
         'Credential Subject of A13 assertion/ Decoded 2023 Basic Special Badge',
       assertions: assertion.clause({
-        src: '$has_claimed_badge',
-        op: '==',
-        dst: 'true',
+        src: ['$has_claimed_badge'],
+        op: ['=='],
+        dst: ['true'],
       }),
     }),
   },
