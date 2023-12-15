@@ -3,16 +3,13 @@ import * as fs from 'fs';
 import { ajv } from '../ajv';
 import { schema } from './1-0-0';
 
-describe('11-contract-creator/1-0-0', () => {
+describe('11-token-holder/1-0-0', () => {
   it('should work', () => {
     const validate = ajv.compile(schema);
     expect(validate.errors).toBeNull();
 
     const json = JSON.parse(
-      fs.readFileSync(
-        'examples/contract-creator/11-contract-creator.json',
-        'utf8'
-      )
+      fs.readFileSync('examples/token-holder/11-token-holder.json', 'utf8')
     );
     const valid = validate(json);
 

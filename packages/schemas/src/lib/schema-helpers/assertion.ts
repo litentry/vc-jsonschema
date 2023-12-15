@@ -90,7 +90,7 @@ export const or = (args: {
  * ```
  */
 export const clause = (args: {
-  src: string;
+  src: string | string[];
   op: string;
   dst: string | undefined;
 }): JSONSchema7 => ({
@@ -99,7 +99,7 @@ export const clause = (args: {
   properties: {
     src: {
       type: 'string',
-      enum: [args.src],
+      enum: Array.isArray(args.src) ? args.src : [args.src],
     },
     op: {
       type: 'string',

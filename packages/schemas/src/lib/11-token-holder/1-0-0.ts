@@ -7,20 +7,20 @@ import { credentialSubject, assertion } from '../schema-helpers';
 export const schema: JSONSchema7 = {
   ...base,
 
-  $id: resolveGitHubPath('11-contract-creator/1-0-0.json'),
+  $id: resolveGitHubPath('11-token-holder/1-0-0.json'),
 
-  title: 'Contract Creator',
-  description: 'You are a deployer of a smart contract',
+  title: 'Token Holder',
+  description: 'The number of a particular token you hold > 0',
 
   properties: {
     ...base.properties,
 
     credentialSubject: credentialSubject({
-      title: 'Credential Subject of Achainable assertion/ Contract Creator',
+      title: 'Credential Subject of Achainable assertion/ Token Holder',
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: '$is_contract_creator',
+            src: ['$is_eth_holder', '$is_lit_holder', '$is_dot_holder'],
             op: '==',
             dst: 'true',
           }),
