@@ -26,7 +26,7 @@ export const schema: JSONSchema7 = {
             dst: ['true'],
           }),
           assertion.clause({
-            src: ['$has_commented'],
+            src: ['$hs_commented'],
             op: ['=='],
             dst: ['true'],
           }),
