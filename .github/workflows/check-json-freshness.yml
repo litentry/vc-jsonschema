@@ -25,8 +25,8 @@ jobs:
       - name: Check for code changes
         id: check_changes
         run: |
-          git diff --exit-code || (echo "JSON schemas are stale."; exit 1)
+          git diff --exit-code || (echo "JSON schemas are stale. Please run `pnpm generate` and commit the results."; exit 1)
 
       - name: Final check and success
         if: ${{ steps.check_changes.outcome == 'success' }}
-        run: echo "JSON schemas are up to date. Please run `pnpm generate` and commit the results."
+        run: echo "JSON schemas are up to date."
