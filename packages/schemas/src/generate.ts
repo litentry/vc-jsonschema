@@ -45,4 +45,10 @@ it.each(schemaFiles)('generate schema for %s', async (file) => {
     jsonSchema,
     'utf8'
   );
+
+  // create a latest.json symlink
+  fs.symlinkSync(
+    `${fileName.replace('.ts', '.json')}`,
+    path.join(outputPath, 'latest.json')
+  );
 });
