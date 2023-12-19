@@ -9,7 +9,12 @@ const OUTPUT_FOLDER = 'dist/schemas';
 // relative path to the root of the project
 const schemaFiles = glob('packages/schemas/src/lib/**/[01]-[01]-[01].ts');
 
-it.each(schemaFiles)('should generate schema for %s', async (file) => {
+beforeAll(() => {
+  // remove the output folder
+  fs.rmSync(OUTPUT_FOLDER, { recursive: true, force: true });
+});
+
+it.each(schemaFiles)('generate schema for %s', async (file) => {
   // e.g.: packages/schemas/src/lib/0-base/1-0-0.ts
   const pathAsChunks = file.split('/');
   // e.g.: 1-0-0.ts
