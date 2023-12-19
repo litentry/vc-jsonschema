@@ -1,7 +1,9 @@
 {
   "name": "litentry-vc-jsonschema-project",
   "version": "0.0.0",
-  "scripts": {},
+  "scripts": {
+    "generate": "pnpm nx run schemas:generate"
+  },
   "private": true,
   "dependencies": {
     "@types/json-schema": "^7.0.15",

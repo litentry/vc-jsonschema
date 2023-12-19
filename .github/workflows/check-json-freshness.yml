@@ -1,0 +1,26 @@
+name: Check Generated JSON schemas Freshness
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check_codebase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Generate latest json schemas
+        run: |
+          pnpm install
+          pnpm generate
+
+      - name: Check for code changes
+        id: check_changes
+        run: |
+          git diff --exit-code || (echo "JSON schemas are stale."; exit 1)
+
+      - name: Final check and success
+        if: ${{ steps.check_changes.outcome == 'success' }}
+        run: echo "JSON schemas are up to date."
