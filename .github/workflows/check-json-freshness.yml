@@ -1,4 +1,4 @@
-name: Check Generated JSON schemas Freshness
+name: Are JSON files up to date
 on:
   pull_request:
     branches:
@@ -16,11 +16,10 @@ jobs:
         id: pnpm-install
         with:
           version: 7
-          run_install: false
+          run_install: true
 
       - name: Generate latest json schemas
         run: |
-          pnpm install
           pnpm generate
 
       - name: Check for code changes
