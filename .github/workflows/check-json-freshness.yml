@@ -29,4 +29,4 @@ jobs:
 
       - name: Final check and success
         if: ${{ steps.check_changes.outcome == 'success' }}
-        run: echo "JSON schemas are up to date."
+        run: echo "JSON schemas are up to date. Please run `pnpm generate` and commit the results."
