@@ -1,0 +1,32 @@
+name: Are JSON files up to date
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check_codebase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.4
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: true
+
+      - name: Generate latest json schemas
+        run: |
+          pnpm generate
+
+      - name: Check for code changes
+        id: check_changes
+        run: |
+          git diff --exit-code || (echo "JSON schemas are stale. Please run `pnpm generate` and commit the results."; exit 1)
+
+      - name: Final check and success
+        if: ${{ steps.check_changes.outcome == 'success' }}
+        run: echo "JSON schemas are up to date."
