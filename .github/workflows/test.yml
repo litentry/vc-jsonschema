@@ -1,0 +1,23 @@
+name: Test
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check_codebase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.2.4
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: true
+
+      - name: Run tests
+        run: |
+          pnpm test
