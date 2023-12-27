@@ -4,8 +4,8 @@ import { ajv } from '../ajv';
 import { schema } from './1-0-0';
 
 const examples = [
-  'examples/a8/a8.json', // 1 network
-  'examples/a8/a8.2.json', // 2 networks
+  'examples/7-evm-substrate-transaction-count/a8.json', // 1 network
+  'examples/7-evm-substrate-transaction-count/a8.2.json', // 2 networks
 ];
 
 const validate = ajv.compile(schema);
