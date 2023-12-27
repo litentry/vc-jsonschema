@@ -18,6 +18,11 @@ jobs:
           version: 7
           run_install: true
 
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        uses: nrwl/nx-set-shas@v3
+        with:
+          main-branch-name: 'main'
+
       - name: Run tests
         run: |
           pnpm test
