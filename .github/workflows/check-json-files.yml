@@ -1,4 +1,4 @@
-name: Are JSON files up to date
+name: Check json files
 on:
   pull_request:
     branches:
