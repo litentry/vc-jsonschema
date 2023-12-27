@@ -8,7 +8,9 @@ describe('6-twitter-follower-amount/1-0-0', () => {
     const validate = ajv.compile(schema);
     expect(validate.errors).toBeNull();
 
-    const json = JSON.parse(fs.readFileSync('examples/a6/a6.json', 'utf8'));
+    const json = JSON.parse(
+      fs.readFileSync('examples/6-twitter-follower-amount/a6.json', 'utf8')
+    );
     const valid = validate(json);
 
     if (!valid) console.log(validate.errors);

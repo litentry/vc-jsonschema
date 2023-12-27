@@ -8,7 +8,9 @@ describe('3-active-discord-id-hubber/1-0-0', () => {
     const validate = ajv.compile(schema);
     expect(validate.errors).toBeNull();
 
-    const json = JSON.parse(fs.readFileSync('examples/a3/a3.json', 'utf8'));
+    const json = JSON.parse(
+      fs.readFileSync('examples/3-active-discord-id-hubber/a3.json', 'utf8')
+    );
     const valid = validate(json);
 
     if (!valid) console.log(validate.errors);
