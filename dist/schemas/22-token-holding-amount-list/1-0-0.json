@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/19-token-holding-amount/1-0-0.json",
-  "title": "Token holding amount",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/22-token-holding-amount-list/1-0-0.json",
+  "title": "Token holding amount list",
   "description": "The amount of a particular token you are holding",
   "type": "object",
   "required": [
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of Token holding amount",
+      "title": "Credential Subject of Token holding amount list",
       "type": "object",
       "required": [
         "id",
@@ -121,8 +121,8 @@
             "properties": {
               "and": {
                 "type": "array",
-                "minItems": 2,
-                "maxItems": 2,
+                "minItems": 3,
+                "maxItems": 3,
                 "items": [
                   {
                     "type": "object",
@@ -135,25 +135,38 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$wbtc_holding_amount",
-                          "$lit_holding_amount",
-                          "$usdc_holding_amount",
-                          "$usdt_holding_amount",
-                          "$crv_holding_amount",
-                          "$matic_holding_amount",
-                          "$dydx_holding_amount",
-                          "$amp_holding_amount",
-                          "$cvx_holding_amount",
-                          "$tusd_holding_amount",
-                          "$usdd_holding_amount",
-                          "$gusd_holding_amount",
-                          "$link_holding_amount",
-                          "$grt_holding_amount",
-                          "$comp_holding_amount",
-                          "$people_holding_amount",
-                          "$gtc_holding_amount",
-                          "$eth_holding_amount",
-                          "lit_holding_amount"
+                          "$ordi",
+                          "$sats",
+                          "$rats",
+                          "$MMSS",
+                          "$long",
+                          "$cats",
+                          "$BTCs"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "=="
+                        ]
+                      },
+                      "dst": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$holding_amount"
                         ]
                       },
                       "op": {
@@ -178,25 +191,7 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$wbtc_holding_amount",
-                          "$lit_holding_amount",
-                          "$usdc_holding_amount",
-                          "$usdt_holding_amount",
-                          "$crv_holding_amount",
-                          "$matic_holding_amount",
-                          "$dydx_holding_amount",
-                          "$amp_holding_amount",
-                          "$cvx_holding_amount",
-                          "$tusd_holding_amount",
-                          "$usdd_holding_amount",
-                          "$gusd_holding_amount",
-                          "$link_holding_amount",
-                          "$grt_holding_amount",
-                          "$comp_holding_amount",
-                          "$people_holding_amount",
-                          "$gtc_holding_amount",
-                          "$eth_holding_amount",
-                          "lit_holding_amount"
+                          "$holding_amount"
                         ]
                       },
                       "op": {
