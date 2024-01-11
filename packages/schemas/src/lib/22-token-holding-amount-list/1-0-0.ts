@@ -4,6 +4,7 @@ import { schema as base } from '../0-base/1-0-0';
 import { resolveGitHubPath } from '../helpers';
 import { credentialSubject, assertion } from '../schema-helpers';
 
+// https://github.com/litentry/litentry-parachain/blob/dev/tee-worker/litentry/core/credentials/src/brc20/amount_holder.rs
 const supportedTokens = [
   '$ordi',
   '$sats',
@@ -30,9 +31,9 @@ export const schema: JSONSchema7 = {
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: supportedTokens,
+            src: ['$token'],
             op: ['=='],
-            dst: undefined, // Range based on user holding amount. Format is a string.
+            dst: supportedTokens,
           }),
           assertion.clause({
             src: ['$holding_amount'],
