@@ -135,13 +135,7 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$ordi",
-                          "$sats",
-                          "$rats",
-                          "$MMSS",
-                          "$long",
-                          "$cats",
-                          "$BTCs"
+                          "$token"
                         ]
                       },
                       "op": {
@@ -151,7 +145,16 @@
                         ]
                       },
                       "dst": {
-                        "type": "string"
+                        "type": "string",
+                        "enum": [
+                          "$ordi",
+                          "$sats",
+                          "$rats",
+                          "$MMSS",
+                          "$long",
+                          "$cats",
+                          "$BTCs"
+                        ]
                       }
                     }
                   },
