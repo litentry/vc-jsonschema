@@ -5,8 +5,6 @@ import { resolveGitHubPath } from '../helpers';
 import { credentialSubject, assertion } from '../schema-helpers';
 
 const supportedTokens = [
-  // https://github.com/litentry/litentry-parachain/blob/dev/tee-worker/litentry/core/credentials/src/nodereal/amount_holding/evm_amount_holding.rs
-  '$holding_amount',
   // https://github.com/litentry/litentry-parachain/blob/dev/tee-worker/litentry/core/credentials/src/litentry_profile/token_balance.rs
   '$wbtc_holding_amount',
   '$lit_holding_amount',
