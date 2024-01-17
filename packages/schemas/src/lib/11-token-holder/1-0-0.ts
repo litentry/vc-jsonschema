@@ -20,7 +20,14 @@ export const schema: JSONSchema7 = {
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: ['$is_eth_holder', '$is_lit_holder', '$is_dot_holder'],
+            src: [
+              // https://github.com/litentry/litentry-parachain/blob/dev/tee-worker/litentry/core/assertion-build/src/achainable/amount.rs
+              '$is_eth_holder',
+              '$is_lit_holder',
+              '$is_dot_holder',
+              // https://github.com/litentry/litentry-parachain/blob/dev/tee-worker/litentry/core/assertion-build/src/achainable/basic.rs
+              'is_bab_holder',
+            ],
             op: ['=='],
             dst: ['true'],
           }),
