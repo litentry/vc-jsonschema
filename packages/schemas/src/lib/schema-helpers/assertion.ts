@@ -8,15 +8,24 @@ import type { JSONSchema7 } from 'json-schema';
  * }
  * ```
  */
-export const and = (args: { items: JSONSchema7[] }): JSONSchema7 => ({
+export const and = (
+  args: { items: JSONSchema7 | JSONSchema7[] } & JSONSchema7
+): JSONSchema7 => ({
   type: 'object',
   required: ['and'],
   properties: {
     and: {
       type: 'array',
-      minItems: args.items.length,
-      maxItems: args.items.length,
-      items: args.items,
+      // force strict tuple if array
+      ...(Array.isArray(args.items)
+        ? {
+            minItems: args.items.length,
+            maxItems: args.items.length,
+            additionalItems: false,
+          }
+        : {}),
+      // allow overrides
+      ...args,
     },
   },
 });
@@ -29,19 +38,24 @@ export const and = (args: { items: JSONSchema7[] }): JSONSchema7 => ({
  * }
  * ```
  */
-export const or = (args: {
-  items: JSONSchema7 | JSONSchema7[];
-}): JSONSchema7 => ({
+export const or = (
+  args: { items: JSONSchema7 | JSONSchema7[] } & JSONSchema7
+): JSONSchema7 => ({
   type: 'object',
   required: ['or'],
   properties: {
     or: {
       type: 'array',
-      items: args.items,
-      // strict tuple
+      // force strict tuple if array
       ...(Array.isArray(args.items)
-        ? { minItems: args.items.length, maxItems: args.items.length }
+        ? {
+            minItems: args.items.length,
+            maxItems: args.items.length,
+            additionalItems: false,
+          }
         : {}),
+      // allow overrides
+      ...args,
     },
   },
 });
