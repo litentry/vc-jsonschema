@@ -26,7 +26,7 @@
                     "and": [
                       { "src": "$token_name", "op": "==", "dst": "BLUR" },
                       {
-                        "src": "token_address",
+                        "src": "$token_address",
                         "op": "==",
                         "dst": "0x5283d291dbcf85356a21ba090e6db59121208b44"
                       }
@@ -36,7 +36,7 @@
                     "and": [
                       { "src": "$token_name", "op": "==", "dst": "ARB" },
                       {
-                        "src": "token_address",
+                        "src": "$token_address",
                         "op": "==",
                         "dst": "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1"
                       }
@@ -46,7 +46,7 @@
                     "and": [
                       { "src": "$token_name", "op": "==", "dst": "BAT" },
                       {
-                        "src": "token_address",
+                        "src": "$token_address",
                         "op": "==",
                         "dst": "0x0d8775f648430679a709e98d2b0cb6250d2887ef"
                       }
@@ -55,7 +55,23 @@
                 ]
               },
               {
-                "and": [{ "src": "$network", "op": "==", "dst": "Bsc" }]
+                "and": [
+                  { "src": "$network", "op": "==", "dst": "Bsc" },
+                  {
+                    "and": [
+                      {
+                        "src": "$token_name",
+                        "op": "==",
+                        "dst": "UNI"
+                      },
+                      {
+                        "src": "$token_address",
+                        "op": "==",
+                        "dst": "0xBf5140A22578168FD562DCcF235E5D43A02ce9B1"
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
@@ -73,9 +89,23 @@
                         "dst": "The Weirdo Ghost Gang"
                       },
                       {
-                        "src": "token_address",
+                        "src": "$token_address",
                         "op": "==",
                         "dst": "0x9401518f4EBBA857BAA879D9f76E1Cc8b31ed197"
+                      }
+                    ]
+                  },
+                  {
+                    "and": [
+                      {
+                        "src": "$token_name",
+                        "op": "==",
+                        "dst": "The Potatoz"
+                      },
+                      {
+                        "src": "$token_address",
+                        "op": "==",
+                        "dst": "0x39ee2c7b3cb80254225884ca001F57118C8f21B6"
                       }
                     ]
                   }
