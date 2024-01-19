@@ -69,14 +69,14 @@ export const schema: JSONSchema7 = {
 
   $id: resolveGitHubPath('25-crypto-summary/1-0-0.json'),
 
-  title: 'Token holding amount',
-  description: 'The amount of a particular token you are holding',
+  title: 'IDHub Crypto Summary',
+  description: 'Generate a summary of your on-chain identity',
 
   properties: {
     ...base.properties,
 
     credentialSubject: credentialSubject({
-      title: 'Credential Subject of Token holding amount',
+      title: 'Credential Subject of IDHub Crypto Summary',
       assertions: assertion.and({
         items: [
           assertion.clause({
