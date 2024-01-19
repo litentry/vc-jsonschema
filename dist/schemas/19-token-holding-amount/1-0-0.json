@@ -123,6 +123,7 @@
                 "type": "array",
                 "minItems": 2,
                 "maxItems": 2,
+                "additionalItems": false,
                 "items": [
                   {
                     "type": "object",
@@ -153,7 +154,8 @@
                           "$people_holding_amount",
                           "$gtc_holding_amount",
                           "$eth_holding_amount",
-                          "lit_holding_amount"
+                          "lit_holding_amount",
+                          "$lit_staking_amount"
                         ]
                       },
                       "op": {
@@ -196,7 +198,8 @@
                           "$people_holding_amount",
                           "$gtc_holding_amount",
                           "$eth_holding_amount",
-                          "lit_holding_amount"
+                          "lit_holding_amount",
+                          "$lit_staking_amount"
                         ]
                       },
                       "op": {

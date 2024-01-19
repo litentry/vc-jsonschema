@@ -1,0 +1,40 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0x4a95b38d2369b0005efd059aa70363154cce39838640e052ed07bd18c6830961",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:bitcoin:0x03166e0578c4d3a1b59919f139bc773a8e155786f90dba99a0041349774201caf9",
+    "description": "Generate a summary of your on-chain identity",
+    "type": "IDHub Crypto Summary",
+    "assertionText": "CryptoSummary",
+    "assertions": [
+      {
+        "and": [
+          { "src": "$total_txs", "op": "==", "dst": "0" },
+          { "and": [{ "src": "$kind", "op": "==", "dst": "TOKEN" }] },
+          { "and": [{ "src": "$kind", "op": "==", "dst": "NFT" }] }
+        ]
+      }
+    ],
+    "values": [false],
+    "endpoint": "wss://tee-staging.litentry.io"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xe3107df2d3dc98cda5253a62980431bf71bccd7c4dc56135ef9f9f9a7a78fb18",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "DgzoX2SRCmZwF4GVz2xqrREUsCmNYL9truFRHsxGMowc"
+  },
+  "issuanceDate": "2024-01-18T20:44:44.023592641+00:00",
+  "parachainBlockNumber": 70556,
+  "sidechainBlockNumber": 141932,
+  "proof": {
+    "created": "2024-01-18T20:44:44.024394748+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "ebc7d2f5d72aa86ee29e42ef9c0d293d3d6eacbd53e86971b0d418bf75528466f2dbcb0e58f05efd00809b0a78f4bef102a5c93b67fd2ad84da3f99f37b8c609",
+    "verificationMethod": "0xe3107df2d3dc98cda5253a62980431bf71bccd7c4dc56135ef9f9f9a7a78fb18"
+  }
+}

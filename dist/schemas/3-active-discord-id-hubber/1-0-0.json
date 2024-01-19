@@ -123,6 +123,7 @@
                 "type": "array",
                 "minItems": 5,
                 "maxItems": 5,
+                "additionalItems": false,
                 "items": [
                   {
                     "type": "object",
