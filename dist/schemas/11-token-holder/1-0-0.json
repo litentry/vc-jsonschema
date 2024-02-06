@@ -139,7 +139,8 @@
                           "$is_eth_holder",
                           "$is_lit_holder",
                           "$is_dot_holder",
-                          "is_bab_holder"
+                          "is_bab_holder",
+                          "$is_bab_holder"
                         ]
                       },
                       "op": {
