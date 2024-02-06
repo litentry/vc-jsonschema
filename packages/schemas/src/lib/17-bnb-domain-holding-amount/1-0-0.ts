@@ -21,12 +21,12 @@ export const schema: JSONSchema7 = {
       assertions: assertion.and({
         items: [
           assertion.clause({
-            src: ['$bnb_domain_hoding_amount'],
+            src: ['$bnb_domain_hoding_amount', '$bnb_domain_holding_amount'],
             op: ['>='],
             dst: undefined, // Amount, can be any number. Format is a string.
           }),
           assertion.clause({
-            src: ['$bnb_domain_hoding_amount'],
+            src: ['$bnb_domain_hoding_amount', '$bnb_domain_holding_amount'],
             op: ['<'],
             dst: undefined, // Amount, can be any number. Format is a string.
           }),

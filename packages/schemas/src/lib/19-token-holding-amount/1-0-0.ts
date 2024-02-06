@@ -27,6 +27,7 @@ const supportedTokens = [
   '$eth_holding_amount',
   // https://github.com/litentry/litentry-parachain/blob/dev/tee-worker/litentry/core/credentials/src/achainable/lit_holding_amount.rs
   'lit_holding_amount',
+  '$lit_holding_amount',
   /// https://github.com/litentry/litentry-parachain/blob/dev/tee-worker/litentry/core/credentials/src/litentry_profile/lit_staking.rs
   '$lit_staking_amount',
 ];

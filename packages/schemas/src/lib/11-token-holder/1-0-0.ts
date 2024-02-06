@@ -27,6 +27,7 @@ export const schema: JSONSchema7 = {
               '$is_dot_holder',
               // https://github.com/litentry/litentry-parachain/blob/dev/tee-worker/litentry/core/assertion-build/src/achainable/basic.rs
               'is_bab_holder',
+              '$is_bab_holder',
             ],
             op: ['=='],
             dst: ['true'],
