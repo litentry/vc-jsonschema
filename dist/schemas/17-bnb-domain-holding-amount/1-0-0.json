@@ -136,7 +136,8 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$bnb_domain_hoding_amount"
+                          "$bnb_domain_hoding_amount",
+                          "$bnb_domain_holding_amount"
                         ]
                       },
                       "op": {
@@ -161,7 +162,8 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$bnb_domain_hoding_amount"
+                          "$bnb_domain_hoding_amount",
+                          "$bnb_domain_holding_amount"
                         ]
                       },
                       "op": {
