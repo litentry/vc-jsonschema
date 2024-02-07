@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/16-generic-discord-role/1-0-0.json",
-  "title": "You have certain role on Litentry Official Discord Server.",
-  "description": "You have a role that entitles you as \"Litentry & Contest Legend\", \"Litentry & Popularity Award of Score Contest\", \"Litentry & Contest Participant\", \"Litentry & SORA Quiz Attendee\", or \"Litentry & SORA Quiz Master\"",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/12-idhub-evm-version-early-bird/1-0-0.json",
+  "title": "IDHub EVM Version Early Bird",
+  "description": "The user is an early bird user of the IdentityHub EVM version and has generated at least 1 credential during 2023 Aug 14th ~ Aug 21st.",
   "type": "object",
   "required": [
     "@context",
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of GenericDiscordRole/ Litentry Discord Contests/ Litentry & SORA Quiz",
+      "title": "Credential Subject of A20/ IDHub EVM Version Early Bird",
       "type": "object",
       "required": [
         "id",
@@ -124,11 +124,7 @@
               "src": {
                 "type": "string",
                 "enum": [
-                  "$is_contest_legend",
-                  "$is_contest_popularity",
-                  "$is_contest_participant",
-                  "$is_attendee",
-                  "$is_master"
+                  "$has_joined"
                 ]
               },
               "op": {
@@ -140,7 +136,8 @@
               "dst": {
                 "type": "string",
                 "enum": [
-                  "true"
+                  "true",
+                  "false"
                 ]
               }
             }

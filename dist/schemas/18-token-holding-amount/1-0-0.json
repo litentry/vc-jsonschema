@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/19-token-holding-amount/1-0-0.json",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/18-token-holding-amount/1-0-0.json",
   "title": "Token holding amount",
   "description": "The amount of a particular token you are holding",
   "type": "object",

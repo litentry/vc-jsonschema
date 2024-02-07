@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/23-evm-holding-amount/1-0-0.json",
-  "title": "Token holding amount",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/21-token-holding-amount-list/1-0-0.json",
+  "title": "Token holding amount list",
   "description": "The amount of a particular token you are holding",
   "type": "object",
   "required": [
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of Token holding amount",
+      "title": "Credential Subject of Token holding amount list",
       "type": "object",
       "required": [
         "id",
@@ -121,8 +121,8 @@
             "properties": {
               "and": {
                 "type": "array",
-                "minItems": 4,
-                "maxItems": 4,
+                "minItems": 3,
+                "maxItems": 3,
                 "additionalItems": false,
                 "items": [
                   {
@@ -148,96 +148,14 @@
                       "dst": {
                         "type": "string",
                         "enum": [
-                          "TRX",
-                          "TON"
+                          "$ordi",
+                          "$sats",
+                          "$rats",
+                          "$MMSS",
+                          "$long",
+                          "$cats",
+                          "$BTCs"
                         ]
-                      }
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "required": [
-                      "or"
-                    ],
-                    "properties": {
-                      "or": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "required": [
-                            "and"
-                          ],
-                          "properties": {
-                            "and": {
-                              "type": "array",
-                              "minItems": 2,
-                              "maxItems": 2,
-                              "additionalItems": false,
-                              "items": [
-                                {
-                                  "type": "object",
-                                  "required": [
-                                    "src",
-                                    "op",
-                                    "dst"
-                                  ],
-                                  "properties": {
-                                    "src": {
-                                      "type": "string",
-                                      "enum": [
-                                        "$network"
-                                      ]
-                                    },
-                                    "op": {
-                                      "type": "string",
-                                      "enum": [
-                                        "=="
-                                      ]
-                                    },
-                                    "dst": {
-                                      "type": "string",
-                                      "enum": [
-                                        "ethereum",
-                                        "bsc"
-                                      ]
-                                    }
-                                  }
-                                },
-                                {
-                                  "type": "object",
-                                  "required": [
-                                    "src",
-                                    "op",
-                                    "dst"
-                                  ],
-                                  "properties": {
-                                    "src": {
-                                      "type": "string",
-                                      "enum": [
-                                        "$address"
-                                      ]
-                                    },
-                                    "op": {
-                                      "type": "string",
-                                      "enum": [
-                                        "=="
-                                      ]
-                                    },
-                                    "dst": {
-                                      "type": "string",
-                                      "enum": [
-                                        "0x50327c6c5a14dcade707abad2e27eb517df87ab5",
-                                        "0xCE7de646e7208a4Ef112cb6ed5038FA6cC6b12e3",
-                                        "0x76a797a59ba2c17726896976b7b3747bfd1d220f",
-                                        "0x582d872a1b094fc48f5de31d3b73f2d9be47def1"
-                                      ]
-                                    }
-                                  }
-                                }
-                              ]
-                            }
-                          }
-                        }
                       }
                     }
                   },

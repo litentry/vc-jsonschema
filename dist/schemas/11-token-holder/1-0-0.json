@@ -136,6 +136,7 @@
                       "src": {
                         "type": "string",
                         "enum": [
+                          "$is_contract_creator",
                           "$is_eth_holder",
                           "$is_lit_holder",
                           "$is_dot_holder",

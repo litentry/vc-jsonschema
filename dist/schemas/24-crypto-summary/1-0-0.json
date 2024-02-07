@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/25-crypto-summary/1-0-0.json",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/24-crypto-summary/1-0-0.json",
   "title": "IDHub Crypto Summary",
   "description": "Generate a summary of your on-chain identity",
   "type": "object",

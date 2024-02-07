@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/13-idhub-evm-version-early-bird/1-0-0.json",
-  "title": "IDHub EVM Version Early Bird",
-  "description": "The user is an early bird user of the IdentityHub EVM version and has generated at least 1 credential during 2023 Aug 14th ~ Aug 21st.",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/19-weirdoghostgang-holder/1-0-0.json",
+  "title": "WeirdoGhostGang Holder",
+  "description": "You are WeirdoGhostGang NFT holder",
   "type": "object",
   "required": [
     "@context",
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of A20/ IDHub EVM Version Early Bird",
+      "title": "Credential Subject of NodeReal/ WeirdoGhostGang Holder",
       "type": "object",
       "required": [
         "id",
@@ -124,7 +124,7 @@
               "src": {
                 "type": "string",
                 "enum": [
-                  "$has_joined"
+                  "$is_weirdo_ghost_gang_holder"
                 ]
               },
               "op": {
@@ -136,8 +136,7 @@
               "dst": {
                 "type": "string",
                 "enum": [
-                  "true",
-                  "false"
+                  "true"
                 ]
               }
             }
