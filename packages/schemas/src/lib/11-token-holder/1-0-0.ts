@@ -22,6 +22,7 @@ export const schema: JSONSchema7 = {
           assertion.clause({
             src: [
               // https://github.com/litentry/litentry-parachain/blob/dev/tee-worker/litentry/core/assertion-build/src/achainable/amount.rs
+              '$is_contract_creator',
               '$is_eth_holder',
               '$is_lit_holder',
               '$is_dot_holder',
