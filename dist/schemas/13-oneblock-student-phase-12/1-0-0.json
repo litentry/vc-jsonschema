@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/11-token-holder/1-0-0.json",
-  "title": "Token Holder",
-  "description": "The number of a particular token you hold > 0",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/13-oneblock-student-phase-12/1-0-0.json",
+  "title": "OneBlock+ Student Phase 12",
+  "description": "You participated/ completed/ were an \"outstanding student\" in the course co-created by OneBlock+ and Parity: \"Introduction to Substrate Blockchain Development, Phase 12\"",
   "type": "object",
   "required": [
     "@context",
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of Achainable assertion/ Token Holder",
+      "title": "Credential Subject of OneBlock+ Students Phase 12",
       "type": "object",
       "required": [
         "id",
@@ -116,48 +116,29 @@
           "items": {
             "type": "object",
             "required": [
-              "and"
+              "src",
+              "op",
+              "dst"
             ],
             "properties": {
-              "and": {
-                "type": "array",
-                "minItems": 1,
-                "maxItems": 1,
-                "additionalItems": false,
-                "items": [
-                  {
-                    "type": "object",
-                    "required": [
-                      "src",
-                      "op",
-                      "dst"
-                    ],
-                    "properties": {
-                      "src": {
-                        "type": "string",
-                        "enum": [
-                          "$is_contract_creator",
-                          "$is_eth_holder",
-                          "$is_lit_holder",
-                          "$is_dot_holder",
-                          "is_bab_holder",
-                          "$is_bab_holder"
-                        ]
-                      },
-                      "op": {
-                        "type": "string",
-                        "enum": [
-                          "=="
-                        ]
-                      },
-                      "dst": {
-                        "type": "string",
-                        "enum": [
-                          "true"
-                        ]
-                      }
-                    }
-                  }
+              "src": {
+                "type": "string",
+                "enum": [
+                  "$course_participated",
+                  "$course_completed",
+                  "$outstanding_student"
+                ]
+              },
+              "op": {
+                "type": "string",
+                "enum": [
+                  "=="
+                ]
+              },
+              "dst": {
+                "type": "string",
+                "enum": [
+                  "true"
                 ]
               }
             }

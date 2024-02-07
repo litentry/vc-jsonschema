@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/11-token-holder/1-0-0.json",
-  "title": "Token Holder",
-  "description": "The number of a particular token you hold > 0",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/17-bnb-3d-4d-club-domain-holding-amount/1-0-0.json",
+  "title": "BNB 3D/4D club domain holding amount.",
+  "description": "The amount of .BNB 999/10k club domains you are holding",
   "type": "object",
   "required": [
     "@context",
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of Achainable assertion/ Token Holder",
+      "title": "Credential Subject of BnbDigitDomainClub/ BNB 3D/4D club domain holding amount.",
       "type": "object",
       "required": [
         "id",
@@ -121,8 +121,8 @@
             "properties": {
               "and": {
                 "type": "array",
-                "minItems": 1,
-                "maxItems": 1,
+                "minItems": 2,
+                "maxItems": 2,
                 "additionalItems": false,
                 "items": [
                   {
@@ -136,25 +136,44 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$is_contract_creator",
-                          "$is_eth_holder",
-                          "$is_lit_holder",
-                          "$is_dot_holder",
-                          "is_bab_holder",
-                          "$is_bab_holder"
+                          "$999_club_member",
+                          "$10k_club_member"
                         ]
                       },
                       "op": {
                         "type": "string",
                         "enum": [
-                          "=="
+                          ">="
                         ]
                       },
                       "dst": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
                         "type": "string",
                         "enum": [
-                          "true"
+                          "$999_club_member",
+                          "$10k_club_member"
                         ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "<"
+                        ]
+                      },
+                      "dst": {
+                        "type": "string"
                       }
                     }
                   }
