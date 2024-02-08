@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/11-token-holder/1-0-0.json",
-  "title": "Token Holder",
-  "description": "The hold a particular token",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/17-token-holding-amount/1-0-0.json",
+  "title": "Token holding amount",
+  "description": "The amount of a particular token you are holding",
   "type": "object",
   "required": [
     "@context",
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of Achainable assertion/ Token Holder",
+      "title": "Credential Subject of Token holding amount",
       "type": "object",
       "required": [
         "id",
@@ -121,37 +121,9 @@
             "properties": {
               "and": {
                 "type": "array",
-                "minItems": 1,
+                "minItems": 2,
                 "maxItems": 2,
-                "additionalItems": {
-                  "type": "object",
-                  "required": [
-                    "src",
-                    "op",
-                    "dst"
-                  ],
-                  "properties": {
-                    "src": {
-                      "type": "string",
-                      "enum": [
-                        "$is_uniswap_v3_user"
-                      ]
-                    },
-                    "op": {
-                      "type": "string",
-                      "enum": [
-                        "=="
-                      ]
-                    },
-                    "dst": {
-                      "type": "string",
-                      "enum": [
-                        "true",
-                        "false"
-                      ]
-                    }
-                  }
-                },
+                "additionalItems": false,
                 "items": [
                   {
                     "type": "object",
@@ -164,27 +136,80 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$is_contract_creator",
-                          "$is_eth_holder",
-                          "$is_lit_holder",
-                          "$is_dot_holder",
-                          "$is_uniswap_v2_user",
-                          "is_bab_holder",
-                          "$is_bab_holder"
+                          "$wbtc_holding_amount",
+                          "$lit_holding_amount",
+                          "$usdc_holding_amount",
+                          "$usdt_holding_amount",
+                          "$crv_holding_amount",
+                          "$matic_holding_amount",
+                          "$dydx_holding_amount",
+                          "$amp_holding_amount",
+                          "$cvx_holding_amount",
+                          "$tusd_holding_amount",
+                          "$usdd_holding_amount",
+                          "$gusd_holding_amount",
+                          "$link_holding_amount",
+                          "$grt_holding_amount",
+                          "$comp_holding_amount",
+                          "$people_holding_amount",
+                          "$gtc_holding_amount",
+                          "$eth_holding_amount",
+                          "lit_holding_amount",
+                          "$lit_staking_amount"
                         ]
                       },
                       "op": {
                         "type": "string",
                         "enum": [
-                          "=="
+                          ">="
                         ]
                       },
                       "dst": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
                         "type": "string",
                         "enum": [
-                          "true",
-                          "false"
+                          "$wbtc_holding_amount",
+                          "$lit_holding_amount",
+                          "$usdc_holding_amount",
+                          "$usdt_holding_amount",
+                          "$crv_holding_amount",
+                          "$matic_holding_amount",
+                          "$dydx_holding_amount",
+                          "$amp_holding_amount",
+                          "$cvx_holding_amount",
+                          "$tusd_holding_amount",
+                          "$usdd_holding_amount",
+                          "$gusd_holding_amount",
+                          "$link_holding_amount",
+                          "$grt_holding_amount",
+                          "$comp_holding_amount",
+                          "$people_holding_amount",
+                          "$gtc_holding_amount",
+                          "$eth_holding_amount",
+                          "lit_holding_amount",
+                          "$lit_staking_amount"
                         ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "<"
+                        ]
+                      },
+                      "dst": {
+                        "type": "string"
                       }
                     }
                   }

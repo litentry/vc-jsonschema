@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/8-decoded-2022-basic-special-badge/1-0-0.json",
-  "title": "Decoded 2023 Basic Special Badge",
-  "description": "The user has a Polkadot Decoded 2023 Litentry Booth Special Badge",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/14-generic-discord-role/1-0-0.json",
+  "title": "You have certain role on Litentry Official Discord Server.",
+  "description": "You have a role that entitles you as \"Litentry & Contest Legend\", \"Litentry & Popularity Award of Score Contest\", \"Litentry & Contest Participant\", \"Litentry & SORA Quiz Attendee\", or \"Litentry & SORA Quiz Master\"",
   "type": "object",
   "required": [
     "@context",
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of A13 assertion/ Decoded 2023 Basic Special Badge",
+      "title": "Credential Subject of GenericDiscordRole/ Litentry Discord Contests/ Litentry & SORA Quiz",
       "type": "object",
       "required": [
         "id",
@@ -124,7 +124,11 @@
               "src": {
                 "type": "string",
                 "enum": [
-                  "$has_claimed_badge"
+                  "$is_contest_legend",
+                  "$is_contest_popularity",
+                  "$is_contest_participant",
+                  "$is_attendee",
+                  "$is_master"
                 ]
               },
               "op": {
