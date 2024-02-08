@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/11-token-holder/1-0-0.json",
   "title": "Token Holder",
-  "description": "The number of a particular token you hold > 0",
+  "description": "The hold a particular token",
   "type": "object",
   "required": [
     "@context",
@@ -122,8 +122,36 @@
               "and": {
                 "type": "array",
                 "minItems": 1,
-                "maxItems": 1,
-                "additionalItems": false,
+                "maxItems": 2,
+                "additionalItems": {
+                  "type": "object",
+                  "required": [
+                    "src",
+                    "op",
+                    "dst"
+                  ],
+                  "properties": {
+                    "src": {
+                      "type": "string",
+                      "enum": [
+                        "$is_uniswap_v3_user"
+                      ]
+                    },
+                    "op": {
+                      "type": "string",
+                      "enum": [
+                        "=="
+                      ]
+                    },
+                    "dst": {
+                      "type": "string",
+                      "enum": [
+                        "true",
+                        "false"
+                      ]
+                    }
+                  }
+                },
                 "items": [
                   {
                     "type": "object",
@@ -140,6 +168,7 @@
                           "$is_eth_holder",
                           "$is_lit_holder",
                           "$is_dot_holder",
+                          "$is_uniswap_v2_user",
                           "is_bab_holder",
                           "$is_bab_holder"
                         ]
@@ -153,7 +182,8 @@
                       "dst": {
                         "type": "string",
                         "enum": [
-                          "true"
+                          "true",
+                          "false"
                         ]
                       }
                     }

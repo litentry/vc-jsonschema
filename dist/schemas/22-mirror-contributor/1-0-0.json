@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/16-bnb-domain-holding-amount/1-0-0.json",
-  "title": "BNB domain holding amount.",
-  "description": "The amount of .bnb domain you are holding",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/22-mirror-contributor/1-0-0.json",
+  "title": "Mirror Contributor",
+  "description": "You are a publisher on Mirror / You have published a certain amount of posts on Mirror",
   "type": "object",
   "required": [
     "@context",
@@ -80,7 +80,7 @@
       }
     },
     "credentialSubject": {
-      "title": "Credential Subject of BnbDomainHolding/ BNB domain holding amount.",
+      "title": "Credential Subject of Mirror publisher",
       "type": "object",
       "required": [
         "id",
@@ -121,8 +121,8 @@
             "properties": {
               "and": {
                 "type": "array",
-                "minItems": 2,
-                "maxItems": 2,
+                "minItems": 1,
+                "maxItems": 1,
                 "additionalItems": false,
                 "items": [
                   {
@@ -136,44 +136,21 @@
                       "src": {
                         "type": "string",
                         "enum": [
-                          "$bnb_domain_hoding_amount",
-                          "$bnb_domain_holding_amount"
+                          "$is_publication_on_mirror",
+                          "$has_post_on_mirror"
                         ]
                       },
                       "op": {
                         "type": "string",
                         "enum": [
-                          ">="
+                          "=="
                         ]
                       },
                       "dst": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  {
-                    "type": "object",
-                    "required": [
-                      "src",
-                      "op",
-                      "dst"
-                    ],
-                    "properties": {
-                      "src": {
                         "type": "string",
                         "enum": [
-                          "$bnb_domain_hoding_amount",
-                          "$bnb_domain_holding_amount"
+                          "true"
                         ]
-                      },
-                      "op": {
-                        "type": "string",
-                        "enum": [
-                          "<"
-                        ]
-                      },
-                      "dst": {
-                        "type": "string"
                       }
                     }
                   }

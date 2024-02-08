@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/17-bnb-3d-4d-club-domain-holding-amount/1-0-0.json",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/16-bnb-3d-4d-club-domain-holding-amount/1-0-0.json",
   "title": "BNB 3D/4D club domain holding amount.",
   "description": "The amount of .BNB 999/10k club domains you are holding",
   "type": "object",

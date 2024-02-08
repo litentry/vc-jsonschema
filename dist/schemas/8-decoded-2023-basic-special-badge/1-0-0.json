@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/8-decoded-2023-basic-special-badge/1-0-0.json",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/8-decoded-2022-basic-special-badge/1-0-0.json",
   "title": "Decoded 2023 Basic Special Badge",
   "description": "The user has a Polkadot Decoded 2023 Litentry Booth Special Badge",
   "type": "object",
