@@ -10,7 +10,7 @@ export const schema: JSONSchema7 = {
   $id: resolveGitHubPath('11-token-holder/1-0-0.json'),
 
   title: 'Token Holder',
-  description: 'The number of a particular token you hold > 0',
+  description: 'The hold a particular token',
 
   properties: {
     ...base.properties,
@@ -18,6 +18,8 @@ export const schema: JSONSchema7 = {
     credentialSubject: credentialSubject({
       title: 'Credential Subject of Achainable assertion/ Token Holder',
       assertions: assertion.and({
+        minItems: 1,
+        maxItems: 2, // for `is_uniswap` case
         items: [
           assertion.clause({
             src: [
@@ -27,13 +29,20 @@ export const schema: JSONSchema7 = {
               '$is_lit_holder',
               '$is_dot_holder',
               // https://github.com/litentry/litentry-parachain/blob/dev/tee-worker/litentry/core/assertion-build/src/achainable/basic.rs
+              '$is_uniswap_v2_user',
               'is_bab_holder',
               '$is_bab_holder',
+              //
             ],
             op: ['=='],
-            dst: ['true'],
+            dst: ['true', 'false'],
           }),
         ],
+        additionalItems: assertion.clause({
+          src: ['$is_uniswap_v3_user'],
+          op: ['=='],
+          dst: ['true', 'false'],
+        }),
       }),
     }),
   },

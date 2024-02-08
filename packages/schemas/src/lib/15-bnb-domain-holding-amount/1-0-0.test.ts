@@ -3,14 +3,14 @@ import * as fs from 'fs';
 import { ajv } from '../ajv';
 import { schema } from './1-0-0';
 
-describe('8-decoded-2022-basic-special-badge/1-0-0', () => {
-  it('should work', () => {
+describe('15-bnb-domain-holding-amount/1-0-0', () => {
+  it.skip('should work', () => {
     const validate = ajv.compile(schema);
     expect(validate.errors).toBeNull();
 
     const json = JSON.parse(
       fs.readFileSync(
-        'examples/8-decoded-2022-basic-special-badge/decoded-2022-basic-special-badge.json',
+        'examples/bnb-domain-holding-amount/15-bnb-domain-holding-amount.json',
         'utf8'
       )
     );

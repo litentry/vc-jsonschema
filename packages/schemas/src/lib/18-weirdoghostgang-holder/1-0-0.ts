@@ -7,20 +7,18 @@ import { credentialSubject, assertion } from '../schema-helpers';
 export const schema: JSONSchema7 = {
   ...base,
 
-  $id: resolveGitHubPath('8-decoded-2022-basic-special-badge/1-0-0.json'),
+  $id: resolveGitHubPath('18-weirdoghostgang-holder/1-0-0.json'),
 
-  title: 'Decoded 2023 Basic Special Badge',
-  description:
-    'The user has a Polkadot Decoded 2023 Litentry Booth Special Badge',
+  title: 'WeirdoGhostGang Holder',
+  description: 'You are WeirdoGhostGang NFT holder',
 
   properties: {
     ...base.properties,
 
     credentialSubject: credentialSubject({
-      title:
-        'Credential Subject of A13 assertion/ Decoded 2023 Basic Special Badge',
+      title: 'Credential Subject of NodeReal/ WeirdoGhostGang Holder',
       assertions: assertion.clause({
-        src: ['$has_claimed_badge'],
+        src: ['$is_weirdo_ghost_gang_holder'],
         op: ['=='],
         dst: ['true'],
       }),
