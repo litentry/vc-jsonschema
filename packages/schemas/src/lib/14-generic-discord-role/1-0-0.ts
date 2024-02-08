@@ -7,7 +7,7 @@ import { credentialSubject, assertion } from '../schema-helpers';
 export const schema: JSONSchema7 = {
   ...base,
 
-  $id: resolveGitHubPath('15-generic-discord-role/1-0-0.json'),
+  $id: resolveGitHubPath('14-generic-discord-role/1-0-0.json'),
 
   title: 'You have certain role on Litentry Official Discord Server.',
   description:

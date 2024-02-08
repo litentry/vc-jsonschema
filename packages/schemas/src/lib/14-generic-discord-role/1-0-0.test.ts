@@ -4,7 +4,7 @@ import { globSync as glob } from 'fast-glob';
 import { ajv } from '../ajv';
 import { schema } from './1-0-0';
 
-const jsonFiles = glob('examples/15-generic-discord-role/*.json');
+const jsonFiles = glob('examples/14-generic-discord-role/*.json');
 
 const validate = ajv.compile(schema);
 
