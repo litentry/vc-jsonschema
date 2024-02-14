@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@litentry/schemas": ["packages/schemas/src/index.ts"]
+      "@litentry/schemas": ["packages/schemas/src/index.ts"],
+      "@litentry/vc-schema-validator": ["packages/validator/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
