@@ -15,14 +15,37 @@ interface VerifiableCredentialLike extends Record<string, unknown> {
   type: string[] | undefined | null;
 }
 
+type Options = {
+  fetchSchema: (url: string) => Promise<JSONSchema7>;
+};
+
+const defaultOptions: Options = {
+  fetchSchema: fetchSchemaFn,
+};
+
 /**
+ * Validates a Verifiable Credential against its JSON schema.
  *
- * @throws {Error} if there is an error parsing the VC JSON or its schema.
+ * @param vc - The Verifiable Credential to validate.
+ * @param options - The options to use for validation.
+ *
+ * @returns `true` if the VC is valid, `false` otherwise.
+ *
+ * @throws {JsonParseError} if the VC JSON is invalid.
+ * @throws {NotSupportedError} if the VC JSON does not contain a schema.
+ * @throws {HttpError} if there is an error fetching the schema.
+ * @throws {SchemaError} if there is an error parsing the schema.
+ * @throws {ValidationError} if the VC is invalid.
  */
-export async function validateVcSchema(vc: string): Promise<boolean> {
+export async function validateVcSchema(
+  vc: string,
+  options: Options
+): Promise<boolean> {
   if (typeof vc !== 'string') {
     return false;
   }
+
+  const { fetchSchema } = { ...defaultOptions, ...options };
 
   let parsedVc: VerifiableCredentialLike;
   try {
@@ -36,25 +59,13 @@ export async function validateVcSchema(vc: string): Promise<boolean> {
   }
 
   // fetch the schema
-  let schema: JSONSchema7;
-  try {
-    const response = await fetch(parsedVc.jsonschema);
-    if (response.status !== 200) {
-      throw new HttpError('Failed to fetch the schema');
-    }
-
-    const isText = response.headers.get('content-type')?.includes('text/plain');
-
-    schema = isText ? JSON.parse(await response.text()) : await response.json();
-  } catch (_) {
-    throw new HttpError('Failed to download or parse the schema');
-  }
+  const schema = await fetchSchema(parsedVc.jsonschema);
 
   // compile
   let validate: ValidateFunction;
 
   try {
-    validate = await ajv.compileAsync(schema);
+    validate = ajv.compile(schema);
   } catch (e: any) {
     throw new SchemaError(`Failed to compile the schema: ${e.message}`);
   }
@@ -70,4 +81,26 @@ export async function validateVcSchema(vc: string): Promise<boolean> {
   }
 
   return isValid;
+}
+
+async function fetchSchemaFn(url: string): Promise<JSONSchema7> {
+  try {
+    const response = await fetch(url);
+    if (response.status !== 200) {
+      throw new HttpError('Failed to fetch the schema');
+    }
+
+    const isText = response.headers.get('content-type')?.includes('text/plain');
+
+    if (isText) {
+      const text = await response.text();
+      return JSON.parse(text);
+    }
+
+    const json = await response.json();
+
+    return json;
+  } catch (_) {
+    throw new HttpError('Failed to download or parse the schema');
+  }
 }

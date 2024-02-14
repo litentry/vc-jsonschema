@@ -7,21 +7,21 @@ export class JsonParseError extends Error {
 
 export class NotSupportedError extends Error {
   constructor(reason: string) {
-    super('NotSupportedError: ' + reason);
+    super(reason);
     this.name = 'NotSupportedError';
   }
 }
 
 export class HttpError extends Error {
   constructor(reason: string) {
-    super('HttpError: ' + reason);
+    super(reason);
     this.name = 'HttpError';
   }
 }
 
 export class SchemaError extends Error {
   constructor(reason: string) {
-    super('SchemaError: ' + reason);
+    super(reason);
     this.name = 'SchemaError';
   }
 }
