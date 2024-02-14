@@ -28,9 +28,13 @@ const fetchSchemaMock = jest.fn().mockImplementation(async (url) => {
 it.each(vcList)('validates %s', async (vcFile) => {
   const vc: string = fs.readFileSync(vcFile, 'utf8');
 
-  const result = await validateVcSchema(vc, {
+  const { isValid, errors } = await validateVcSchema(vc, {
     fetchSchema: fetchSchemaMock,
   });
+  if (errors) {
+    console.log({ errors });
+  }
 
-  expect(result).toBe(true);
+  expect(isValid).toBe(true);
+  expect(errors).not.toBeTruthy();
 });
