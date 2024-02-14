@@ -25,10 +25,27 @@ const defaultOptions: Options = {
  * @returns A promise that resolves to an object with the following properties:
  * - `isValid` - A boolean indicating whether the Verifiable Credential is valid.
  * - `errors` - An array of strings describing the validation errors, if any.
+ *
+ * @example
+ * ```ts
+ * import { validateVcSchema } from '@litentry/vc-schema-validator';
+ *
+ * // the vc's json string
+ * const vc: string = '{"@context":["https://www.w3.org/2018/credentials/v1",..';
+ *
+ * // validate the vc
+ * const { isValid, errors } = await validateVcSchema(vc);
+ *
+ * if (isValid) {
+ *  console.log('The VC is valid');
+ * } else {
+ *  console.log('The VC is invalid:', errors);
+ * }
+ * ```
  */
 export async function validateVcSchema(
   vc: string,
-  options: Options
+  options?: Options
 ): Promise<{ isValid: boolean; errors: string[] | undefined | null }> {
   if (typeof vc !== 'string') {
     return {
