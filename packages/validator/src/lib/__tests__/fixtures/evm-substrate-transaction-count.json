@@ -1,0 +1,46 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0xa58458887b7e90f22e99eeb185846b18799172b2c0b3c2b259f546eea279e961",
+  "jsonschema": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/7-evm-substrate-transaction-count/1-0-0.json",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0x32e8dde674d49c60c766f350e65bef59be60df6b5bbd82d212d74f72483a2d58",
+    "description": "Gets the range of number of transactions a user has made for a specific token on all supported networks (invalid transactions are also counted)",
+    "type": "EVM/Substrate Transaction Count",
+    "assertionText": "A8(BoundedVec([Litentry, Litmus], 128))",
+    "assertions": [
+      {
+        "and": [
+          { "src": "$total_txs", "op": ">=", "dst": "50" },
+          { "src": "$total_txs", "op": "<", "dst": "100" },
+          {
+            "or": [
+              { "src": "$network", "op": "==", "dst": "Litentry" },
+              { "src": "$network", "op": "==", "dst": "Litmus" }
+            ]
+          }
+        ]
+      }
+    ],
+    "values": [true],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xd479088cdfd01d05af866fc6c7a0f67ac61028feb7e125efe41496f6d2e6091c",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "FkXWMXgxs8da9qMPJCsTq45i9fQsgZaDvhjXKDU3kkBa"
+  },
+  "issuanceDate": "2024-02-14T19:12:00.096324337+00:00",
+  "parachainBlockNumber": 474,
+  "sidechainBlockNumber": 938,
+  "proof": {
+    "created": "2024-02-14T19:12:00.096758305+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "872db64bb47d4c5adac42e810927b55d12aa31cd4f7b67a4b679330c1488f1733eaa2fdd41cda2af39c710a46f549a29ea290157f2daf36a40c33a6ae1c5e70f",
+    "verificationMethod": "0xd479088cdfd01d05af866fc6c7a0f67ac61028feb7e125efe41496f6d2e6091c"
+  }
+}
