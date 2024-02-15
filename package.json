@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@nrwl/cli": "14.5.8",
+    "@nrwl/devkit": "14.5.8",
     "@nrwl/eslint-plugin-nx": "14.5.8",
     "@nrwl/jest": "14.5.8",
     "@nrwl/js": "14.5.8",

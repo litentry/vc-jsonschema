@@ -1,5 +1,6 @@
 {
   "name": "@litentry/vc-schema-validator",
   "version": "0.0.1",
-  "type": "commonjs"
+  "type": "commonjs",
+  "license": "GPL-3.0-or-later"
 }

@@ -10,11 +10,10 @@
 import { readCachedProjectGraph } from '@nrwl/devkit';
 import { execSync } from 'child_process';
 import { readFileSync, writeFileSync } from 'fs';
-import chalk from 'chalk';
 
 function invariant(condition, message) {
   if (!condition) {
-    console.error(chalk.bold.red(message));
+    console.error(message);
     process.exit(1);
   }
 }
@@ -52,9 +51,7 @@ try {
   json.version = version;
   writeFileSync(`package.json`, JSON.stringify(json, null, 2));
 } catch (e) {
-  console.error(
-    chalk.bold.red(`Error reading package.json file from library build output.`)
-  );
+  console.error(`Error reading package.json file from library build output.`);
 }
 
 // Execute "npm publish" to publish
