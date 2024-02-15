@@ -1,0 +1,46 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0x56afeb99ed305c291bd371c376f066eab1edddb11996f4eb61f147a584c7a106",
+  "type": [
+    "VerifiableCredential"
+  ],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0x32e8dde674d49c60c766f350e65bef59be60df6b5bbd82d212d74f72483a2d58",
+    "description": "The user is an early bird user of the IdentityHub EVM version and has generated at least 1 credential during 2023 Aug 14th ~ Aug 21st.",
+    "type": "IDHub EVM Version Early Bird",
+    "assertionText": "A20",
+    "assertions": [
+      {
+        "src": "$has_joined",
+        "op": "==",
+        "dst": "false"
+      }
+    ],
+    "values": [
+      false
+    ],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0x6196f07c2514ae7e2144e4da94872bce92ef3b8e6ec4cfb492235b933da3df72",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "d1WgoALgHEWUkyqMTTaY6MAjH5C7NT3bbtSR1727JZi"
+  },
+  "issuanceDate": "2024-02-15T19:40:00.090588154+00:00",
+  "parachainBlockNumber": 10,
+  "sidechainBlockNumber": 10,
+  "proof": {
+    "created": "2024-02-15T19:40:00.091186812+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "88fca31f15719e5269bfa9602a19298b31172bb878bcb0d1fdbc0290354ad5d3a6cb3a2b136c5237b5206dd5dbfb39b701349c0fc5362e7821143c021e7cce02",
+    "verificationMethod": "0x6196f07c2514ae7e2144e4da94872bce92ef3b8e6ec4cfb492235b933da3df72"
+  },
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/12-idhub-evm-version-early-bird/1-0-0.json",
+    "type": "JsonSchemaValidator2018"
+  }
+}
