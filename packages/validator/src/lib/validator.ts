@@ -3,9 +3,11 @@ import type { JSONSchema7 } from 'json-schema';
 
 import { ajv } from './ajv';
 
+type Maybe<T> = T | null | undefined;
+
 interface VerifiableCredentialLike extends Record<string, unknown> {
-  jsonschema: string | undefined | null;
-  type: string[] | undefined | null;
+  credentialSchema: Maybe<{ id: Maybe<string>; type: Maybe<string> }>;
+  type: Maybe<string[]>;
 }
 
 type Options = {
@@ -66,7 +68,10 @@ export async function validateVcSchema(
     };
   }
 
-  if (typeof parsedVc.jsonschema !== 'string') {
+  if (
+    typeof parsedVc?.credentialSchema?.id !== 'string' ||
+    typeof parsedVc?.credentialSchema?.type !== 'string'
+  ) {
     return {
       isValid: false,
       errors: ['NotSupportedError: No schema found in the VC'],
@@ -76,7 +81,7 @@ export async function validateVcSchema(
   // fetch the schema
   let schema: JSONSchema7;
   try {
-    schema = await fetchSchema(parsedVc.jsonschema);
+    schema = await fetchSchema(parsedVc.credentialSchema.id);
   } catch (e: any) {
     return {
       isValid: false,
