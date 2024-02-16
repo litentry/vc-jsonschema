@@ -1,2 +1,2 @@
-export { ajv } from './lib/ajv';
-export * from './lib/validator';
+export { getAjvInstance } from './lib/ajv';
+export { validateVcSchema } from './lib/validator';

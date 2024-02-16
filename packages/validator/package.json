@@ -1,5 +1,7 @@
 {
   "name": "@litentry/vc-schema-validator",
+  "description": "A library to validate Litentry Verifiable Credentials against their schema",
   "version": "0.0.1",
-  "type": "commonjs"
+  "type": "commonjs",
+  "license": "GPL-3.0-or-later"
 }

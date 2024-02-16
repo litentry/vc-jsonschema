@@ -1,11 +1,13 @@
 import type { ValidateFunction } from 'ajv';
 import type { JSONSchema7 } from 'json-schema';
 
-import { ajv } from './ajv';
+import { getAjvInstance } from './ajv';
 
 type Maybe<T> = T | null | undefined;
 
 interface VerifiableCredentialLike extends Record<string, unknown> {
+  '@context': Maybe<string[]>;
+  id: Maybe<string>;
   credentialSchema: Maybe<{ id: Maybe<string>; type: Maybe<string> }>;
   type: Maybe<string[]>;
 }
@@ -46,25 +48,18 @@ const defaultOptions: Options = {
  * ```
  */
 export async function validateVcSchema(
-  vc: string,
+  vc: string | VerifiableCredentialLike,
   options?: Options
 ): Promise<{ isValid: boolean; errors: string[] | undefined | null }> {
-  if (typeof vc !== 'string') {
-    return {
-      isValid: false,
-      errors: ['NotSupportedError: VC should be a string'],
-    };
-  }
-
   const { fetchSchema } = { ...defaultOptions, ...options };
 
   let parsedVc: VerifiableCredentialLike;
   try {
-    parsedVc = JSON.parse(vc) as VerifiableCredentialLike;
+    parsedVc = parseVc(vc);
   } catch (_) {
     return {
       isValid: false,
-      errors: ['JsonParseError: Failed to parse the VC'],
+      errors: ['JsonParseError: Invalid VC value'],
     };
   }
 
@@ -91,6 +86,8 @@ export async function validateVcSchema(
 
   // compile
   let validate: ValidateFunction;
+
+  const ajv = getAjvInstance();
 
   try {
     validate = ajv.compile(schema);
@@ -132,4 +129,25 @@ async function fetchSchemaFn(url: string): Promise<JSONSchema7> {
   } catch (_) {
     throw new Error('Failed to download or parse the schema');
   }
+}
+
+function parseVc(
+  vc: string | VerifiableCredentialLike
+): VerifiableCredentialLike {
+  if (!vc) {
+    throw new Error('Invalid VC');
+  }
+
+  if (typeof vc === 'string') {
+    return JSON.parse(vc) as VerifiableCredentialLike;
+  }
+
+  if (
+    typeof vc.id !== 'string' ||
+    !Array.isArray(vc['type'] || !Array.isArray(vc['@context']))
+  ) {
+    throw new Error('Invalid VC');
+  }
+
+  return vc;
 }

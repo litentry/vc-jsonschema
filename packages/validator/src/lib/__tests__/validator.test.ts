@@ -38,3 +38,19 @@ it.each(vcList)('validates %s', async (vcFile) => {
   expect(isValid).toBe(true);
   expect(errors).not.toBeTruthy();
 });
+
+it('accepts an object as vc arg', async () => {
+  const vc: string = fs.readFileSync(vcList[0], 'utf8');
+  const parsedVc = JSON.parse(vc);
+
+  const { isValid, errors } = await validateVcSchema(parsedVc, {
+    fetchSchema: fetchSchemaMock,
+  });
+
+  if (errors) {
+    console.log({ errors });
+  }
+
+  expect(isValid).toBe(true);
+  expect(errors).not.toBeTruthy();
+});
