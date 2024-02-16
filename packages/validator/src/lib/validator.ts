@@ -1,7 +1,7 @@
 import type { ValidateFunction } from 'ajv';
 import type { JSONSchema7 } from 'json-schema';
 
-import { ajv } from './ajv';
+import { getAjvInstance } from './ajv';
 
 type Maybe<T> = T | null | undefined;
 
@@ -91,6 +91,8 @@ export async function validateVcSchema(
 
   // compile
   let validate: ValidateFunction;
+
+  const ajv = getAjvInstance();
 
   try {
     validate = ajv.compile(schema);
