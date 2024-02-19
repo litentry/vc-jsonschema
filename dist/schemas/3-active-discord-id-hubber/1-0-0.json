@@ -202,10 +202,7 @@
                         ]
                       },
                       "dst": {
-                        "type": "string",
-                        "enum": [
-                          "10"
-                        ]
+                        "type": "string"
                       }
                     }
                   },
@@ -230,10 +227,7 @@
                         ]
                       },
                       "dst": {
-                        "type": "string",
-                        "enum": [
-                          "10"
-                        ]
+                        "type": "string"
                       }
                     }
                   },
@@ -258,10 +252,7 @@
                         ]
                       },
                       "dst": {
-                        "type": "string",
-                        "enum": [
-                          "10"
-                        ]
+                        "type": "string"
                       }
                     }
                   }
