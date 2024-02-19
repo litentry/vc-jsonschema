@@ -1,48 +1,55 @@
 {
-    "@context":[
+    "@context": [
         "https://www.w3.org/2018/credentials/v1",
         "https://w3id.org/security/suites/ed25519-2020/v1"
     ],
-    "id":"0x7a9e038f30e90e5f5dff366a3a8b98d3797fb9747691571a499dcd78d4a8e014",
-    "type":[
+    "id": "0xb61f7e799f0522e5a7d0902049aa963fd98d6e6b370367e276c16c1c19f67680",
+    "type": [
         "VerifiableCredential"
     ],
-    "credentialSubject":{
-        "id":"did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
-        "description":"You've identified at least one account/address in both Web2 and Web3.",
-        "type":"Basic Identity Verification",
-        "assertions":[
+    "credentialSubject": {
+        "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+        "description": "You've identified at least one account/address in both Web2 and Web3.",
+        "type": "Basic Identity Verification",
+        "assertionText": "A1",
+        "assertions": [
             {
-                "and":[
+                "and": [
                     {
-                        "src":"$has_web2_account",
-                        "op":"==",
-                        "dst":"true"
+                        "src": "$has_web2_account",
+                        "op": "==",
+                        "dst": "true"
                     },
                     {
-                        "src":"$has_web3_account",
-                        "op":"==",
-                        "dst":"true"
+                        "src": "$has_web3_account",
+                        "op": "==",
+                        "dst": "true"
                     }
                 ]
             }
         ],
-        "values":[
-            false
+        "values": [
+            true
         ],
-        "endpoint":"http://localhost:9933"
+        "endpoint": "http://localhost:9933"
     },
-    "issuer":{
-        "id":"did:litentry:substrate:0x28d3b174041231100f3bea49444fb44b5ee500a463b2d26ff7e6dc5d98f15135",
-        "name":"Litentry TEE Worker",
-        "mrenclave":"6cgJxACaf91s7CvoA6fVYUHpvFKLrEDe3mLJHDND6t59"
+    "issuer": {
+        "id": "did:litentry:substrate:0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c",
+        "name": "Litentry TEE Worker",
+        "mrenclave": "21pnuQZwDwPuahVisciZVuqmJawwzMRZatEycE8su62c"
     },
-    "issuanceDate":"2023-09-26T02:41:54.471751195+00:00",
-    "proof":{
-        "created":"2023-09-26T02:41:54.472164087+00:00",
-        "type":"Ed25519Signature2020",
-        "proofPurpose":"assertionMethod",
-        "proofValue":"25ff768780046ad249c2d853b9d442850199304221b78f3da99e0aac946a627702927262db5cef1a5411cba82c0925359fd31b0bac1771eb28c71b271bec9f0b",
-        "verificationMethod":"28d3b174041231100f3bea49444fb44b5ee500a463b2d26ff7e6dc5d98f15135"
+    "issuanceDate": "2024-02-19T16:41:30.028557124+00:00",
+    "parachainBlockNumber": 107,
+    "sidechainBlockNumber": 205,
+    "proof": {
+        "created": "2024-02-19T16:41:30.029083326+00:00",
+        "type": "Ed25519Signature2020",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "47d67d6db52930c88d4d3b8519b868ce18f2eebe1df61bd14c4d185d41f428629038939b297a47e366511d8c02e09de281195751da03aa6e2339f911910e4400",
+        "verificationMethod": "0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c"
+    },
+    "credentialSchema": {
+        "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/1-basic-identity-verification/1-0-0.json",
+        "type": "JsonSchemaValidator2018"
     }
 }

@@ -202,10 +202,7 @@
                         ]
                       },
                       "dst": {
-                        "type": "string",
-                        "enum": [
-                          "abc"
-                        ]
+                        "type": "string"
                       }
                     }
                   }

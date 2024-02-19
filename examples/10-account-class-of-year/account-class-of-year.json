@@ -1,43 +1,50 @@
 {
-    "@context":[
+    "@context": [
         "https://www.w3.org/2018/credentials/v1",
         "https://w3id.org/security/suites/ed25519-2020/v1"
     ],
-    "id":"0xf4787b47819a21b475aa0e46b2bf1d2f4f1adda28de6a37d47acc584e4632754",
-    "type":[
+    "id": "0xebfc34c6f41b68f0cb269e639fa822da634420d20206e0ba59fd36b42b57b5dc",
+    "type": [
         "VerifiableCredential"
     ],
-    "credentialSubject":{
-        "id":"d43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
-        "description":"The class of year that the user account was created on a particular network (must have on-chain records)",
-        "type":"Account Class Of Year",
-        "assertions":[
+    "credentialSubject": {
+        "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+        "description": "The class of year that the user account was created on a particular network (must have on-chain records)",
+        "type": "Account Class Of Year",
+        "assertionText": "Achainable(ClassOfYear(AchainableClassOfYear { name: BoundedVec([65, 99, 99, 111, 117, 110, 116, 32, 99, 114, 101, 97, 116, 101, 100, 32, 98, 101, 116, 119, 101, 101, 110, 32, 123, 100, 97, 116, 101, 115, 125], 64), chain: BoundedVec([Ethereum], 128) }))",
+        "assertions": [
             {
-                "and":[
+                "and": [
                     {
-                        "src":"$account_created_year",
-                        "op":"==",
-                        "dst":"Invalid"
+                        "src": "$account_created_year",
+                        "op": "==",
+                        "dst": "2017"
                     }
                 ]
             }
         ],
-        "values":[
-            false
+        "values": [
+            true
         ],
-        "endpoint":"http://localhost:9933"
+        "endpoint": "http://localhost:9933"
     },
-    "issuer":{
-        "id":"3730028d06f5cad69891d61a198a7b4495ff5fbaf6203df6b12fbf37e5336952",
-        "name":"Litentry TEE Worker",
-        "mrenclave":"ELzBHDP2T1TfYpD3ES3zBeRN43X9AmUC2cFqtckbynTP"
+    "issuer": {
+        "id": "did:litentry:substrate:0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c",
+        "name": "Litentry TEE Worker",
+        "mrenclave": "21pnuQZwDwPuahVisciZVuqmJawwzMRZatEycE8su62c"
     },
-    "issuanceDate":"2023-08-05T10:20:12.355000681+00:00",
-    "proof":{
-        "created":"2023-08-05T10:20:12.356444202+00:00",
-        "type":"Ed25519Signature2020",
-        "proofPurpose":"assertionMethod",
-        "proofValue":"666a2d3c8163019fe9e2de38c40896e3a4e1eada0cc1d4e335c1877e497557a1b3cadc9282b1b9cacaec949ee13191cd386a97f7b0f4c14201a87a01c8621402",
-        "verificationMethod":"3730028d06f5cad69891d61a198a7b4495ff5fbaf6203df6b12fbf37e5336952"
+    "issuanceDate": "2024-02-19T16:54:42.029216490+00:00",
+    "parachainBlockNumber": 173,
+    "sidechainBlockNumber": 337,
+    "proof": {
+        "created": "2024-02-19T16:54:42.029733822+00:00",
+        "type": "Ed25519Signature2020",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "a9d255974ffd974a3dbbc8b246cde326d3a68b101e28a98814c349620a99cb55750c75cc5e5d3f1cb0bc82c750f37a8c145bc0df35f4bd4905dfba51ca7e6c01",
+        "verificationMethod": "0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c"
+    },
+    "credentialSchema": {
+        "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/10-account-class-of-year/1-0-0.json",
+        "type": "JsonSchemaValidator2018"
     }
 }

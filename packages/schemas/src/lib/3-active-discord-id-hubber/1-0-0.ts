@@ -33,17 +33,17 @@ export const schema: JSONSchema7 = {
           assertion.clause({
             src: ['$discord_guild_id'],
             op: ['=='],
-            dst: ['10'],
+            dst: undefined, // client-defined value
           }),
           assertion.clause({
             src: ['$discord_channel_id'],
             op: ['=='],
-            dst: ['10'],
+            dst: undefined, // client-defined value
           }),
           assertion.clause({
             src: ['$discord_role_id'],
             op: ['=='],
-            dst: ['10'],
+            dst: undefined, // client-defined value
           }),
         ],
       }),
