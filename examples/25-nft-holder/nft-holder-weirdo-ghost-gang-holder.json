@@ -1,0 +1,68 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0xac6562e57cf7cb8a7588b35bfe8c71d28eb6e65908d8c6bc09647e59032e2fac",
+  "type": [
+    "VerifiableCredential"
+  ],
+  "credentialSubject": {
+    "id": "did:litentry:evm:0x0ace67628bd43213c1c41ca1daef47e63923c75c",
+    "description": "You are a holder of a certain kind of NFT",
+    "type": "Generic NFT Holder",
+    "assertionText": "NftHolder(WeirdoGhostGang)",
+    "assertions": [
+      {
+        "and": [
+          {
+            "src": "$nft",
+            "op": "==",
+            "dst": "Weirdo Ghost Gang"
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "src": "$network",
+                    "op": "==",
+                    "dst": "ethereum"
+                  },
+                  {
+                    "src": "$address",
+                    "op": "==",
+                    "dst": "0x9401518f4EBBA857BAA879D9f76E1Cc8b31ed197"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "values": [
+      false
+    ],
+    "endpoint": "wss://rpc.rococo-parachain.litentry.io"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xbf6ae6b420f26aae8717dcd7ccc7d0caf543a27dbd5f622ea666e2eff6d1ec77",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "67GPj6uJGayGPs5gp68w2u9P5Fjnm4uEMMQi99gY29g"
+  },
+  "issuanceDate": "2024-02-29T15:57:37.727719816+00:00",
+  "parachainBlockNumber": 228901,
+  "sidechainBlockNumber": 2785534,
+  "proof": {
+    "created": "2024-02-29T15:57:37.728487788+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "d56dd9dfa6b64fdc753a0942a7f3c54c0b20548e9bd7d8430d99ae3128f2fb98f8883048be01dc9c5147e04427f68078d8c701a7ac54de689a5a402a3c5ce400",
+    "verificationMethod": "0xbf6ae6b420f26aae8717dcd7ccc7d0caf543a27dbd5f622ea666e2eff6d1ec77"
+  },
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/26-nft-holder/1-0-0.json",
+    "type": "JsonSchemaValidator2018"
+  }
+}
