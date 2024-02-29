@@ -10,7 +10,7 @@ import { credentialSubject, assertion } from '../schema-helpers';
 export const schema: JSONSchema7 = {
   ...base,
 
-  $id: resolveGitHubPath('25-nft-holder/1-0-0.json'),
+  $id: resolveGitHubPath('26-nft-holder/1-0-0.json'),
 
   title: 'Generic NFT Holder',
   description: 'You are a holder of a certain kind of NFT',

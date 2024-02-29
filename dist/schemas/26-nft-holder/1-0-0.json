@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/25-nft-holder/1-0-0.json",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/26-nft-holder/1-0-0.json",
   "title": "Generic NFT Holder",
   "description": "You are a holder of a certain kind of NFT",
   "type": "object",

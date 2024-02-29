@@ -4,9 +4,9 @@ import { globSync as glob } from 'fast-glob';
 import { ajv } from '../ajv';
 import { schema } from './1-0-0';
 
-const jsonFiles = glob('examples/25-nft-holder/*.json');
+const jsonFiles = glob('examples/26-nft-holder/*.json');
 
-describe('25-nft-holder/1-0-0', () => {
+describe('26-nft-holder/1-0-0', () => {
   it.each(jsonFiles)('should work for %s', (example) => {
     const validate = ajv.compile(schema);
 
@@ -20,3 +20,4 @@ describe('25-nft-holder/1-0-0', () => {
     expect(valid).toBeTruthy();
   });
 });
+('');
