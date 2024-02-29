@@ -1,0 +1,96 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0x74ca3ba154ba6a81ee80fa705995722303074f0f337a9f652ed98d6e589569e2",
+  "type": [
+    "VerifiableCredential"
+  ],
+  "credentialSubject": {
+    "id": "did:litentry:evm:0x0ace67628bd43213c1c41ca1daef47e63923c75c",
+    "description": "You are a holder of a certain kind of NFT",
+    "type": "Generic NFT Holder",
+    "assertionText": "NftHolder(Club3Sbt)",
+    "assertions": [
+      {
+        "and": [
+          {
+            "src": "$nft",
+            "op": "==",
+            "dst": "Club3 SBT"
+          },
+          {
+            "or": [
+              {
+                "and": [
+                  {
+                    "src": "$network",
+                    "op": "==",
+                    "dst": "bsc"
+                  },
+                  {
+                    "src": "$address",
+                    "op": "==",
+                    "dst": "0x9f488C0dafb1B3bFeeD3e886e0E6E5f3f4517925"
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "src": "$network",
+                    "op": "==",
+                    "dst": "polygon"
+                  },
+                  {
+                    "src": "$address",
+                    "op": "==",
+                    "dst": "0xAc2e4e67cffa5E82bfA1e169e5F9aa405114C982"
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "src": "$network",
+                    "op": "==",
+                    "dst": "arbitrum"
+                  },
+                  {
+                    "src": "$address",
+                    "op": "==",
+                    "dst": "0xcccFF19FB8a4a2A206d07842b8F8c8c0A11904C2"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "values": [
+      false
+    ],
+    "endpoint": "wss://rpc.rococo-parachain.litentry.io"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xbf6ae6b420f26aae8717dcd7ccc7d0caf543a27dbd5f622ea666e2eff6d1ec77",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "67GPj6uJGayGPs5gp68w2u9P5Fjnm4uEMMQi99gY29g"
+  },
+  "issuanceDate": "2024-02-29T15:41:54.135846503+00:00",
+  "parachainBlockNumber": 228823,
+  "sidechainBlockNumber": 2785376,
+  "proof": {
+    "created": "2024-02-29T15:41:54.136129134+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "e90079d4abcdaee49f428e94d5f4c03cd1856007f5fd094c4db7d08c1e26cd640205f6875ea41d6895287190603bc5ded9176d9b023a636387724590a4cc3502",
+    "verificationMethod": "0xbf6ae6b420f26aae8717dcd7ccc7d0caf543a27dbd5f622ea666e2eff6d1ec77"
+  },
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/26-nft-holder/1-0-0.json",
+    "type": "JsonSchemaValidator2018"
+  }
+}
