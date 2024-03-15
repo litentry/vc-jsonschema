@@ -1,0 +1,50 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0xebfc34c6f41b68f0cb269e639fa822da634420d20206e0ba59fd36b42b57b5dc",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+    "description": "The class of year that the user account was created on a particular network (must have on-chain records)",
+    "type": "Account Class Of Year",
+    "assertionText": "Achainable(ClassOfYear(AchainableClassOfYear { name: BoundedVec([65, 99, 99, 111, 117, 110, 116, 32, 99, 114, 101, 97, 116, 101, 100, 32, 98, 101, 116, 119, 101, 101, 110, 32, 123, 100, 97, 116, 101, 115, 125], 64), chain: BoundedVec([Ethereum], 128) }))",
+    "assertions": [
+      {
+        "and": [
+          {
+            "src": "$account_created_year",
+            "op": "==",
+            "dst": "2017"
+          }
+        ]
+      }
+    ],
+    "values": [true],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "21pnuQZwDwPuahVisciZVuqmJawwzMRZatEycE8su62c",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2024-02-19T16:54:42.029216490+00:00",
+  "parachainBlockNumber": 173,
+  "sidechainBlockNumber": 337,
+  "proof": {
+    "created": "2024-02-19T16:54:42.029733822+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "a9d255974ffd974a3dbbc8b246cde326d3a68b101e28a98814c349620a99cb55750c75cc5e5d3f1cb0bc82c750f37a8c145bc0df35f4bd4905dfba51ca7e6c01",
+    "verificationMethod": "0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c"
+  },
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/10-account-class-of-year/1-0-0.json",
+    "type": "JsonSchemaValidator2018"
+  }
+}

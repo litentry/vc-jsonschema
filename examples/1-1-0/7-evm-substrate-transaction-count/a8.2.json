@@ -1,0 +1,64 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0x2f305d2935ca3bc9918f982ba66cbf54914a225e702c4b25e6047ac749ddd150",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+    "description": "Gets the range of number of transactions a user has made for a specific token on all supported networks (invalid transactions are also counted)",
+    "type": "EVM/Substrate Transaction Count",
+    "assertionText": "A8(BoundedVec([Polkadot], 128))",
+    "assertions": [
+      {
+        "and": [
+          {
+            "src": "$total_txs",
+            "op": ">=",
+            "dst": "20"
+          },
+          {
+            "src": "$total_txs",
+            "op": "<",
+            "dst": "50"
+          },
+          {
+            "or": [
+              {
+                "src": "$network",
+                "op": "==",
+                "dst": "Polkadot"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "values": [true],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xfcdb571a7991e3d3ae4e2df972a84a37d2dcdba33890d919950191f532fb3e88",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "21pnuQZwDwPuahVisciZVuqmJawwzMRZatEycE8su62c",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2024-02-19T20:29:30.027362937+00:00",
+  "parachainBlockNumber": 45,
+  "sidechainBlockNumber": 81,
+  "proof": {
+    "created": "2024-02-19T20:29:30.027945955+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "d6148ee3912d04ae8cc6b62ae0cf8ceb9e0468ed3c8263be3830824066e7ea324fbeae8647b28921ac83c1e05170aff4013aaeb4165f6a56230992ee0d0d5a0f",
+    "verificationMethod": "0xfcdb571a7991e3d3ae4e2df972a84a37d2dcdba33890d919950191f532fb3e88"
+  },
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/7-evm-substrate-transaction-count/1-0-0.json",
+    "type": "JsonSchemaValidator2018"
+  }
+}

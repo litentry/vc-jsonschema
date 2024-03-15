@@ -1,0 +1,46 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0xcfe5e73b4b72c476dd7980dd3aebc976c5aff0198be551f340d3b685fe5fda38",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+    "description": "Congratulations on your participation in our first quiz in collaboration with our partner, Sora. You have embarked on an exciting educational journey, exploring the world of DeFi & Web3 Identity, we truly appreciate your curiosity and dedication.",
+    "type": "Litentry & SORA Quiz Attendee",
+    "assertionText": "GenericDiscordRole(SoraQuiz(Attendee))",
+    "assertions": [
+      {
+        "src": "$is_attendee",
+        "op": "==",
+        "dst": "true"
+      }
+    ],
+    "values": [false],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "21pnuQZwDwPuahVisciZVuqmJawwzMRZatEycE8su62c",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2024-02-19T16:55:30.028616355+00:00",
+  "parachainBlockNumber": 177,
+  "sidechainBlockNumber": 345,
+  "proof": {
+    "created": "2024-02-19T16:55:30.029381706+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "741fff6b45c09ae36cf54f358d5acc386ed9bd2de6f926d31bd653b3188a6efee3fc1ce2d9b6d46a70f5aae6e86421a411db17f103eab35e18aa96a0aa0fc202",
+    "verificationMethod": "0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c"
+  },
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/14-generic-discord-role/1-0-0.json",
+    "type": "JsonSchemaValidator2018"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0x60fff373d5e8d7731aa91bc46ed1fa761ede9774ca8549455e84147691bb6b9b",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:bitcoin:0x03166e0578c4d3a1b59919f139bc773a8e155786f90dba99a0041349774201caf9",
+    "description": "The amount of a particular token you are holding",
+    "type": "Token Holding Amount",
+    "assertionText": "EVMAmountHolding(Trx)",
+    "assertions": [
+      {
+        "and": [
+          { "src": "$token", "op": "==", "dst": "TRX" },
+          {
+            "or": [
+              {
+                "and": [
+                  { "src": "$network", "op": "==", "dst": "ethereum" },
+                  {
+                    "src": "$address",
+                    "op": "==",
+                    "dst": "0x50327c6c5a14dcade707abad2e27eb517df87ab5"
+                  }
+                ]
+              },
+              {
+                "and": [
+                  { "src": "$network", "op": "==", "dst": "bsc" },
+                  {
+                    "src": "$address",
+                    "op": "==",
+                    "dst": "0xCE7de646e7208a4Ef112cb6ed5038FA6cC6b12e3"
+                  }
+                ]
+              }
+            ]
+          },
+          { "src": "$holding_amount", "op": ">=", "dst": "0" },
+          { "src": "$holding_amount", "op": "<", "dst": "1" }
+        ]
+      }
+    ],
+    "values": [false],
+    "endpoint": "wss://tee-staging.litentry.io"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xe3107df2d3dc98cda5253a62980431bf71bccd7c4dc56135ef9f9f9a7a78fb18",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "DgzoX2SRCmZwF4GVz2xqrREUsCmNYL9truFRHsxGMowc",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2024-01-10T21:07:36.807029382+00:00",
+  "parachainBlockNumber": 13412,
+  "sidechainBlockNumber": 26961,
+  "proof": {
+    "created": "2024-01-10T21:07:36.807282034+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "ebc7d2f5d72aa86ee29e42ef9c0d293d3d6eacbd53e86971b0d418bf75528466f2dbcb0e58f05efd00809b0a78f4bef102a5c93b67fd2ad84da3f99f37b8c609",
+    "verificationMethod": "0xe3107df2d3dc98cda5253a62980431bf71bccd7c4dc56135ef9f9f9a7a78fb18"
+  }
+}

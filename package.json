@@ -14,6 +14,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@jest/globals": "^29.7.0",
     "@nrwl/cli": "14.5.8",
     "@nrwl/devkit": "14.5.8",
     "@nrwl/eslint-plugin-nx": "14.5.8",

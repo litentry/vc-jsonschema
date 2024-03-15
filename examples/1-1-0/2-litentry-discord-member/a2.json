@@ -1,0 +1,53 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0xbba3d3fbbda2e26f911a481d764bbb4d6c334d260033154b5bb267c98c54da58",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+    "description": "The user is a member of Litentry Discord. \nServer link: https://discord.gg/phBSa3eMX9\nGuild ID: 807161594245152800.",
+    "type": "Litentry Discord Member",
+    "assertions": [
+      {
+        "and": [
+          {
+            "src": "$verified_discord_account",
+            "op": ">",
+            "dst": "0"
+          },
+          {
+            "src": "$has_joined",
+            "op": "==",
+            "dst": "true"
+          },
+          {
+            "src": "$discord_guild_id",
+            "op": "==",
+            "dst": "abc"
+          }
+        ]
+      }
+    ],
+    "values": [false],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0x28d3b174041231100f3bea49444fb44b5ee500a463b2d26ff7e6dc5d98f15135",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "6cgJxACaf91s7CvoA6fVYUHpvFKLrEDe3mLJHDND6t59",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2023-09-26T02:43:42.331230110+00:00",
+  "proof": {
+    "created": "2023-09-26T02:43:42.331528147+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "25ff768780046ad249c2d853b9d442850199304221b78f3da99e0aac946a627702927262db5cef1a5411cba82c0925359fd31b0bac1771eb28c71b271bec9f0b",
+    "verificationMethod": "28d3b174041231100f3bea49444fb44b5ee500a463b2d26ff7e6dc5d98f15135"
+  }
+}

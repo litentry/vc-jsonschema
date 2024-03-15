@@ -1,0 +1,55 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0x96f5aea1f4d3003c4de744e140c6d77bd588778f7bfea32a555193a923c4d997",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+    "description": "You are a trader or liquidity provider of Uniswap V2 or V3.\nUniswap V2 Factory Contract: 0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f.\nUniswap V3 Factory Contract: 0x1f98431c8ad98523631ae4a59f267346ea31f984.",
+    "type": "Uniswap V2/V3 User",
+    "assertionText": "Achainable(Basic(AchainableBasic { name: BoundedVec([85, 110, 105, 115, 119, 97, 112, 32, 86, 50, 47, 86, 51, 32, 117, 115, 101, 114], 64), chain: BoundedVec([Ethereum], 128) }))",
+    "assertions": [
+      {
+        "and": [
+          {
+            "src": "$is_uniswap_v2_user",
+            "op": "==",
+            "dst": "true"
+          },
+          {
+            "src": "$is_uniswap_v3_user",
+            "op": "==",
+            "dst": "true"
+          }
+        ]
+      }
+    ],
+    "values": [true],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "21pnuQZwDwPuahVisciZVuqmJawwzMRZatEycE8su62c",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2024-02-19T16:53:54.028920558+00:00",
+  "parachainBlockNumber": 169,
+  "sidechainBlockNumber": 329,
+  "proof": {
+    "created": "2024-02-19T16:53:54.030663036+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "f63587f737b2364112458d8602c7198097d84bd5f037c3bc6ded8edcd68fc4b32c0b275a5ac5ef7214da0365e32dd072ff69c378d2f2d8ee7ec58e50a58dd903",
+    "verificationMethod": "0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c"
+  },
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/11-token-holder/1-0-0.json",
+    "type": "JsonSchemaValidator2018"
+  }
+}

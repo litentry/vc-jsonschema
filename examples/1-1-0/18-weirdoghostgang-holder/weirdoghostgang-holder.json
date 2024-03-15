@@ -1,0 +1,46 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0xb44e77b31405069d210b459e3782e3c89c9186c6e9f41354665724430308ffee",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:evm:0x0ace67628bd43213c1c41ca1daef47e63923c75c",
+    "description": "You are WeirdoGhostGang NFT holder",
+    "type": "WeirdoGhostGang Holder",
+    "assertionText": "WeirdoGhostGangHolder",
+    "assertions": [
+      {
+        "src": "$is_weirdo_ghost_gang_holder",
+        "op": "==",
+        "dst": "true"
+      }
+    ],
+    "values": [false],
+    "endpoint": "wss://rpc.rococo-parachain.litentry.io"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xbf6ae6b420f26aae8717dcd7ccc7d0caf543a27dbd5f622ea666e2eff6d1ec77",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "67GPj6uJGayGPs5gp68w2u9P5Fjnm4uEMMQi99gY29g",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2024-02-29T15:42:47.680874018+00:00",
+  "parachainBlockNumber": 228828,
+  "sidechainBlockNumber": 2785385,
+  "proof": {
+    "created": "2024-02-29T15:42:47.681654150+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "2c2e58a89eb6901ae44dd80c4b7746e72809bc59b9846123e1c306eb2b11ae5b2a6a8cbd4fc6462c52518a19a8b9fed12cd82d347d85afbc216fbc5acb4be008",
+    "verificationMethod": "0xbf6ae6b420f26aae8717dcd7ccc7d0caf543a27dbd5f622ea666e2eff6d1ec77"
+  },
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/18-weirdoghostgang-holder/1-0-0.json",
+    "type": "JsonSchemaValidator2018"
+  }
+}
