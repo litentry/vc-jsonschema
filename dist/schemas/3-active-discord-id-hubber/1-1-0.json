@@ -1,0 +1,267 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/3-active-discord-id-hubber/1-1-0.json",
+  "title": "Active Discord ID-Hubber",
+  "description": "You have commented in Litentry Discord #🪂id-hubber channel. Channel link: https://discord.com/channels/807161594245152800/1093886939746291882",
+  "type": "object",
+  "required": [
+    "@context",
+    "issuer",
+    "issuanceDate",
+    "credentialSubject",
+    "proof"
+  ],
+  "properties": {
+    "@context": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issuer": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "mrenclave"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "mrenclave": {
+          "type": "string"
+        }
+      }
+    },
+    "issuanceDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "proof": {
+      "type": "object",
+      "required": [
+        "created",
+        "type",
+        "proofPurpose",
+        "proofValue",
+        "verificationMethod"
+      ],
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "type": {
+          "type": "string"
+        },
+        "proofPurpose": {
+          "type": "string"
+        },
+        "proofValue": {
+          "type": "string"
+        },
+        "verificationMethod": {
+          "type": "string"
+        }
+      }
+    },
+    "credentialSubject": {
+      "title": "Credential Subject of A3 assertion/ Active Discord ID-Hubber",
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "values",
+        "endpoint",
+        "assertions"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "endpoint": {
+          "type": "string",
+          "format": "uri"
+        },
+        "assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "and"
+            ],
+            "properties": {
+              "and": {
+                "type": "array",
+                "minItems": 5,
+                "maxItems": 5,
+                "additionalItems": false,
+                "items": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$has_role"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "=="
+                        ]
+                      },
+                      "dst": {
+                        "type": "string",
+                        "enum": [
+                          "true"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$has_commented"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "=="
+                        ]
+                      },
+                      "dst": {
+                        "type": "string",
+                        "enum": [
+                          "true"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$discord_guild_id"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "=="
+                        ]
+                      },
+                      "dst": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$discord_channel_id"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "=="
+                        ]
+                      },
+                      "dst": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$discord_role_id"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "=="
+                        ]
+                      },
+                      "dst": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

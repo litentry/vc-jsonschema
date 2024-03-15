@@ -1,0 +1,543 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/23-crypto-summary/1-1-0.json",
+  "title": "IDHub Crypto Summary",
+  "description": "Generate a summary of your on-chain identity",
+  "type": "object",
+  "required": [
+    "@context",
+    "issuer",
+    "issuanceDate",
+    "credentialSubject",
+    "proof"
+  ],
+  "properties": {
+    "@context": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issuer": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "mrenclave"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "mrenclave": {
+          "type": "string"
+        }
+      }
+    },
+    "issuanceDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "proof": {
+      "type": "object",
+      "required": [
+        "created",
+        "type",
+        "proofPurpose",
+        "proofValue",
+        "verificationMethod"
+      ],
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "type": {
+          "type": "string"
+        },
+        "proofPurpose": {
+          "type": "string"
+        },
+        "proofValue": {
+          "type": "string"
+        },
+        "verificationMethod": {
+          "type": "string"
+        }
+      }
+    },
+    "credentialSubject": {
+      "title": "Credential Subject of IDHub Crypto Summary",
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "values",
+        "endpoint",
+        "assertions"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "endpoint": {
+          "type": "string",
+          "format": "uri"
+        },
+        "assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "and"
+            ],
+            "properties": {
+              "and": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "additionalItems": false,
+                "items": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$total_txs"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "=="
+                        ]
+                      },
+                      "dst": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "and"
+                    ],
+                    "properties": {
+                      "and": {
+                        "type": "array",
+                        "minItems": 1,
+                        "maxItems": 3,
+                        "additionalItems": {
+                          "type": "object",
+                          "required": [
+                            "and"
+                          ],
+                          "properties": {
+                            "and": {
+                              "type": "array",
+                              "minItems": 1,
+                              "maxItems": 16,
+                              "additionalItems": {
+                                "type": "object",
+                                "required": [
+                                  "and"
+                                ],
+                                "properties": {
+                                  "and": {
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "maxItems": 2,
+                                    "additionalItems": false,
+                                    "items": [
+                                      {
+                                        "type": "object",
+                                        "required": [
+                                          "src",
+                                          "op",
+                                          "dst"
+                                        ],
+                                        "properties": {
+                                          "src": {
+                                            "type": "string",
+                                            "enum": [
+                                              "$token_name"
+                                            ]
+                                          },
+                                          "op": {
+                                            "type": "string",
+                                            "enum": [
+                                              "=="
+                                            ]
+                                          },
+                                          "dst": {
+                                            "type": "string",
+                                            "enum": [
+                                              "PEPE",
+                                              "SHIB",
+                                              "UNI",
+                                              "BNB",
+                                              "LINK",
+                                              "BLUR",
+                                              "ARB",
+                                              "BAT",
+                                              "INJ",
+                                              "AAVE",
+                                              "WLD",
+                                              "FTT",
+                                              "CAKE",
+                                              "LIT",
+                                              "ETH"
+                                            ]
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "object",
+                                        "required": [
+                                          "src",
+                                          "op",
+                                          "dst"
+                                        ],
+                                        "properties": {
+                                          "src": {
+                                            "type": "string",
+                                            "enum": [
+                                              "$token_address"
+                                            ]
+                                          },
+                                          "op": {
+                                            "type": "string",
+                                            "enum": [
+                                              "=="
+                                            ]
+                                          },
+                                          "dst": {
+                                            "type": "string",
+                                            "enum": [
+                                              "0x6982508145454Ce325dDbE47a25d4ec3d2311933",
+                                              "0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE",
+                                              "0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984",
+                                              "0xB8c77482e45F1F44dE1745F52C74426C631bDD52",
+                                              "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+                                              "0x5283d291dbcf85356a21ba090e6db59121208b44",
+                                              "0xB50721BCf8d664c30412Cfbc6cf7a15145234ad1",
+                                              "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+                                              "0xe28b3B32B6c345A34Ff64674606124Dd5Aceca30",
+                                              "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+                                              "0x163f8c2467924be0ae7b5347228cabf260318753",
+                                              "0x50D1c9771902476076eCFc8B2A83Ad6b9355a4c9",
+                                              "0x152649eA73beAb28c5b49B26eb48f7EAD6d4c898",
+                                              "0xb59490aB09A0f526Cc7305822aC65f2Ab12f9723",
+                                              "0xb1547683DA678f2e1F003A780143EC10Af8a832B",
+                                              "0xBf5140A22578168FD562DCcF235E5D43A02ce9B1",
+                                              "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
+                                              "0xF8A0BF9cF54Bb92F17374d9e9A321E6a111a51bD",
+                                              "0xa050FFb3eEb8200eEB7F61ce34FF644420FD3522",
+                                              "0x101d82428437127bF1608F699CD651e6Abf9766E",
+                                              "0xa2B726B1145A4773F68593CF171187d8EBe4d495",
+                                              "0xfb6115445Bff7b52FeB98650C87f44907E58f802",
+                                              "0x49BA054B9664e99ac335667a917c63bB94332E84",
+                                              "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82"
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "required": [
+                                    "src",
+                                    "op",
+                                    "dst"
+                                  ],
+                                  "properties": {
+                                    "src": {
+                                      "type": "string",
+                                      "enum": [
+                                        "$network"
+                                      ]
+                                    },
+                                    "op": {
+                                      "type": "string",
+                                      "enum": [
+                                        "=="
+                                      ]
+                                    },
+                                    "dst": {
+                                      "type": "string",
+                                      "enum": [
+                                        "Ethereum",
+                                        "Bsc"
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "items": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "src",
+                              "op",
+                              "dst"
+                            ],
+                            "properties": {
+                              "src": {
+                                "type": "string",
+                                "enum": [
+                                  "$kind"
+                                ]
+                              },
+                              "op": {
+                                "type": "string",
+                                "enum": [
+                                  "=="
+                                ]
+                              },
+                              "dst": {
+                                "type": "string",
+                                "enum": [
+                                  "TOKEN"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "and"
+                    ],
+                    "properties": {
+                      "and": {
+                        "type": "array",
+                        "minItems": 1,
+                        "maxItems": 2,
+                        "additionalItems": {
+                          "type": "object",
+                          "required": [
+                            "and"
+                          ],
+                          "properties": {
+                            "and": {
+                              "type": "array",
+                              "minItems": 1,
+                              "maxItems": 16,
+                              "additionalItems": {
+                                "type": "object",
+                                "required": [
+                                  "and"
+                                ],
+                                "properties": {
+                                  "and": {
+                                    "type": "array",
+                                    "minItems": 2,
+                                    "maxItems": 2,
+                                    "additionalItems": false,
+                                    "items": [
+                                      {
+                                        "type": "object",
+                                        "required": [
+                                          "src",
+                                          "op",
+                                          "dst"
+                                        ],
+                                        "properties": {
+                                          "src": {
+                                            "type": "string",
+                                            "enum": [
+                                              "$token_name"
+                                            ]
+                                          },
+                                          "op": {
+                                            "type": "string",
+                                            "enum": [
+                                              "=="
+                                            ]
+                                          },
+                                          "dst": {
+                                            "type": "string",
+                                            "enum": [
+                                              "The Weirdo Ghost Gang",
+                                              "Moonbirds",
+                                              "Yogapetz",
+                                              "Mocaverse",
+                                              "y00ts",
+                                              "The Sandbox",
+                                              "MATR1X KUKU",
+                                              "Doodles",
+                                              "CloneX",
+                                              "Nakamigos",
+                                              "Opepen",
+                                              "The Grapes",
+                                              "The Captainz",
+                                              "The Potatoz",
+                                              "Meebits"
+                                            ]
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "type": "object",
+                                        "required": [
+                                          "src",
+                                          "op",
+                                          "dst"
+                                        ],
+                                        "properties": {
+                                          "src": {
+                                            "type": "string",
+                                            "enum": [
+                                              "$token_address"
+                                            ]
+                                          },
+                                          "op": {
+                                            "type": "string",
+                                            "enum": [
+                                              "=="
+                                            ]
+                                          },
+                                          "dst": {
+                                            "type": "string",
+                                            "enum": [
+                                              "0x9401518f4EBBA857BAA879D9f76E1Cc8b31ed197",
+                                              "0x23581767a106ae21c074b2276D25e5C3e136a68b",
+                                              "0x142e03367eDE17Cd851477A4287D1F35676E6dC2",
+                                              "0x59325733eb952a92e069C87F0A6168b29E80627f",
+                                              "0xeC19CAeF9C046f5f87A497154766742ab9C90820",
+                                              "0x5CC5B05a8A13E3fBDB0BB9FcCd98D38e50F90c38",
+                                              "0x596a5CD859AD53fEc23Cd3fCD77522f0B407920d",
+                                              "0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e",
+                                              "0x49cF6f5d44E70224e2E23fDcdd2C053F30aDA28B",
+                                              "0xd774557b647330C91Bf44cfEAB205095f7E6c367",
+                                              "0x6339e5E072086621540D0362C4e3Cea0d643E114",
+                                              "0xe1dC516B1486Aba548eecD2947A11273518434a4",
+                                              "0x769272677faB02575E84945F03Eca517ACc544C",
+                                              "0x39ee2c7b3cb80254225884ca001F57118C8f21B6",
+                                              "0x7Bd29408f11D2bFC23c34f18275bBf23bB716Bc7"
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              "items": [
+                                {
+                                  "type": "object",
+                                  "required": [
+                                    "src",
+                                    "op",
+                                    "dst"
+                                  ],
+                                  "properties": {
+                                    "src": {
+                                      "type": "string",
+                                      "enum": [
+                                        "$network"
+                                      ]
+                                    },
+                                    "op": {
+                                      "type": "string",
+                                      "enum": [
+                                        "=="
+                                      ]
+                                    },
+                                    "dst": {
+                                      "type": "string",
+                                      "enum": [
+                                        "Ethereum"
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "items": [
+                          {
+                            "type": "object",
+                            "required": [
+                              "src",
+                              "op",
+                              "dst"
+                            ],
+                            "properties": {
+                              "src": {
+                                "type": "string",
+                                "enum": [
+                                  "$kind"
+                                ]
+                              },
+                              "op": {
+                                "type": "string",
+                                "enum": [
+                                  "=="
+                                ]
+                              },
+                              "dst": {
+                                "type": "string",
+                                "enum": [
+                                  "NFT"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
