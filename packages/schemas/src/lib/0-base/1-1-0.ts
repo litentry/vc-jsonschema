@@ -45,6 +45,14 @@ export const schema: JSONSchema7 = {
         mrenclave: {
           type: 'string',
         },
+        runtimeVersion: {
+          type: 'object',
+          required: ['parachain', 'sidechain'],
+          properties: {
+            sidechain: { type: 'string' },
+            parachain: { type: 'string' },
+          },
+        },
       },
     },
     issuanceDate: {
