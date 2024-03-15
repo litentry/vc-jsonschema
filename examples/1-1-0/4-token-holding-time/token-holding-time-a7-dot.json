@@ -54,7 +54,7 @@
     "verificationMethod": "0xfcdb571a7991e3d3ae4e2df972a84a37d2dcdba33890d919950191f532fb3e88"
   },
   "credentialSchema": {
-    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/4-token-holding-time/1-0-0.json",
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/4-token-holding-time/1-1-0.json",
     "type": "JsonSchemaValidator2018"
   }
 }

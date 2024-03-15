@@ -62,7 +62,7 @@
     "verificationMethod": "0xbf6ae6b420f26aae8717dcd7ccc7d0caf543a27dbd5f622ea666e2eff6d1ec77"
   },
   "credentialSchema": {
-    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/26-nft-holder/1-0-0.json",
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/26-nft-holder/1-1-0.json",
     "type": "JsonSchemaValidator2018"
   }
 }
