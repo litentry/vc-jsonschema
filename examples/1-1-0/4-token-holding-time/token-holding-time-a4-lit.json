@@ -1,0 +1,53 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0xd4fca1d70259b19eef4649e86c946331a8d15dfeb54bfaf88518f1fa14a39248",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+    "description": "The length of time a user continues to hold a particular token (with particular threshold of token amount)",
+    "type": "LIT Holding Time",
+    "assertions": [
+      {
+        "and": [
+          {
+            "src": "$minimum_amount",
+            "op": "==",
+            "dst": "10"
+          },
+          {
+            "src": "$from_date",
+            "op": "<",
+            "dst": "2017-01-01"
+          },
+          {
+            "src": "$to_date",
+            "op": ">=",
+            "dst": "2023-09-26"
+          }
+        ]
+      }
+    ],
+    "values": [true],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0x28d3b174041231100f3bea49444fb44b5ee500a463b2d26ff7e6dc5d98f15135",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "6cgJxACaf91s7CvoA6fVYUHpvFKLrEDe3mLJHDND6t59",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2023-09-26T02:47:06.480235979+00:00",
+  "proof": {
+    "created": "2023-09-26T02:47:06.480756337+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "25ff768780046ad249c2d853b9d442850199304221b78f3da99e0aac946a627702927262db5cef1a5411cba82c0925359fd31b0bac1771eb28c71b271bec9f0b",
+    "verificationMethod": "28d3b174041231100f3bea49444fb44b5ee500a463b2d26ff7e6dc5d98f15135"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0x27ea5cc4345541a1b78942c7fb53f2e5a126d27c0d3c6c7e66831534e7265eb4",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+    "description": "The length of time a user continues to hold a particular token (with particular threshold of token amount)",
+    "type": "DOT Holding Time",
+    "assertionText": "A7(BoundedVec([49, 48, 46, 48, 49], 64))",
+    "assertions": [
+      {
+        "and": [
+          {
+            "src": "$minimum_amount",
+            "op": "==",
+            "dst": "10.01"
+          },
+          {
+            "src": "$from_date",
+            "op": "<",
+            "dst": "2017-01-01"
+          },
+          {
+            "src": "$to_date",
+            "op": ">=",
+            "dst": "2024-02-19"
+          }
+        ]
+      }
+    ],
+    "values": [false],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xfcdb571a7991e3d3ae4e2df972a84a37d2dcdba33890d919950191f532fb3e88",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "21pnuQZwDwPuahVisciZVuqmJawwzMRZatEycE8su62c",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2024-02-19T20:29:06.042957423+00:00",
+  "parachainBlockNumber": 43,
+  "sidechainBlockNumber": 77,
+  "proof": {
+    "created": "2024-02-19T20:29:06.043463802+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "1832aac066df656c75a62e9f11c9deae1c56a6176bbb627b0b1a3f835b23be4366a23574488161b0c6d30cb7cdf8978637787bbecd18893cba887a80ee989104",
+    "verificationMethod": "0xfcdb571a7991e3d3ae4e2df972a84a37d2dcdba33890d919950191f532fb3e88"
+  },
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/4-token-holding-time/1-1-0.json",
+    "type": "JsonSchemaValidator2018"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0xb61f7e799f0522e5a7d0902049aa963fd98d6e6b370367e276c16c1c19f67680",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+    "description": "You've identified at least one account/address in both Web2 and Web3.",
+    "type": "Basic Identity Verification",
+    "assertionText": "A1",
+    "assertions": [
+      {
+        "and": [
+          {
+            "src": "$has_web2_account",
+            "op": "==",
+            "dst": "true"
+          },
+          {
+            "src": "$has_web3_account",
+            "op": "==",
+            "dst": "true"
+          }
+        ]
+      }
+    ],
+    "values": [true],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "21pnuQZwDwPuahVisciZVuqmJawwzMRZatEycE8su62c",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2024-02-19T16:41:30.028557124+00:00",
+  "parachainBlockNumber": 107,
+  "sidechainBlockNumber": 205,
+  "proof": {
+    "created": "2024-02-19T16:41:30.029083326+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "47d67d6db52930c88d4d3b8519b868ce18f2eebe1df61bd14c4d185d41f428629038939b297a47e366511d8c02e09de281195751da03aa6e2339f911910e4400",
+    "verificationMethod": "0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c"
+  },
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/1-basic-identity-verification/1-1-0.json",
+    "type": "JsonSchemaValidator2018"
+  }
+}

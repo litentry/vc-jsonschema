@@ -1,0 +1,43 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0x9ac6b858ab40974128363e393ae99e5aec24cb02499ab2b4ad4aba79b7c9c761",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:bitcoin:0x03166e0578c4d3a1b59919f139bc773a8e155786f90dba99a0041349774201caf9",
+    "description": "The amount of a particular token you are holding",
+    "type": "Token holding amount",
+    "assertionText": "Achainable(AmountToken(AchainableAmountToken { name: BoundedVec([69, 82, 67, 50, 48, 32, 98, 97, 108, 97, 110, 99, 101, 32, 111, 118, 101, 114, 32, 123, 97, 109, 111, 117, 110, 116, 125], 64), chain: BoundedVec([Ethereum], 128), amount: BoundedVec([48], 64), token: Some(BoundedVec([48, 120, 48, 99, 49, 48, 98, 102, 56, 102, 99, 98, 55, 98, 102, 53, 52, 49, 50, 49, 56, 55, 97, 53, 57, 53, 97, 98, 57, 55, 97, 51, 54, 48, 57, 49, 54, 48, 98, 53, 99, 54], 64)) }))",
+    "assertions": [
+      {
+        "and": [
+          { "src": "$usdd_holding_amount", "op": ">=", "dst": "0" },
+          { "src": "$usdd_holding_amount", "op": "<", "dst": "1" }
+        ]
+      }
+    ],
+    "values": [false],
+    "endpoint": "wss://tee-staging.litentry.io"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xe3107df2d3dc98cda5253a62980431bf71bccd7c4dc56135ef9f9f9a7a78fb18",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "DgzoX2SRCmZwF4GVz2xqrREUsCmNYL9truFRHsxGMowc",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2024-01-10T21:09:30.062235795+00:00",
+  "parachainBlockNumber": 13421,
+  "sidechainBlockNumber": 26980,
+  "proof": {
+    "created": "2024-01-10T21:09:30.232706133+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "ebc7d2f5d72aa86ee29e42ef9c0d293d3d6eacbd53e86971b0d418bf75528466f2dbcb0e58f05efd00809b0a78f4bef102a5c93b67fd2ad84da3f99f37b8c609",
+    "verificationMethod": "0xe3107df2d3dc98cda5253a62980431bf71bccd7c4dc56135ef9f9f9a7a78fb18"
+  }
+}

@@ -6,6 +6,8 @@ import { ajv } from '../src/lib/ajv';
 
 const OUTPUT_FOLDER = 'dist/schemas';
 
+const LATEST_VERSION = '1-1-0';
+
 // relative path to the root of the project
 const schemaFiles = glob('packages/schemas/src/lib/**/[01]-[01]-[01].ts');
 
@@ -47,8 +49,10 @@ it.each(schemaFiles)('generate schema for %s', async (file) => {
   );
 
   // create a latest.json symlink
-  fs.symlinkSync(
-    `${fileName.replace('.ts', '.json')}`,
-    path.join(outputPath, 'latest.json')
-  );
+  if (fileName === `${LATEST_VERSION}.ts`) {
+    fs.symlinkSync(
+      `${fileName.replace('.ts', '.json')}`,
+      path.join(outputPath, 'latest.json')
+    );
+  }
 });

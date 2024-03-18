@@ -1,0 +1,46 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0x4eccf30c25ba705a622d7b3752639c2e889c9be14d7cc92ebc37fd8af51894bf",
+  "type": ["VerifiableCredential"],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+    "description": "You are VIP3 Silver Card Holder",
+    "type": "VIP3 Silver Card Holder",
+    "assertionText": "VIP3MembershipCard(Silver)",
+    "assertions": [
+      {
+        "src": "$is_silver_card",
+        "op": "==",
+        "dst": "true"
+      }
+    ],
+    "values": [true],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "21pnuQZwDwPuahVisciZVuqmJawwzMRZatEycE8su62c",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2024-02-19T16:55:54.028957601+00:00",
+  "parachainBlockNumber": 179,
+  "sidechainBlockNumber": 349,
+  "proof": {
+    "created": "2024-02-19T16:55:54.029386919+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "f1feb05acadb7d053c7c2d96f75e818c19e010f43bf3bed59025c6090596b3002279ae3cf61079f88aeb07ce5faae9efcd3f682640e6c8020440b51c9dd7f207",
+    "verificationMethod": "0xf3c449a72692bcf9c4dfb50a28e076f8822b47a2bb3ccee6b6f3b2ea3c2ea20c"
+  },
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/19-vip3-card-holder/1-1-0.json",
+    "type": "JsonSchemaValidator2018"
+  }
+}
