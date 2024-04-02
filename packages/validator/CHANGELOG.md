@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix an issue that was preventing `validateVcSchema` to be called on different schemas during the same runtime.
+- Fix an issue that was preventing `validateVcSchema` to be called on different schemas within the same execution environment.
 
 ## [0.0.2] - 2024-02-16
 
