@@ -28,30 +28,26 @@ export const schema: JSONSchema7 = {
 
     credentialSubject: credentialSubject({
       title: 'Credential Subject of Token holding amount list',
-      assertions: {
-        minItems: 0,
-        maxItems: supportedTokens.length,
-        type: 'array',
-        items: assertion.and({
-          items: [
-            assertion.clause({
-              src: ['$token'],
-              op: ['=='],
-              dst: supportedTokens,
-            }),
-            assertion.clause({
-              src: ['$holding_amount'],
-              op: ['>='],
-              dst: undefined, // Range based on user holding amount. Format is a string.
-            }),
-            assertion.clause({
-              src: ['$holding_amount'],
-              op: ['<'],
-              dst: undefined, // Range based on user holding amount. Format is a string.
-            }),
-          ],
-        }),
-      },
+      assertionsMaxItems: supportedTokens.length,
+      assertions: assertion.and({
+        items: [
+          assertion.clause({
+            src: ['$token'],
+            op: ['=='],
+            dst: supportedTokens,
+          }),
+          assertion.clause({
+            src: ['$holding_amount'],
+            op: ['>='],
+            dst: undefined, // Range based on user holding amount. Format is a string.
+          }),
+          assertion.clause({
+            src: ['$holding_amount'],
+            op: ['<'],
+            dst: undefined, // Range based on user holding amount. Format is a string.
+          }),
+        ],
+      }),
     }),
   },
 };
