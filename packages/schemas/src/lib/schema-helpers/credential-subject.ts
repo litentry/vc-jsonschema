@@ -44,6 +44,7 @@ export const credentialSubject = (args: {
     },
     assertions: {
       type: 'array',
+      minItems: 1,
       items: args.assertions,
       ...args.assertionsProps,
     },

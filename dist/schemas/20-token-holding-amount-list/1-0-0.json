@@ -112,8 +112,7 @@
         },
         "assertions": {
           "type": "array",
-          "minItems": 1,
-          "maxItems": 7,
+          "minItems": 0,
           "items": {
             "type": "object",
             "required": [
@@ -213,7 +212,8 @@
                 ]
               }
             }
-          }
+          },
+          "maxItems": 7
         }
       }
     }
