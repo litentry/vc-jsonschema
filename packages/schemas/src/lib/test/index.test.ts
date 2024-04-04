@@ -6,6 +6,8 @@ import { globSync as glob } from 'fast-glob';
 import { ajv } from '../ajv';
 import { ValidateFunction } from 'ajv';
 
+const FILENAME_TO_DEBUG = ''; // update to debug a single file
+
 type VersionSpec = {
   version: string;
   compatibleVersionGlob: string;
@@ -29,27 +31,33 @@ function load(spec: VersionSpec): VersionData {
   let baseSchema = null as SchemaSpec | null;
   const credentialSchemaSpecs: SchemaSpec[] = [];
 
-  schemaFiles.forEach((filePath) => {
-    // e.g.: packages/schemas/src/lib/0-base/1-0-0.ts
-    const pathAsChunks = filePath.split('/');
-    // e.g.: 1-0-0.ts
-    const fileName = pathAsChunks.slice(-1)[0];
-    // e.g.: 0-base
-    const folderName = pathAsChunks.slice(0, -1).slice(-1)[0];
+  schemaFiles
+    .filter((filePath) =>
+      FILENAME_TO_DEBUG ? filePath.indexOf(FILENAME_TO_DEBUG) > -1 : true
+    )
+    .forEach((filePath) => {
+      // e.g.: packages/schemas/src/lib/0-base/1-0-0.ts
+      const pathAsChunks = filePath.split('/');
+      // e.g.: 1-0-0.ts
+      const fileName = pathAsChunks.slice(-1)[0];
+      // e.g.: 1-0-0
+      const folderName = pathAsChunks.slice(0, -1).slice(-1)[0];
 
-    const schema = {
-      name: folderName,
-      importPath: `../../lib/${folderName}/${fileName}`,
-    };
+      const schema = {
+        name: folderName,
+        importPath: `../../lib/${folderName}/${fileName}`,
+      };
 
-    if (folderName === '0-base') {
-      baseSchema = schema;
-    } else {
-      credentialSchemaSpecs.push(schema);
-    }
-  });
+      if (folderName === '0-base') {
+        baseSchema = schema;
+      } else {
+        credentialSchemaSpecs.push(schema);
+      }
+    });
 
-  expect(baseSchema).not.toBeNull();
+  if (!FILENAME_TO_DEBUG) {
+    expect(baseSchema).not.toBeNull();
+  }
 
   return {
     ...spec,
@@ -102,8 +110,9 @@ describe.each(VERSION_DATA)(
     test.each(credentialSchemaSpecs)(
       '$name schema should accept $name certificates',
       async ({ name, importPath }) => {
-        // Import schema definition
+        // Import schema definition. Node.js module imports are relative to the file location.
         const { schema } = await import(importPath);
+
         expect(schema.$id).toBeDefined();
         expect(schema.$schema).toBeDefined();
 
@@ -112,14 +121,16 @@ describe.each(VERSION_DATA)(
         expect(validate.errors).toBeNull();
 
         const examplePaths = glob(
-          `../examples/${compatibleVersionGlob}/${name}/*.json`
+          // Heads-up: File reading is relative to the root of the project
+          `examples/${compatibleVersionGlob}/${name}/*.json`
         );
+
         for (const examplePath of examplePaths) {
           const example = JSON.parse(readFileSync(examplePath, 'utf8'));
           const isValid = validate(example);
 
           if (!isValid) {
-            fail(new ValidationError(examplePath, validate.errors));
+            throw new ValidationError(examplePath, validate.errors);
           }
         }
       }
