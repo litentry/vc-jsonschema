@@ -28,7 +28,10 @@ export const schema: JSONSchema7 = {
 
     credentialSubject: credentialSubject({
       title: 'Credential Subject of Token holding amount list',
-      assertionsMaxItems: supportedTokens.length,
+      assertionsProps: {
+        minItems: 0,
+        maxItems: supportedTokens.length,
+      },
       assertions: assertion.and({
         items: [
           assertion.clause({
