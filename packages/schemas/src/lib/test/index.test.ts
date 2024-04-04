@@ -81,9 +81,25 @@ class ValidationError extends Error {
   }
 }
 
+const schemasWithNoExamples: string[] = [];
+
+afterAll(() => {
+  if (schemasWithNoExamples.length > 0) {
+    console.warn(
+      '[warning]: The following schemas have no examples:',
+      schemasWithNoExamples
+    );
+  }
+});
+
 describe.each(VERSION_DATA)(
   'Schema $version should accept $compatibleVersionGlob certificates',
-  ({ compatibleVersionGlob, baseSchemaSpec, credentialSchemaSpecs }) => {
+  ({
+    version,
+    compatibleVersionGlob,
+    baseSchemaSpec,
+    credentialSchemaSpecs,
+  }) => {
     test('base schema should accept all certificates', async () => {
       // Import schema definition
       const { schema } = await import(baseSchemaSpec.importPath);
@@ -124,6 +140,10 @@ describe.each(VERSION_DATA)(
           // Heads-up: File reading is relative to the root of the project
           `examples/${compatibleVersionGlob}/${name}/*.json`
         );
+
+        if (examplePaths.length === 0) {
+          schemasWithNoExamples.push(`${version}/${name}`);
+        }
 
         for (const examplePath of examplePaths) {
           const example = JSON.parse(readFileSync(examplePath, 'utf8'));
