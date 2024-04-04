@@ -15,8 +15,8 @@ import type { JSONSchema7 } from 'json-schema';
  */
 export const credentialSubject = (args: {
   title?: string;
-  assertionsMaxItems?: number;
   assertions: JSONSchema7;
+  assertionsProps?: JSONSchema7;
 }): JSONSchema7 => ({
   title: args.title || 'Litentry Verifiable Credential Subject',
   type: 'object',
@@ -44,9 +44,8 @@ export const credentialSubject = (args: {
     },
     assertions: {
       type: 'array',
-      minItems: 1,
-      maxItems: args.assertionsMaxItems,
       items: args.assertions,
+      ...args.assertionsProps,
     },
   },
 });
