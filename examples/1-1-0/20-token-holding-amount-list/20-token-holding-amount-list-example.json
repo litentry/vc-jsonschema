@@ -1,0 +1,104 @@
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1"
+  ],
+  "id": "0xe8afa83008d742abffc8cc0a4e1aac626a07d8d2841da217f4d785f9e18ad53e",
+  "type": [
+    "VerifiableCredential"
+  ],
+  "credentialSubject": {
+    "id": "did:litentry:substrate:0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+    "description": "The amount of a particular token you are holding",
+    "type": "Token holding amount list",
+    "assertionText": "BRC20AmountHolder",
+    "assertions": [
+      {
+        "and": [
+          {
+            "src": "$token",
+            "op": "==",
+            "dst": "$ordi"
+          },
+          {
+            "src": "$holding_amount",
+            "op": ">=",
+            "dst": "100"
+          },
+          {
+            "src": "$holding_amount",
+            "op": "<",
+            "dst": "200"
+          }
+        ]
+      },
+      {
+        "and": [
+          {
+            "src": "$token",
+            "op": "==",
+            "dst": "$rats"
+          },
+          {
+            "src": "$holding_amount",
+            "op": ">=",
+            "dst": "10000000"
+          },
+          {
+            "src": "$holding_amount",
+            "op": "<",
+            "dst": "20000000"
+          }
+        ]
+      },
+      {
+        "and": [
+          {
+            "src": "$token",
+            "op": "==",
+            "dst": "$MMSS"
+          },
+          {
+            "src": "$holding_amount",
+            "op": ">=",
+            "dst": "1000"
+          },
+          {
+            "src": "$holding_amount",
+            "op": "<",
+            "dst": "2000"
+          }
+        ]
+      }
+    ],
+    "values": [
+      true,
+      true,
+      true
+    ],
+    "endpoint": "http://localhost:9933"
+  },
+  "issuer": {
+    "id": "did:litentry:substrate:0xbb39f708bc7571fd4b5095dd66dbd481997e129199b38b999ef125a2cab34afe",
+    "name": "Litentry TEE Worker",
+    "mrenclave": "7fNpPzEREmmsPxqVCSbpsm7r9PXuTcTD5t2sJZjeMRzc",
+    "runtimeVersion": {
+      "parachain": 9174,
+      "sidechain": 104
+    }
+  },
+  "issuanceDate": "2024-04-03T06:34:12.074527527+00:00",
+  "parachainBlockNumber": 37,
+  "sidechainBlockNumber": 64,
+  "proof": {
+    "created": "2024-04-03T06:34:12.074912407+00:00",
+    "type": "Ed25519Signature2020",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "bbd286931793436e68d8a6e8a359b0d1820c793e240b6f0ffc744d20e5d15ca58a56d999331a76bd09092c335558585fab0adf2090d8d26cf273ee0b7260120b",
+    "verificationMethod": "0xbb39f708bc7571fd4b5095dd66dbd481997e129199b38b999ef125a2cab34afe"
+  },
+  "credentialSchema": {
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/20-token-holding-amount-list/1-0-0.json",
+    "type": "JsonSchemaValidator2018"
+  }
+}

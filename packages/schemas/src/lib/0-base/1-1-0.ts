@@ -49,8 +49,8 @@ export const schema: JSONSchema7 = {
           type: 'object',
           required: ['parachain', 'sidechain'],
           properties: {
-            sidechain: { type: 'string' },
-            parachain: { type: 'string' },
+            sidechain: { type: 'number' },
+            parachain: { type: 'number' },
           },
         },
       },
