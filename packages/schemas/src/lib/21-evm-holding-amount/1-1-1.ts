@@ -93,7 +93,7 @@ const tokenAddresses = Object.values(supportedTokens).flat();
 export const schema: JSONSchema7 = {
   ...base,
 
-  $id: resolveGitHubPath('21-evm-holding-amount/1-1-0.json'),
+  $id: resolveGitHubPath('21-evm-holding-amount/1-1-1.json'),
 
   title: 'Token holding amount',
   description: 'The amount of a particular token you are holding',
