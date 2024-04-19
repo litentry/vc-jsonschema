@@ -1,0 +1,27 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project follows [Schema Versioning](https://docs.snowplow.io/docs/pipeline-components-and-applications/iglu/common-architecture/schemaver/) (MODEL-REVISION-ADDITION).
+
+## [Unreleased]
+
+-
+
+## 2024-04-02
+
+(ADDITION) Schema [`21-evm-holding-amount`](./src//lib/21-evm-holding-amount/) bumped to 1-1-1
+
+- Added support for the MCRT token and Solana network.
+
+## 2024-03-18
+
+(REVISION) All schemas bumped to 1-1-0
+
+- Added `issuer.runtimeVersion` property
+  - optional for backwards compatibility
+
+## [1-0-0] - 2024-02-10
+
+Initial version
