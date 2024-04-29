@@ -1,0 +1,201 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/6-twitter-follower-amount/1-1-1.json",
+  "title": "Twitter Follower Amount",
+  "description": "The range of the user's Twitter follower count",
+  "type": "object",
+  "required": [
+    "@context",
+    "issuer",
+    "issuanceDate",
+    "credentialSubject",
+    "proof"
+  ],
+  "properties": {
+    "@context": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issuer": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "mrenclave"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "mrenclave": {
+          "type": "string"
+        },
+        "runtimeVersion": {
+          "type": "object",
+          "required": [
+            "parachain",
+            "sidechain"
+          ],
+          "properties": {
+            "sidechain": {
+              "type": "number"
+            },
+            "parachain": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "issuanceDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "proof": {
+      "type": "object",
+      "required": [
+        "created",
+        "type",
+        "proofPurpose",
+        "proofValue",
+        "verificationMethod"
+      ],
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "type": {
+          "type": "string"
+        },
+        "proofPurpose": {
+          "type": "string"
+        },
+        "proofValue": {
+          "type": "string"
+        },
+        "verificationMethod": {
+          "type": "string"
+        }
+      }
+    },
+    "credentialSubject": {
+      "title": "Credential Subject of A6 assertion/ Twitter Follower Amount",
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "values",
+        "endpoint",
+        "assertions"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "endpoint": {
+          "type": "string",
+          "format": "uri"
+        },
+        "assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "and"
+            ],
+            "properties": {
+              "and": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "additionalItems": false,
+                "items": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$total_followers"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          ">"
+                        ]
+                      },
+                      "dst": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$total_followers"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "<="
+                        ]
+                      },
+                      "dst": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

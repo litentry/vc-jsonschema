@@ -9,6 +9,14 @@ and this project follows [Schema Versioning](https://docs.snowplow.io/docs/pipel
 
 -
 
+## 2024-04-29
+
+(ADDITION) [`6-twitter-follower-amount`](./src/lib/6-twitter-follower-amount/) bumped to 1-1-1
+
+- Updated the variable `total_followers` to support any numbers
+
+(MODEL) [`25-token-holding-amount`](./src/lib/25-token-holding-amount/) initial to 1-0-0
+
 ## 2024-04-02
 
 (ADDITION) Schema [`21-evm-holding-amount`](./src//lib/21-evm-holding-amount/) bumped to 1-1-1
