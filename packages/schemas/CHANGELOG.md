@@ -9,6 +9,12 @@ and this project follows [Schema Versioning](https://docs.snowplow.io/docs/pipel
 
 -
 
+## 2024-04-30
+
+(REVISION) [`25-token-holding-amount`](./src/lib/25-token-holding-amount/) bumped to 1-1-0
+
+- Updated the single `supportedNetworks` condition to wrap by `and`
+
 ## 2024-04-29
 
 (ADDITION) [`6-twitter-follower-amount`](./src/lib/6-twitter-follower-amount/) bumped to 1-1-1
