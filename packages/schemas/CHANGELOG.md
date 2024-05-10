@@ -9,6 +9,12 @@ and this project follows [Schema Versioning](https://docs.snowplow.io/docs/pipel
 
 -
 
+## 2024-05-10
+
+(ADDITION) [`24-platform-user`](./src/lib/24-platform-user/) bumped to 1-1-s1
+
+- Support `MagicCraft` platform.
+
 ## 2024-04-30
 
 (REVISION) [`25-token-holding-amount`](./src/lib/25-token-holding-amount/) bumped to 1-1-0
@@ -22,6 +28,12 @@ and this project follows [Schema Versioning](https://docs.snowplow.io/docs/pipel
 - Updated the variable `total_followers` to support any numbers
 
 (MODEL) [`25-token-holding-amount`](./src/lib/25-token-holding-amount/) initial to 1-0-0
+
+## 2024-04-25
+
+(ADDITION) [`21-evm-holding-amount`](./src/lib/21-evm-holding-amount/) bumped to 1-1-1
+
+- Support `MCRT` token.
 
 ## 2024-04-02
 
