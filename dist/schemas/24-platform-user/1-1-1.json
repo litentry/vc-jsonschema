@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/24-platform-user/1-1-0.json",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/24-platform-user/1-1-1.json",
   "title": "Platform user",
   "description": "You are a user of a certain platform",
   "type": "object",
