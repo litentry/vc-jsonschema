@@ -9,6 +9,12 @@ and this project follows [Schema Versioning](https://docs.snowplow.io/docs/pipel
 
 -
 
+## 2024-05-13
+
+(REVISION) [`25-token-holding-amount`](./src/lib/25-token-holding-amount/) bumped to 1-1-1
+
+- Support tokens: `Ada`, `Doge`, `Shib`, `Uni`, `Bch`, `Etc`, `Atom`, `Dai`, `Leo`, `Fil`, `Imx`, `Cro`, `Inj`.
+
 ## 2024-05-10
 
 (ADDITION) [`24-platform-user`](./src/lib/24-platform-user/) bumped to 1-1-s1
