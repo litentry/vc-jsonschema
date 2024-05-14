@@ -1,0 +1,484 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/25-token-holding-amount/1-1-1.json",
+  "title": "Token holding amount",
+  "description": "The amount of a particular token you are holding",
+  "type": "object",
+  "required": [
+    "@context",
+    "issuer",
+    "issuanceDate",
+    "credentialSubject",
+    "proof"
+  ],
+  "properties": {
+    "@context": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issuer": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "mrenclave"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "mrenclave": {
+          "type": "string"
+        },
+        "runtimeVersion": {
+          "type": "object",
+          "required": [
+            "parachain",
+            "sidechain"
+          ],
+          "properties": {
+            "sidechain": {
+              "type": "number"
+            },
+            "parachain": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "issuanceDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "proof": {
+      "type": "object",
+      "required": [
+        "created",
+        "type",
+        "proofPurpose",
+        "proofValue",
+        "verificationMethod"
+      ],
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "type": {
+          "type": "string"
+        },
+        "proofPurpose": {
+          "type": "string"
+        },
+        "proofValue": {
+          "type": "string"
+        },
+        "verificationMethod": {
+          "type": "string"
+        }
+      }
+    },
+    "credentialSubject": {
+      "title": "Credential Subject of Token holding amount",
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "values",
+        "endpoint",
+        "assertions"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "endpoint": {
+          "type": "string",
+          "format": "uri"
+        },
+        "assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "and"
+            ],
+            "properties": {
+              "and": {
+                "type": "array",
+                "minItems": 4,
+                "maxItems": 4,
+                "additionalItems": false,
+                "items": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$token"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "=="
+                        ]
+                      },
+                      "dst": {
+                        "type": "string",
+                        "enum": [
+                          "BNB",
+                          "ETH",
+                          "SPACE_ID",
+                          "LIT",
+                          "WBTC",
+                          "USDC",
+                          "USDT",
+                          "CRV",
+                          "MATIC",
+                          "DYDX",
+                          "AMP",
+                          "CVX",
+                          "TUSD",
+                          "USDD",
+                          "GUSD",
+                          "LINK",
+                          "GRT",
+                          "COMP",
+                          "PEOPLE",
+                          "GTC",
+                          "TON",
+                          "TRX",
+                          "NFP",
+                          "SOL",
+                          "MCRT",
+                          "BTC",
+                          "ADA",
+                          "DOGE",
+                          "SHIB",
+                          "UNI",
+                          "BCH",
+                          "ETC",
+                          "ATOM",
+                          "DAI",
+                          "LEO",
+                          "FIL",
+                          "IMX",
+                          "CRO",
+                          "INJ"
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "or"
+                    ],
+                    "properties": {
+                      "or": {
+                        "type": "array",
+                        "items": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "required": [
+                                "and"
+                              ],
+                              "properties": {
+                                "and": {
+                                  "type": "array",
+                                  "minItems": 1,
+                                  "maxItems": 1,
+                                  "additionalItems": false,
+                                  "items": [
+                                    {
+                                      "type": "object",
+                                      "required": [
+                                        "src",
+                                        "op",
+                                        "dst"
+                                      ],
+                                      "properties": {
+                                        "src": {
+                                          "type": "string",
+                                          "enum": [
+                                            "$network"
+                                          ]
+                                        },
+                                        "op": {
+                                          "type": "string",
+                                          "enum": [
+                                            "=="
+                                          ]
+                                        },
+                                        "dst": {
+                                          "type": "string",
+                                          "enum": [
+                                            "bsc",
+                                            "bitcoin_p2tr",
+                                            "bitcoin_p2pkh",
+                                            "bitcoin_p2sh",
+                                            "bitcoin_p2wpkh",
+                                            "bitcoin_p2wsh",
+                                            "ethereum",
+                                            "litentry",
+                                            "litmus",
+                                            "solana",
+                                            "arbitrum",
+                                            "polygon"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "type": "object",
+                              "required": [
+                                "and"
+                              ],
+                              "properties": {
+                                "and": {
+                                  "type": "array",
+                                  "minItems": 2,
+                                  "maxItems": 2,
+                                  "additionalItems": false,
+                                  "items": [
+                                    {
+                                      "type": "object",
+                                      "required": [
+                                        "src",
+                                        "op",
+                                        "dst"
+                                      ],
+                                      "properties": {
+                                        "src": {
+                                          "type": "string",
+                                          "enum": [
+                                            "$network"
+                                          ]
+                                        },
+                                        "op": {
+                                          "type": "string",
+                                          "enum": [
+                                            "=="
+                                          ]
+                                        },
+                                        "dst": {
+                                          "type": "string",
+                                          "enum": [
+                                            "bsc",
+                                            "bitcoin_p2tr",
+                                            "bitcoin_p2pkh",
+                                            "bitcoin_p2sh",
+                                            "bitcoin_p2wpkh",
+                                            "bitcoin_p2wsh",
+                                            "ethereum",
+                                            "litentry",
+                                            "litmus",
+                                            "solana",
+                                            "arbitrum",
+                                            "polygon"
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "object",
+                                      "required": [
+                                        "src",
+                                        "op",
+                                        "dst"
+                                      ],
+                                      "properties": {
+                                        "src": {
+                                          "type": "string",
+                                          "enum": [
+                                            "$address"
+                                          ]
+                                        },
+                                        "op": {
+                                          "type": "string",
+                                          "enum": [
+                                            "=="
+                                          ]
+                                        },
+                                        "dst": {
+                                          "type": "string",
+                                          "enum": [
+                                            "0xb8c77482e45f1f44de1745f52c74426c631bdd52",
+                                            "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+                                            "0x2dff88a56767223a5529ea5960da7a3f5f766406",
+                                            "0xb59490ab09a0f526cc7305822ac65f2ab12f9723",
+                                            "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+                                            "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+                                            "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+                                            "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+                                            "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+                                            "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+                                            "0xdac17f958d2ee523a2206206994597c13d831ec7",
+                                            "0x55d398326f99059ff775485246999027b3197955",
+                                            "0xd533a949740bb3306d119cc777fa900ba034cd52",
+                                            "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+                                            "0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0",
+                                            "0x92d6c1e31e14520e676a687f0a93788b716beff5",
+                                            "0xff20817765cb7f73d4bde2e66e067e58d11095c2",
+                                            "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
+                                            "0x0000000000085d4780b73119b644ae5ecd22b376",
+                                            "0x40af3827f39d0eacbf4a168f8d4ee67c121d11c9",
+                                            "0x0c10bf8fcb7bf5412187a595ab97a3609160b5c6",
+                                            "0xd17479997f34dd9156deef8f95a52d81d265be9c",
+                                            "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd",
+                                            "0x514910771af9ca656af840dff83e8264ecf986ca",
+                                            "0xf8a0bf9cf54bb92f17374d9e9a321e6a111a51bd",
+                                            "0xc944e90c64b2c07662a292be6244bdf05cda44a7",
+                                            "0x52ce071bd9b1c4b00a0b92d298c512478cad67e8",
+                                            "0xc00e94cb662c3520282e6f5717214004a7f26888",
+                                            "0x7a58c0be72be218b41c608b7fe7c5bb630736c71",
+                                            "0xde30da39c46104798bb5aa3fe8b9e0e1f348163f",
+                                            "0x582d872a1b094fc48f5de31d3b73f2d9be47def1",
+                                            "0x76a797a59ba2c17726896976b7b3747bfd1d220f",
+                                            "0x50327c6c5a14dcade707abad2e27eb517df87ab5",
+                                            "0xCE7de646e7208a4Ef112cb6ed5038FA6cC6b12e3",
+                                            "0x75e8ddb518bb757b4282cd5b83bb70d4101d12fb",
+                                            "0x570a5d26f7765ecb712c0924e4de545b89fd43df",
+                                            "0x5288738df1aeb0894713de903e1d0c001eeb7644",
+                                            "0x4b8285aB433D8f69CB48d5Ad62b415ed1a221e4f",
+                                            "0xde16ce60804a881e9f8c4ebb3824646edecd478d",
+                                            "FADm4QuSUF1K526LvTjvbJjKzeeipP6bj5bSzp3r6ipq",
+                                            "0x3EE2200Efb3400fAbB9AacF31297cBdD1d435D47",
+                                            "0xba2ae424d960c26247dd6c32edc70b295c744c43",
+                                            "0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce",
+                                            "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+                                            "0xbf5140a22578168fd562dccf235e5d43a02ce9b1",
+                                            "8FU95xFJhUUkyyCLU13HSzDLs7oC4QZdXQHL6SCeab36",
+                                            "0xFa7F8980b0f1E64A2062791cc3b0871572f1F7f0",
+                                            "0xb33eaad8d922b1083446dc23f610c2567fb5180f",
+                                            "0x8fF795a6F4D97E7887C79beA79aba5cc76444aDf",
+                                            "0x3d6545b08693dae087e957cb1180ee38b9e3c25e",
+                                            "0x8D983cb9388EaC77af0474fA441C4815500Cb7BB",
+                                            "0x0eb3a705fc54725037cc9e008bdede697f62f335",
+                                            "0xac51C4c48Dc3116487eD4BC16542e27B5694Da1b",
+                                            "0x6b175474e89094c44da98b954eedeac495271d0f",
+                                            "0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3",
+                                            "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+                                            "EjmyN6qEC1Tf1JxiG1ae7UTJhUxSwk1TCWNWqxWV4J6o",
+                                            "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+                                            "0x2af5d2ad76741191d15dfe7bf6ac92d4bd912ca3",
+                                            "0x0d8ce2a99bb6e3b7db580ed848240e4a0f9ae153",
+                                            "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
+                                            "0xa0b73e1ff0b80914ab6fe0444e65848c4c34450b",
+                                            "DvjMYMVeXgKxaixGKpzQThLoG98nc7HSU7eanzsdCboA",
+                                            "0xe28b3b32b6c345a34ff64674606124dd5aceca30",
+                                            "0xa2b726b1145a4773f68593cf171187d8ebe4d495"
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$holding_amount"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          ">="
+                        ]
+                      },
+                      "dst": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$holding_amount"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "<"
+                        ]
+                      },
+                      "dst": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
