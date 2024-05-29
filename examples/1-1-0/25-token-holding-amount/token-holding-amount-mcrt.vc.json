@@ -1,0 +1,106 @@
+{
+    "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://w3id.org/security/suites/ed25519-2020/v1"
+    ],
+    "id": "0x537119c313f16dc143a23333fdb476ef06e9a8e98b228a73891d555f8b952db0",
+    "type": [
+        "VerifiableCredential"
+    ],
+    "credentialSubject": {
+        "id": "did:litentry:evm:0xc3c52caad6762c17460337d2efccfefd0573e14e",
+        "description": "The amount of a particular token you are holding",
+        "type": "Token Holding Amount",
+        "assertionText": "TokenHoldingAmount(Mcrt)",
+        "assertions": [
+            {
+                "and": [
+                    {
+                        "src": "$token",
+                        "op": "==",
+                        "dst": "MCRT"
+                    },
+                    {
+                        "or": [
+                            {
+                                "and": [
+                                    {
+                                        "src": "$network",
+                                        "op": "==",
+                                        "dst": "bsc"
+                                    },
+                                    {
+                                        "src": "$address",
+                                        "op": "==",
+                                        "dst": "0x4b8285aB433D8f69CB48d5Ad62b415ed1a221e4f"
+                                    }
+                                ]
+                            },
+                            {
+                                "and": [
+                                    {
+                                        "src": "$network",
+                                        "op": "==",
+                                        "dst": "ethereum"
+                                    },
+                                    {
+                                        "src": "$address",
+                                        "op": "==",
+                                        "dst": "0xde16ce60804a881e9f8c4ebb3824646edecd478d"
+                                    }
+                                ]
+                            },
+                            {
+                                "and": [
+                                    {
+                                        "src": "$network",
+                                        "op": "==",
+                                        "dst": "solana"
+                                    },
+                                    {
+                                        "src": "$address",
+                                        "op": "==",
+                                        "dst": "FADm4QuSUF1K526LvTjvbJjKzeeipP6bj5bSzp3r6ipq"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "src": "$holding_amount",
+                        "op": ">=",
+                        "dst": "0"
+                    },
+                    {
+                        "src": "$holding_amount",
+                        "op": "<",
+                        "dst": "2000"
+                    }
+                ]
+            }
+        ],
+        "values": [
+            false
+        ],
+        "endpoint": "wss://rpc.rococo-parachain.litentry.io"
+    },
+    "issuer": {
+        "id": "did:litentry:substrate:0x0f20262ae7be4d0b58f651c641308aa63fb35fe95bc02551c6a46df825dde4af",
+        "name": "Litentry TEE Worker",
+        "mrenclave": "BfyUAURTMD5t3Ukz1Rh6PoZdiLyoG4Nf8nU9Uhr8wbTN"
+    },
+    "issuanceDate": "2024-05-09T05:50:59.585561562+00:00",
+    "parachainBlockNumber": 489,
+    "sidechainBlockNumber": 974,
+    "proof": {
+        "created": "2024-05-09T05:50:59.586234111+00:00",
+        "type": "Ed25519Signature2020",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "5945ff396f4a90055c5c654740c3450b75b782c81c873ac26c21fe172394593ef2620170413e0dcc8b663f0434fdd7c2324d031a5e2ffb2946f66d76ceb0280f",
+        "verificationMethod": "0x0f20262ae7be4d0b58f651c641308aa63fb35fe95bc02551c6a46df825dde4af"
+    },
+    "credentialSchema": {
+        "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/25-token-holding-amount/1-1-0.json",
+        "type": "JsonSchemaValidator2018"
+    }
+}
