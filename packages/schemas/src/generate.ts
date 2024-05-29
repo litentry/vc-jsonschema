@@ -9,7 +9,7 @@ const OUTPUT_FOLDER = 'dist/schemas';
 const LATEST_VERSION = '1-1-0';
 
 // relative path to the root of the project
-const schemaFiles = glob('packages/schemas/src/lib/**/[01]-[01]-[01].ts');
+const schemaFiles = glob('packages/schemas/src/lib/**/*-*-*.ts');
 
 beforeAll(() => {
   // remove the output folder
