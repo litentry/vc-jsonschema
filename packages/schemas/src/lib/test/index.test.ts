@@ -67,8 +67,8 @@ function load(spec: VersionSpec): VersionData {
 }
 
 const VERSION_DATA: VersionData[] = [
-  { version: '1-0-0', compatibleVersionGlob: '1-*-*' },
-  { version: '1-1-0', compatibleVersionGlob: '1-*-*' },
+  { version: '1-0-0', compatibleVersionGlob: '1-0-0' },
+  { version: '1-1-0', compatibleVersionGlob: '1-*-0' },
 ].map(load);
 
 class ValidationError extends Error {
