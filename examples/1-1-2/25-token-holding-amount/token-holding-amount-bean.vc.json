@@ -3,39 +3,25 @@
     "https://www.w3.org/2018/credentials/v1",
     "https://w3id.org/security/suites/ed25519-2020/v1"
   ],
-  "id": "0xb0e777e89b7be2e18708e4052f0cac9fa0338006077453808da4da8aa31b1414",
+  "id": "0x233b33a3c342e21ae284ee05431f9c5f12e196a0e8403ddb0469f0e6747ef725",
   "type": [
     "VerifiableCredential"
   ],
   "credentialSubject": {
-    "id": "did:litentry:evm:0x0ace67628bd43213c1c41ca1daef47e63923c75c",
+    "id": "did:litentry:bitcoin:0x037d7faabb9423109a3b8e64ca67f03483782c50ba8686b0cc3d78c6a63f3f1789",
     "description": "The amount of a particular token you are holding",
     "type": "Token Holding Amount",
-    "assertionText": "EVMAmountHolding(Ton)",
+    "assertionText": "TokenHoldingAmount(Bean)",
     "assertions": [
       {
         "and": [
           {
             "src": "$token",
             "op": "==",
-            "dst": "TON"
+            "dst": "BEAN"
           },
           {
             "or": [
-              {
-                "and": [
-                  {
-                    "src": "$network",
-                    "op": "==",
-                    "dst": "ethereum"
-                  },
-                  {
-                    "src": "$address",
-                    "op": "==",
-                    "dst": "0x582d872a1b094fc48f5de31d3b73f2d9be47def1"
-                  }
-                ]
-              },
               {
                 "and": [
                   {
@@ -46,7 +32,21 @@
                   {
                     "src": "$address",
                     "op": "==",
-                    "dst": "0x76a797a59ba2c17726896976b7b3747bfd1d220f"
+                    "dst": "0x07da81e9a684ab87fad7206b3bc8d0866f48cc7c"
+                  }
+                ]
+              },
+              {
+                "and": [
+                  {
+                    "src": "$network",
+                    "op": "==",
+                    "dst": "combo"
+                  },
+                  {
+                    "src": "$address",
+                    "op": "==",
+                    "dst": "0xba7b9936a965fac23bb7a8190364fa60622b3cff"
                   }
                 ]
               }
@@ -60,7 +60,7 @@
           {
             "src": "$holding_amount",
             "op": "<",
-            "dst": "1"
+            "dst": "1500"
           }
         ]
       }
@@ -71,22 +71,26 @@
     "endpoint": "wss://rpc.rococo-parachain.litentry.io"
   },
   "issuer": {
-    "id": "did:litentry:substrate:0xbf6ae6b420f26aae8717dcd7ccc7d0caf543a27dbd5f622ea666e2eff6d1ec77",
+    "id": "did:litentry:substrate:0xfd0d16fe17f039e14a32c4782e0bea4fa5d149c508ea3650b690c5093aaac10e",
     "name": "Litentry TEE Worker",
-    "mrenclave": "C58kRb2Rcj2znMmjYD2cUcMxAQSuDbXkNRUXcS7GYzCt"
+    "mrenclave": "AGJgakFWvgCCECVJGrc68dxQrS8w34MyKWNpstViGjqw",
+    "runtimeVersion": {
+      "parachain": 9180,
+      "sidechain": 106
+    }
   },
-  "issuanceDate": "2024-04-26T17:04:24.465041655+00:00",
-  "parachainBlockNumber": 632042,
-  "sidechainBlockNumber": 3604760,
+  "issuanceDate": "2024-05-30T14:52:13.689027642+00:00",
+  "parachainBlockNumber": 4554,
+  "sidechainBlockNumber": 9172,
   "proof": {
-    "created": "2024-04-26T17:04:24.465291086+00:00",
+    "created": "2024-05-30T14:52:13.689632951+00:00",
     "type": "Ed25519Signature2020",
     "proofPurpose": "assertionMethod",
-    "proofValue": "87d67c60ec0de5375cd6adaf2e6d2e05674306f45c7e9c9c2838421cab0391c94811e4c96a1bd697e64c60fad78bda2b23c4d9deb0a26a7c3727868307c5fe00",
-    "verificationMethod": "0xbf6ae6b420f26aae8717dcd7ccc7d0caf543a27dbd5f622ea666e2eff6d1ec77"
+    "proofValue": "20c725bb00f0ff63f03f16068385f0cdf556f5763f2a82bf3170ee8b9921353566536654b79ec76d007e20b00b0531ea175007fa7fabb57a95036234e5ed5b08",
+    "verificationMethod": "0xfd0d16fe17f039e14a32c4782e0bea4fa5d149c508ea3650b690c5093aaac10e"
   },
   "credentialSchema": {
-    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/21-evm-holding-amount/1-0-0.json",
+    "id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/25-token-holding-amount/1-1-2.json",
     "type": "JsonSchemaValidator2018"
   }
 }
