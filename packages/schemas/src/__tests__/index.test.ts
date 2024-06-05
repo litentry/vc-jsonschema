@@ -3,7 +3,7 @@ import { describe, expect, test } from '@jest/globals';
 import { readFileSync } from 'fs';
 import { globSync as glob } from 'fast-glob';
 
-import { ajv } from '../ajv';
+import { ajv } from '../lib/ajv';
 import { ValidateFunction } from 'ajv';
 
 const FILENAME_TO_DEBUG = ''; // update to debug a single file
@@ -44,7 +44,7 @@ function load(spec: VersionSpec): VersionData {
 
       const schema = {
         name: folderName,
-        importPath: `../../lib/${folderName}/${fileName}`,
+        importPath: `../lib/${folderName}/${fileName}`,
       };
 
       if (folderName === '0-base') {
@@ -115,7 +115,7 @@ describe('Base schemas', () => {
       const examplePaths = glob(`examples/${compatibleVersionGlob}/**/*.json`);
 
       beforeAll(async () => {
-        const { schema: _schema } = await import(`../../lib/0-base/${version}`);
+        const { schema: _schema } = await import(`../lib/0-base/${version}`);
         schema = _schema;
 
         // Compile schema
