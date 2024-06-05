@@ -56,8 +56,9 @@ function load(spec: VersionSpec): VersionData {
       }
     });
 
-  if (!FILENAME_TO_DEBUG) {
-    expect(baseSchema).not.toBeNull();
+  if (baseSchema === null) {
+    // swallow
+    // a base can be used in different schema versions.
   }
 
   return {
@@ -70,6 +71,7 @@ function load(spec: VersionSpec): VersionData {
 const VERSION_DATA: VersionData[] = [
   { version: '1-0-0', compatibleVersionGlob: '1-0-0' },
   { version: '1-1-0', compatibleVersionGlob: '1-[01]-0' },
+  { version: '1-1-1', compatibleVersionGlob: '1-[01]-[01]' },
 ].map(load);
 
 class ValidationError extends Error {
@@ -93,17 +95,31 @@ afterAll(() => {
   }
 });
 
-describe.each(VERSION_DATA)(
-  'Schema $version should accept $compatibleVersionGlob certificates',
-  ({
-    version,
-    compatibleVersionGlob,
-    baseSchemaSpec,
-    credentialSchemaSpecs,
-  }) => {
-    test('base schema should accept all certificates', async () => {
+describe('Base schemas', () => {
+  const baseVersionData: VersionSpec[] = [
+    { version: '1-0-0', compatibleVersionGlob: '1-0-0' },
+    { version: '1-1-0', compatibleVersionGlob: '*-*-*' },
+  ];
+
+  const exceptions = [
+    {
+      comment: '20-token-holding-amount@1-1-0 allows empty assertions',
+      version: '1-1-0',
+      path: 'examples/1-1-0/20-token-holding-amount-list/20-token-holding-amount-list-empty.json',
+    },
+  ];
+
+  const isException = (version: string, path: string) => {
+    return exceptions.some(
+      (exception) => exception.version === version && exception.path === path
+    );
+  };
+
+  test.each(baseVersionData)(
+    'base version $version should accept $compatibleVersionGlob credentials',
+    async ({ version, compatibleVersionGlob }) => {
       // Import schema definition
-      const { schema } = await import(baseSchemaSpec.importPath);
+      const { schema } = await import(`../../lib/0-base/${version}`);
       expect(schema.$id).toBeDefined();
       expect(schema.$schema).toBeDefined();
 
@@ -111,19 +127,23 @@ describe.each(VERSION_DATA)(
       const validate = ajv.compile(schema);
       expect(validate.errors).toBeNull();
 
-      const examplePaths = glob(
-        `../examples/${compatibleVersionGlob}/**/*.json`
-      );
+      const examplePaths = glob(`examples/${compatibleVersionGlob}/**/*.json`);
+
       for (const examplePath of examplePaths) {
         const example = JSON.parse(readFileSync(examplePath, 'utf8'));
         const isValid = validate(example);
 
-        if (!isValid) {
-          fail(new ValidationError(examplePath, validate.errors));
+        if (!isValid && !isException(version, examplePath)) {
+          throw new ValidationError(examplePath, validate.errors);
         }
       }
-    });
+    }
+  );
+});
 
+describe.each(VERSION_DATA)(
+  'Schema $version should accept $compatibleVersionGlob certificates',
+  ({ version, compatibleVersionGlob, credentialSchemaSpecs }) => {
     test.each(credentialSchemaSpecs)(
       '$name schema should accept $name certificates',
       async ({ name, importPath }) => {
