@@ -21,14 +21,12 @@ type SchemaSpec = {
 type VersionData = {
   version: string;
   compatibleVersionGlob: string;
-  baseSchemaSpec: SchemaSpec;
   credentialSchemaSpecs: SchemaSpec[];
 };
 
 function load(spec: VersionSpec): VersionData {
   const schemaFiles = glob(`packages/schemas/src/lib/**/${spec.version}.ts`);
 
-  let baseSchema = null as SchemaSpec | null;
   const credentialSchemaSpecs: SchemaSpec[] = [];
 
   schemaFiles
@@ -50,25 +48,19 @@ function load(spec: VersionSpec): VersionData {
       };
 
       if (folderName === '0-base') {
-        baseSchema = schema;
+        // skip base. it's handled separately
       } else {
         credentialSchemaSpecs.push(schema);
       }
     });
 
-  if (baseSchema === null) {
-    // swallow
-    // a base can be used in different schema versions.
-  }
-
   return {
     ...spec,
-    baseSchemaSpec: baseSchema as SchemaSpec,
     credentialSchemaSpecs,
   };
 }
 
-const VERSION_DATA: VersionData[] = [
+const SCHEMA_VERSION_DATA: VersionData[] = [
   { version: '1-0-0', compatibleVersionGlob: '1-0-0' },
   { version: '1-1-0', compatibleVersionGlob: '1-[01]-0' },
   { version: '1-1-1', compatibleVersionGlob: '1-[01]-[01]' },
@@ -115,33 +107,40 @@ describe('Base schemas', () => {
     );
   };
 
-  test.each(baseVersionData)(
-    'base version $version should accept $compatibleVersionGlob credentials',
-    async ({ version, compatibleVersionGlob }) => {
-      // Import schema definition
-      const { schema } = await import(`../../lib/0-base/${version}`);
-      expect(schema.$id).toBeDefined();
-      expect(schema.$schema).toBeDefined();
-
-      // Compile schema
-      const validate = ajv.compile(schema);
-      expect(validate.errors).toBeNull();
-
+  describe.each(baseVersionData)(
+    'Base Schema version $version should accept $compatibleVersionGlob credentials',
+    ({ version, compatibleVersionGlob }) => {
+      let schema: any;
+      let validate: ValidateFunction;
       const examplePaths = glob(`examples/${compatibleVersionGlob}/**/*.json`);
 
-      for (const examplePath of examplePaths) {
+      beforeAll(async () => {
+        const { schema: _schema } = await import(`../../lib/0-base/${version}`);
+        schema = _schema;
+
+        // Compile schema
+        validate = ajv.compile(schema);
+      });
+
+      test('is valid', () => {
+        expect(schema.$id).toBeDefined();
+        expect(schema.$schema).toBeDefined();
+        expect(validate.errors).toBeNull();
+      });
+
+      test.each(examplePaths)('%s', async (examplePath: string) => {
         const example = JSON.parse(readFileSync(examplePath, 'utf8'));
         const isValid = validate(example);
 
         if (!isValid && !isException(version, examplePath)) {
           throw new ValidationError(examplePath, validate.errors);
         }
-      }
+      });
     }
   );
 });
 
-describe.each(VERSION_DATA)(
+describe.each(SCHEMA_VERSION_DATA)(
   'Schema $version should accept $compatibleVersionGlob certificates',
   ({ version, compatibleVersionGlob, credentialSchemaSpecs }) => {
     test.each(credentialSchemaSpecs)(
