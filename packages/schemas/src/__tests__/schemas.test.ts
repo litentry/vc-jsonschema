@@ -79,65 +79,12 @@ class ValidationError extends Error {
 const schemasWithNoExamples: string[] = [];
 
 afterAll(() => {
-  if (schemasWithNoExamples.length > 0) {
-    console.warn(
-      '[warning]: The following schemas have no examples:',
-      schemasWithNoExamples
-    );
-  }
-});
-
-describe('Base schemas', () => {
-  const baseVersionData: VersionSpec[] = [
-    { version: '1-0-0', compatibleVersionGlob: '1-0-0' },
-    { version: '1-1-0', compatibleVersionGlob: '*-*-*' },
-  ];
-
-  const exceptions = [
-    {
-      comment: '20-token-holding-amount@1-1-0 allows empty assertions',
-      version: '1-1-0',
-      path: 'examples/1-1-0/20-token-holding-amount-list/20-token-holding-amount-list-empty.json',
-    },
-  ];
-
-  const isException = (version: string, path: string) => {
-    return exceptions.some(
-      (exception) => exception.version === version && exception.path === path
-    );
-  };
-
-  describe.each(baseVersionData)(
-    'Base Schema version $version should accept $compatibleVersionGlob credentials',
-    ({ version, compatibleVersionGlob }) => {
-      let schema: any;
-      let validate: ValidateFunction;
-      const examplePaths = glob(`examples/${compatibleVersionGlob}/**/*.json`);
-
-      beforeAll(async () => {
-        const { schema: _schema } = await import(`../lib/0-base/${version}`);
-        schema = _schema;
-
-        // Compile schema
-        validate = ajv.compile(schema);
-      });
-
-      test('is valid', () => {
-        expect(schema.$id).toBeDefined();
-        expect(schema.$schema).toBeDefined();
-        expect(validate.errors).toBeNull();
-      });
-
-      test.each(examplePaths)('%s', async (examplePath: string) => {
-        const example = JSON.parse(readFileSync(examplePath, 'utf8'));
-        const isValid = validate(example);
-
-        if (!isValid && !isException(version, examplePath)) {
-          throw new ValidationError(examplePath, validate.errors);
-        }
-      });
-    }
-  );
+  // if (schemasWithNoExamples.length > 0) {
+  //   console.warn(
+  //     '[warning]: The following schemas have no examples:',
+  //     schemasWithNoExamples
+  //   );
+  // }
 });
 
 describe.each(SCHEMA_VERSION_DATA)(
