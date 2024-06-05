@@ -3,7 +3,7 @@ import { describe, expect, test } from '@jest/globals';
 import { readFileSync } from 'fs';
 import { globSync as glob } from 'fast-glob';
 
-import { ajv } from '../ajv';
+import { ajv } from '../lib/ajv';
 import { ValidateFunction } from 'ajv';
 
 const FILENAME_TO_DEBUG = ''; // update to debug a single file
@@ -21,14 +21,12 @@ type SchemaSpec = {
 type VersionData = {
   version: string;
   compatibleVersionGlob: string;
-  baseSchemaSpec: SchemaSpec;
   credentialSchemaSpecs: SchemaSpec[];
 };
 
 function load(spec: VersionSpec): VersionData {
   const schemaFiles = glob(`packages/schemas/src/lib/**/${spec.version}.ts`);
 
-  let baseSchema = null as SchemaSpec | null;
   const credentialSchemaSpecs: SchemaSpec[] = [];
 
   schemaFiles
@@ -36,39 +34,37 @@ function load(spec: VersionSpec): VersionData {
       FILENAME_TO_DEBUG ? filePath.indexOf(FILENAME_TO_DEBUG) > -1 : true
     )
     .forEach((filePath) => {
-      // e.g.: packages/schemas/src/lib/0-base/1-0-0.ts
+      // e.g.: given 'packages/schemas/src/lib/1-basic-identity-verification/1-0-0.ts'
+      // -> [packages, schemas, src, lib, 1-basic-identity-verification, 1-0-0.ts]
       const pathAsChunks = filePath.split('/');
-      // e.g.: 1-0-0.ts
+      // -> 1-0-0.ts
       const fileName = pathAsChunks.slice(-1)[0];
-      // e.g.: 1-0-0
+      // -> 1-basic-identity-verification
       const folderName = pathAsChunks.slice(0, -1).slice(-1)[0];
 
       const schema = {
         name: folderName,
-        importPath: `../../lib/${folderName}/${fileName}`,
+        importPath: `../lib/${folderName}/${fileName}`,
       };
 
       if (folderName === '0-base') {
-        baseSchema = schema;
+        // skip base. it's handled separately
       } else {
         credentialSchemaSpecs.push(schema);
       }
     });
 
-  if (!FILENAME_TO_DEBUG) {
-    expect(baseSchema).not.toBeNull();
-  }
-
   return {
     ...spec,
-    baseSchemaSpec: baseSchema as SchemaSpec,
     credentialSchemaSpecs,
   };
 }
 
-const VERSION_DATA: VersionData[] = [
+const SCHEMA_VERSION_DATA: VersionData[] = [
   { version: '1-0-0', compatibleVersionGlob: '1-0-0' },
-  { version: '1-1-0', compatibleVersionGlob: '1-*-0' },
+  { version: '1-1-0', compatibleVersionGlob: '1-[01]-0' },
+  { version: '1-1-1', compatibleVersionGlob: '1-[01]-[01]' },
+  { version: '1-1-2', compatibleVersionGlob: '1-[01]-*' },
 ].map(load);
 
 class ValidationError extends Error {
@@ -92,37 +88,9 @@ afterAll(() => {
   }
 });
 
-describe.each(VERSION_DATA)(
+describe.each(SCHEMA_VERSION_DATA)(
   'Schema $version should accept $compatibleVersionGlob certificates',
-  ({
-    version,
-    compatibleVersionGlob,
-    baseSchemaSpec,
-    credentialSchemaSpecs,
-  }) => {
-    test('base schema should accept all certificates', async () => {
-      // Import schema definition
-      const { schema } = await import(baseSchemaSpec.importPath);
-      expect(schema.$id).toBeDefined();
-      expect(schema.$schema).toBeDefined();
-
-      // Compile schema
-      const validate = ajv.compile(schema);
-      expect(validate.errors).toBeNull();
-
-      const examplePaths = glob(
-        `../examples/${compatibleVersionGlob}/**/*.json`
-      );
-      for (const examplePath of examplePaths) {
-        const example = JSON.parse(readFileSync(examplePath, 'utf8'));
-        const isValid = validate(example);
-
-        if (!isValid) {
-          fail(new ValidationError(examplePath, validate.errors));
-        }
-      }
-    });
-
+  ({ version, compatibleVersionGlob, credentialSchemaSpecs }) => {
     test.each(credentialSchemaSpecs)(
       '$name schema should accept $name certificates',
       async ({ name, importPath }) => {
