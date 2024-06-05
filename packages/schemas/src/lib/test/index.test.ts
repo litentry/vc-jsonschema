@@ -36,11 +36,12 @@ function load(spec: VersionSpec): VersionData {
       FILENAME_TO_DEBUG ? filePath.indexOf(FILENAME_TO_DEBUG) > -1 : true
     )
     .forEach((filePath) => {
-      // e.g.: packages/schemas/src/lib/0-base/1-0-0.ts
+      // e.g.: given 'packages/schemas/src/lib/1-basic-identity-verification/1-0-0.ts'
+      // -> [packages, schemas, src, lib, 1-basic-identity-verification, 1-0-0.ts]
       const pathAsChunks = filePath.split('/');
-      // e.g.: 1-0-0.ts
+      // -> 1-0-0.ts
       const fileName = pathAsChunks.slice(-1)[0];
-      // e.g.: 1-0-0
+      // -> 1-basic-identity-verification
       const folderName = pathAsChunks.slice(0, -1).slice(-1)[0];
 
       const schema = {
@@ -68,7 +69,7 @@ function load(spec: VersionSpec): VersionData {
 
 const VERSION_DATA: VersionData[] = [
   { version: '1-0-0', compatibleVersionGlob: '1-0-0' },
-  { version: '1-1-0', compatibleVersionGlob: '1-*-0' },
+  { version: '1-1-0', compatibleVersionGlob: '1-[01]-0' },
 ].map(load);
 
 class ValidationError extends Error {
