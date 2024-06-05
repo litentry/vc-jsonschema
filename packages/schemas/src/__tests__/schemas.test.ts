@@ -64,6 +64,7 @@ const SCHEMA_VERSION_DATA: VersionData[] = [
   { version: '1-0-0', compatibleVersionGlob: '1-0-0' },
   { version: '1-1-0', compatibleVersionGlob: '1-[01]-0' },
   { version: '1-1-1', compatibleVersionGlob: '1-[01]-[01]' },
+  { version: '1-1-2', compatibleVersionGlob: '1-[01]-*' },
 ].map(load);
 
 class ValidationError extends Error {
@@ -79,12 +80,12 @@ class ValidationError extends Error {
 const schemasWithNoExamples: string[] = [];
 
 afterAll(() => {
-  // if (schemasWithNoExamples.length > 0) {
-  //   console.warn(
-  //     '[warning]: The following schemas have no examples:',
-  //     schemasWithNoExamples
-  //   );
-  // }
+  if (schemasWithNoExamples.length > 0) {
+    console.warn(
+      '[warning]: The following schemas have no examples:',
+      schemasWithNoExamples
+    );
+  }
 });
 
 describe.each(SCHEMA_VERSION_DATA)(
