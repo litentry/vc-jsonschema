@@ -9,6 +9,12 @@ and this project follows [Schema Versioning](https://docs.snowplow.io/docs/pipel
 
 -
 
+## 2024-07-10
+
+(ADDITION) [`26-nft-holder`](./src/lib/26-nft-holder/) bumped to 1-1-2
+
+- Supported new NFT: MVP.
+
 ## 2024-07-09
 
 (ADDITION) [`25-token-holding-amount`](./src/lib/25-token-holding-amount/) bumped to 1-1-3
