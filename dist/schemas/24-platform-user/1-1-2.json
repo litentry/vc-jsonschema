@@ -1,0 +1,181 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/litentry/vc-jsonschema/main/dist/schemas/24-platform-user/1-1-2.json",
+  "title": "Platform user",
+  "description": "You are a user of a certain platform",
+  "type": "object",
+  "required": [
+    "@context",
+    "issuer",
+    "issuanceDate",
+    "credentialSubject",
+    "proof"
+  ],
+  "properties": {
+    "@context": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issuer": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "mrenclave"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "mrenclave": {
+          "type": "string"
+        },
+        "runtimeVersion": {
+          "type": "object",
+          "required": [
+            "parachain",
+            "sidechain"
+          ],
+          "properties": {
+            "sidechain": {
+              "type": "number"
+            },
+            "parachain": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "issuanceDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "proof": {
+      "type": "object",
+      "required": [
+        "created",
+        "type",
+        "proofPurpose",
+        "proofValue",
+        "verificationMethod"
+      ],
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "type": {
+          "type": "string"
+        },
+        "proofPurpose": {
+          "type": "string"
+        },
+        "proofValue": {
+          "type": "string"
+        },
+        "verificationMethod": {
+          "type": "string"
+        }
+      }
+    },
+    "credentialSubject": {
+      "title": "Credential Subject of Platform user",
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "values",
+        "endpoint",
+        "assertions"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "boolean"
+          }
+        },
+        "endpoint": {
+          "type": "string",
+          "format": "uri"
+        },
+        "assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "and"
+            ],
+            "properties": {
+              "and": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 1,
+                "additionalItems": false,
+                "items": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "src",
+                      "op",
+                      "dst"
+                    ],
+                    "properties": {
+                      "src": {
+                        "type": "string",
+                        "enum": [
+                          "$platform"
+                        ]
+                      },
+                      "op": {
+                        "type": "string",
+                        "enum": [
+                          "=="
+                        ]
+                      },
+                      "dst": {
+                        "type": "string",
+                        "enum": [
+                          "KaratDao",
+                          "MagicCraft",
+                          "DarenMarket",
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
