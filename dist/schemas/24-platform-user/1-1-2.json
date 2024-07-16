@@ -165,7 +165,7 @@
                         "enum": [
                           "KaratDao",
                           "MagicCraft",
-                          "DarenMarket",
+                          "DarenMarket"
                         ]
                       }
                     }
