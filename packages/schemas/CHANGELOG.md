@@ -9,6 +9,12 @@ and this project follows [Schema Versioning](https://docs.snowplow.io/docs/pipel
 
 -
 
+## 2024-07-15
+
+(ADDITION) [`24-platform-user`](./src/lib/24-platform-user/) bumped to 1-1-2
+
+- Support `DarenMarket` platform.
+
 ## 2024-07-10
 
 (ADDITION) [`26-nft-holder`](./src/lib/26-nft-holder/) bumped to 1-1-2
