@@ -9,7 +9,7 @@ and this project follows [Schema Versioning](https://docs.snowplow.io/docs/pipel
 
 -
 
-## 2024-05-10
+## 2024-07-15
 
 (ADDITION) [`24-platform-user`](./src/lib/24-platform-user/) bumped to 1-1-2
 

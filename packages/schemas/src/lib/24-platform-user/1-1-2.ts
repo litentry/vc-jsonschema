@@ -1,3 +1,7 @@
+/**
+ * Adds `DarenMarket` platform.
+ */
+
 import { JSONSchema7 } from 'json-schema';
 
 import { schema as base } from '../0-base/1-1-0';
@@ -8,7 +12,7 @@ const supportedPlatforms = [
   // https://github.com/litentry/litentry-parachain/blob/dev/tee-worker/litentry/core/credentials-v2/src/platform_user/mod.rs
   'KaratDao',
   'MagicCraft',
-  "DarenMarket",
+  'DarenMarket',
 ];
 
 export const schema: JSONSchema7 = {
