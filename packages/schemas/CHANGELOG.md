@@ -9,6 +9,18 @@ and this project follows [Schema Versioning](https://docs.snowplow.io/docs/pipel
 
 -
 
+## 2024-08-02
+
+(ADDITION) [`15-bnb-domain-holding-amount`](./src/lib/15-bnb-domain-holding-amount/) bumped to 1-1-1
+(ADDITION) [`16-bnb-3d-4d-club-domain-holding-amount`](./src/lib/16-bnb-3d-4d-club-domain-holding-amount/) bumped to 1-1-1
+(ADDITION) [`17-token-holding-amount`](./src/lib/17-token-holding-amount/) bumped to 1-1-2
+(ADDITION) [`20-token-holding-amount-list`](./src/lib/20-token-holding-amount-list/) bumped to 1-1-1
+(ADDITION) [`21-evm-holding-amount`](./src/lib/21-evm-holding-amount/) bumped to 1-1-2
+(ADDITION) [`25-token-holding-amount`](./src/lib/25-token-holding-amount/) bumped to 1-1-4
+
+- Supported `>` op in amount comparison right clause.
+- Supported single clause item in amount comparison.
+
 ## 2024-07-15
 
 (ADDITION) [`24-platform-user`](./src/lib/24-platform-user/) bumped to 1-1-2
