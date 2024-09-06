@@ -9,6 +9,12 @@ and this project follows [Schema Versioning](https://docs.snowplow.io/docs/pipel
 
 -
 
+## 2024-09-04
+
+(ADDITION) [`27-linked-identities`](./src/lib/27-linked-identities/) bumped to 1-0-0
+
+- Added new schema definition: 27-linked-identities.
+
 ## 2024-08-02
 
 (ADDITION) [`15-bnb-domain-holding-amount`](./src/lib/15-bnb-domain-holding-amount/) bumped to 1-1-1
